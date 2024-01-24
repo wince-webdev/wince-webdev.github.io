@@ -1,0 +1,92 @@
+---
+import Icon from './Icon.astro';
+const currentYear = new Date().getFullYear();
+---
+
+<footer>
+	<div class="group">
+		
+		<p>&copy; {currentYear} N. Winceslas ADJIHANOU</p>
+		
+	</div>
+	 <div>
+		<p>
+			<img
+					width="20"
+					height="15"
+					src="/assets/watsap.png"
+					alt="N. Winceslas ADJIHANOU and work"
+				/>    : 98134199 / 96112247
+		</p>
+		<p>
+			<img
+					width="20"
+					height="15"
+					src="/assets/GMAIL.png"
+					alt="N. Winceslas ADJIHANOU and work"
+				/>  : adjihanouwinceslas@gmail.com
+		</p>
+	</div>
+
+	<p class="socials">
+		<a href="https://github.com/winceslasAdjihanou"> GitHub</a>
+		
+		<a href="https://www.linkedin.com/in/winceslas-adjihanou-5a1159273/"> LinkedIn</a>
+		<a href="https://codepen.io/Winceslas-ADJIHANOU"> CodePen</a>
+	</p>
+</footer>
+<style>
+	footer {
+		display: flex;
+		flex-direction: column;
+		gap: 3rem;
+		margin-top: auto;
+		padding: 3rem 2rem 3rem;
+		text-align: center;
+		color: var(--gray-400);
+		font-size: var(--text-sm);
+	}
+
+	footer a {
+		color: var(--gray-400);
+		text-decoration: 1px solid underline transparent;
+		text-underline-offset: 0.25em;
+		transition: text-decoration-color var(--theme-transition);
+	}
+
+	footer a:hover,
+	footer a:focus {
+		text-decoration-color: currentColor;
+	}
+
+	.group {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+	}
+
+	.socials {
+		display: flex;
+		justify-content: center;
+		gap: 1rem;
+		flex-wrap: wrap;
+	}
+
+	@media (min-width: 50em) {
+		footer {
+			flex-direction: row;
+			justify-content: space-between;
+			padding: 2.5rem 5rem;
+		}
+
+		.group {
+			flex-direction: row;
+			gap: 1rem;
+			flex-wrap: wrap;
+		}
+
+		.socials {
+			justify-content: flex-end;
+		}
+	}
+</style>
