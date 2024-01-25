@@ -1,4 +1,42 @@
 import { defineConfig } from 'astro/config';
+import sitemap from "@astrojs/sitemap";
+import talwind from "@astrojs/talwind";
+
+
+
+
+
+
+
+
+
+
+
+
+const SERVER_PORT = 3000;
+
+const LOCALHOST_URL = 'http://Localhost:${SERVER_PORT}';
+
+const LIVE_URL = "https://WinceslasAdjihanou.github.io";
+
+const SCRIPT = process.env.npm_lifescycle_script ||"";
+const isBuild = SCRIPT.includes("astro build");
+let BASE_URL = LOCALHOST_URL;
+
+if (isBuild) {
+    BASE_URL = LIVE_URL;
+}
 
 // https://astro.build/config
-export default defineConfig({});
+export default defineConfig({
+    SERVER: { port: SERVER_PORT },
+    site: BASE_URL,
+    integrations: [
+        sitemap(),
+        tailwind({
+            config: { applyBaseSttles: false },
+        }),
+    ]
+});
+
+
