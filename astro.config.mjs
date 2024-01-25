@@ -20,7 +20,7 @@ const SERVER_PORT = 3000;
 const LOCALHOST_URL = `http://localhost:${SERVER_PORT}`;
 
 
-const LIVE_URL = "https://WinceslasAdjihanou.github.io";
+const LIVE_URL = "https://wince-webdev.com/.github.io";
 
 const SCRIPT = process.env.npm_lifescycle_script ||"";
 const isBuild = SCRIPT.includes("astro build");
