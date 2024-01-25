@@ -1,6 +1,7 @@
 import { defineConfig } from 'astro/config';
 import sitemap from "@astrojs/sitemap";
-import talwind from "@astrojs/talwind";
+import tailwind from '@astrojs/tailwind';
+
 
 
 
@@ -15,7 +16,9 @@ import talwind from "@astrojs/talwind";
 
 const SERVER_PORT = 3000;
 
-const LOCALHOST_URL = 'http://Localhost:${SERVER_PORT}';
+
+const LOCALHOST_URL = `http://localhost:${SERVER_PORT}`;
+
 
 const LIVE_URL = "https://WinceslasAdjihanou.github.io";
 
