@@ -1,7 +1,7 @@
 ---
-title: EcoPro-TEF(PAVICC)
+title: EcoPro(PAVICC)
 publishDate: 2020-03-02 00:00:00
-img: /assets/TEF.png
+img: /assets/PAVICC1.png
 img_alt: Iridescent ripples of a bright blue and pink liquid
 description: Program for Adaptation of Cities to Climate Change (PAVICC). It is an accounting and monitoring evaluation software .
 tags:

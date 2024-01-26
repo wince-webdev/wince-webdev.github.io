@@ -1,7 +1,7 @@
 ---
-title: Bloom Box
-publishDate: 2019-12-01 00:00:00
-img: /assets/stock-2.jpg
+title: Sig(PAVICC
+publishDate: 2024-22-01 08:00:00
+img: /assets/canevas indicateur.png
 img_alt: A bright pink sheet of paper used to wrap flowers curves in front of rich blue background
 description: |
   We paired with a cutting-edge music API and a team of horticulturalists
