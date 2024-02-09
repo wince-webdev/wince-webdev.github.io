@@ -3,17 +3,6 @@ import sitemap from "@astrojs/sitemap";
 import tailwind from '@astrojs/tailwind';
 
 
-
-
-
-
-
-
-
-
-
-
-
 const SERVER_PORT = 3000;
 
 
