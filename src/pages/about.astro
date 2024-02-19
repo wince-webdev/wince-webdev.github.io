@@ -15,7 +15,7 @@ import Hero from '../components/Hero.astro';
 				<img
 					width="1553"
 					height="873"
-					src="/assets/WINCE2.png"
+					src="/assets/WI-removebg-preview(1).png"
 					alt="N. Winceslas ADJIHANOU and work"
 				/>
 			</Hero>
@@ -32,18 +32,116 @@ import Hero from '../components/Hero.astro';
 					
 				</div>
 			</section>
+				
 			<section>
+				<h1>Skills</h1>
+				<div class="skills-rectangle">
+					<h3><span class="text-center">Languages, Frameworks and Tools</h3>
+				
+					<ul class="skills-list">
+					<li>
+						<img src="/assets/HTML.png" alt="html5" width="200px" height="100px" />
+						<span class="percentage">90%</span>
+					</li>
+
+					<li class="centered-li">
+						<img src="/assets/css3.png" alt="css" width="80px" height="80px" />
+						<span class="percentage">90%</span>
+					</li>
+
+					<li>
+						<img src="/assets/php.png" alt="php" width="100px" height="100px" />
+						<span class="percentage">80%</span>
+					</li>
+
+					<li>
+						<img src="/assets/JS.png" alt="css" width="110px" height="80px" />
+						<span class="percentage">70%</span>
+					</li>
+
+					<li>
+						<img src="/assets/SQL.png" alt="sqlL" width="250px" height="250px"/>
+						<span class="percentage">80%</span>
+					</li>
+
+					<li>
+						<img src="/assets/BOOTST.jpg" alt="symfony" />
+						<span class="percentage">80%</span>
+					</li>
+
+					<li>
+						<img src="/assets/SYMFONY.png" alt="symfony" />
+						<span class="percentage">80%</span>
+					</li>
+
+					<li>
+						<img src="/assets/GITH.png" alt="mysql" width="500px" height="200px"/>
+						<span class="percentage">90%</span>
+					</li>
+
+					<li>
+						<img src="/assets/MYSQL.png" alt="mysql" width="110px" height="80px"/>
+						<span class="percentage">90%</span>
+					</li>
+
+					</ul>
+				</div>
+				
+				</section>
+
+
+			
 				<h2 class="section-title">Diplomas</h2>
 				<div class="content">
 					<p>License in Computer Systems and Software (TIC), BAC series D, short modern BEPC (MC).</p>
 				</div>
 			</section>
+
+			<section>
+				<h2 class="section-title">Professional Experiences</h2>
+				<div class="content">
+				<h5>20/11/2023 - Aujourd'hui: Stage  professionnel en programmation web dans l’entreprise Cosit-bénin :</h5> 
+					
+					
+						<h6>Avec l'équipe des développeurs Symfony, j'ai travailler sur les plateformes  suivants les détails respectives:</h6>
+						<p>- PAVICC(Programme d'Adaptation des Villes au Changement Climatique) : j'ai travaillé précisément dans le module Suivi Evaluations. J'ai eu à gérer le rôle des utilisateurs dans ce module. Mise en place puis, la gestion  du Canevas de Présentation et Rapport indicateur dans le sous module Etat et Rapport. Mise à jour, l'affichage des tableau puis, l'allure des graphes TEP, TEF Efficacité TEP, Efficacité TEF et Efficience Globale au niveau du tableau de bord, Evolution TEP puis Evolution TEF. Correction des erreurs au niveau des sous modules Plan analytique, PTA, Suivi PTA et Indicateurs. Lien pour accéder : https://comptapavicc.cosit-care.com</p>
+						<p>- UNSTIM(Université Nationale des Sciences,Technologies,Ingénierie et Mathématiques) : j'ai travailler sur la documentation des api et la mise en place des routes.</p>
+						<p>- INRAB(Institut National des Recherches Agricoles du Bénin (Bénin)) : la gestion des rôles et l'affichages des activités sur le tableau de bord.</p>
+					
+					
+					<h5>01/06/2023 - 31/09/2023: Stage Académique en programmation web dans l’entreprise Cosit-bénin :</h5> 
+						<p> L’ajout de nouvelle fonctionnalité (mise en place d'une module permettant de gérer la carrière des employées ) sur la plateforme existante ecopro puis, l’insertion des données ‘activités et tâches’ sur la plateforme ‘sig.cosit-care’. </p>
+						
+					
+					<h5>04/09/2022 – 30/04/2023 : Stage académique en programmation web dans l’entreprise Cosit-bénin :</h5> 
+						<p>J’ai eu la chance de travailler en équipe sur la plateforme ‘ecopro’ puis sur la base de données de la plateforme de ‘La Poste’.
+						</p>
+				</div>
+			</section>
+
 			<section>
 				<h2 class="section-title">Qualities</h2>
 				<div class="content">
 					<p>Curious, Organized, Dynamic, Teamwork, Travel, Athlete, Musician</p>
 				</div>
 			</section>
+
+			
+
+
+
+<section class="download-cv-section">
+  <a href="/assets/CV_2023-07-25_Winceslas_ADJIHANOU.pdf" class="download-cv-button" download>Télécharger mon CV</a>
+</section>
+
+
+
+
+
+
+
+				
+
 		</main>
 
 		<ContactCTA />
@@ -106,4 +204,89 @@ import Hero from '../components/Hero.astro';
 			font-size: var(--text-lg);
 		}
 	}
+	.skills-rectangle {
+  background-color: #f7f7f7;
+  border-radius: 10px;
+  padding: 1rem;
+  margin-top: 1rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.skills-rectangle h3 {
+  font-size: var(--text-lg);
+  margin-bottom: 0.5rem;
+}
+
+.skills-rectangle ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.skills-rectangle li {
+  display: inline-block;
+  padding: 0.5rem;
+  border-radius: 5px;
+  background-color: #ddd;
+  margin-right: 0.5rem;
+}
+
+
+	.skills-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.skills-list li {
+  width: 25%;
+  margin-bottom: 1rem;
+}
+
+.percentage.yellow {
+  background-color: #ffeb3b;
+}
+
+.percentage.green {
+  background-color: #4caf50;
+}
+
+.percentage.red {
+  background-color: #f44336;
+}
+.skills-rectangle {
+  position: relative;
+}
+
+.download-cv-button {
+  background-color: #0073b7;
+  color: #fff;
+  border: 1px solid #005999;
+  border-radius: 5px;
+  font-size: 16px;
+  padding: 10px 20px;
+  text-align: center;
+  font-family: Arial, sans-serif;
+  font-weight: bold;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+
+
+
+centered-li {
+  text-align: center;
+}
+.skills-rectangle {
+  display: flex;
+  justify-content: center;
+}
+.skills-list {
+  margin: 0 auto;
+}
+.skills-rectangle h3 {
+  margin-top: 10px;
+}
+
+
+
 </style>
