@@ -27,4 +27,4 @@ All commands are run from the root of the project, from a terminal:
 
 ## 👀 Want to learn moreeeeeeee?
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Feel free to check [our documentation](https://wince-webdev.github.io/) or jump into our [Discord server](https://wince-webdev.github.io/).
