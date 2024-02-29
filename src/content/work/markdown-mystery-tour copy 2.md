@@ -1,9 +1,9 @@
 ---
 title: EcoPro(PAVICC)
 publishDate: 2020-03-02 00:00:00
-img: /assets/PAVICC1.png
+img: /assets/ecopro pavicc login.png
 img_alt: Iridescent ripples of a bright blue and pink liquid
-description: Program for Adaptation of Cities to Climate Change (PAVICC). It is an accounting and monitoring evaluation software .
+description: PAVICC(Programme d'Adaptation des Villes au Changement Climatique)
 tags:
   - Design
   - Dev
@@ -14,18 +14,12 @@ tags:
 
 
 
-Lorem ipsum dolor sit amet, <a href="https://astro.build/">Astro</a> makes people happy. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Proin nibh nisl condimentum id venenatis a condimentum vitae. Dapibus ultrices in iaculis nunc. Arcu odio ut sem nulla pharetra diam sit amet. Diam quis enim lobortis scelerisque fermentum dui faucibus in ornare.
-
-This is the application's dashboard to display the evolution of the management of the components, results, activities, sub-activities following the PTA exercises over a year.
+This is internal PAVICC software bringing together the following modules: accounting, budget monitoring, personnel, stock management, project management, monitoring and evaluation of a year's activity and the market. Click on this button to access: <a href="https://comptapavicc.cosit-care.com/security/fr/login">PAVICC</a></p>
 
 
+## Technology
 
-### Technology
-Symfony 6
+<p style="font-size: 23px; font-family: Arial, sans-serif;">SYMFONY, BOOTSTRAP</p>
 
-#### Tools
-
-- HTML
-- CSS
-- PHP
-- JAVASCRIPT
+## Tools
+<p style="font-size: 23px; font-family: Arial, sans-serif;">HTML, CSS, PHP, JAVASCRIPT, MYSQL</p>
