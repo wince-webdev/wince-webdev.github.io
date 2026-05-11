@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Portfolio de Noukpo Winceslas ADJIHANOU – Développeur FullStack Symfony PHP JavaScript, Cotonou Bénin." />
+    <title>Winceslas ADJIHANOU – Portfolio</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="./assets/images/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="./assets/images/favicon.svg" />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <link rel="stylesheet" href="./assets/css/main.css" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  </head>
+
+  <body>
+    <main>
+
+      <!-- ═══════════ SIDEBAR ═══════════ -->
+      <aside class="sidebar" data-sidebar>
+        <div class="sidebar-info">
+          <figure class="avatar-box">
+            <img src="./assets/images/profil_wince.jpg" alt="Winceslas ADJIHANOU" class="my-profile" width="80" />
+          </figure>
+
+          <div class="info-content">
+            <h1 class="my-name">Winceslas ADJIHANOU</h1>
+            <p class="title my-degree">Développeur FullStack</p>
+          </div>
+
+          <button class="info_more-btn" data-sidebar-btn>
+            <span>Contacts</span>
+            <ion-icon name="chevron-down"></ion-icon>
+          </button>
+        </div>
+
+        <div class="sidebar-info_more">
+          <div class="separator"></div>
+          <ul class="contacts-list" data-contact-info="website,degree,address,phone,email,whatsapp"></ul>
+          <div class="separator"></div>
+          <ul class="social-list"></ul>
+          <div class="separator"></div>
+          <div class="sidebar-logo-box">
+            <img src="./assets/images/logo.svg" alt="WINCE WEBDEV" />
+          </div>
+        </div>
+      </aside>
+
+      <!-- ═══════════ MAIN CONTENT ═══════════ -->
+      <div class="main-content">
+
+        <!-- NAV -->
+        <nav class="navbar">
+          <ul class="navbar-list">
+            <li class="navbar-item">
+              <button class="navbar-link active" data-nav-link>À propos</button>
+            </li>
+            <li class="navbar-item">
+              <button class="navbar-link" data-nav-link>Résumé</button>
+            </li>
+            <li class="navbar-item">
+              <button class="navbar-link" data-nav-link>Projets</button>
+            </li>
+            <li class="navbar-item">
+              <button class="navbar-link" data-nav-link>Contact</button>
+            </li>
+          </ul>
+        </nav>
+
+        <!-- ═══ À PROPOS ═══ -->
+        <article class="about active" data-page="à propos">
+          <header>
+            <h2 class="h2 article-title">À propos de moi</h2>
+          </header>
+
+          <section class="about-text text-justify">
+            <p>
+              Bonjour ! Je suis <strong>Noukpo Winceslas ADJIHANOU</strong>, développeur web FullStack basé à Cotonou, Bénin.
+              Passionné par le développement logiciel depuis mes premières lignes de code, j'ai orienté mon parcours vers
+              la conception d'applications web robustes et à fort impact pour des institutions publiques et privées.
+            </p>
+            <p>
+              Titulaire d'une Licence Professionnelle en Systèmes Informatiques et Logiciels de l'IRGIB Africa, je me suis
+              spécialisé dans l'écosystème <strong>Symfony / PHP</strong>, que je maîtrise de l'architecture backend à la
+              génération et documentation d'API REST. Mes expériences chez COSIT Bénin m'ont permis de contribuer
+              activement à la digitalisation de plusieurs ministères et organismes nationaux, en travaillant sur des
+              modules ERP variés : suivi-évaluation, gestion de stock, passation de marchés, ressources humaines et
+              comptabilité matières.
+            </p>
+            <p>
+              Au-delà du code, je suis <strong>maître de stage</strong> et mentor pour les étudiants en développement web,
+              en particulier ceux de l'école Faucon que j'accompagne dans leurs projets de soutenance. Cette dimension
+              pédagogique est pour moi aussi importante que la technique : transmettre, expliquer et faire grandir les
+              autres sont des valeurs auxquelles je tiens profondément.
+            </p>
+            <p>
+              Aujourd'hui, je maîtrise également les bases de <strong>Docker</strong> et de <strong>Laravel</strong>,
+              le déploiement sur serveurs Linux (cPanel, Grizzly) et je continue d'élargir mes compétences pour rester
+              un développeur moderne, curieux et toujours prêt à relever de nouveaux défis.
+            </p>
+          </section>
+
+          <!-- Centres d'intérêt -->
+          <section class="service">
+            <h3 class="h3 service-title">Centres d'intérêt</h3>
+            <ul class="service-list"></ul>
+          </section>
+
+          <!-- Footer -->
+          <footer class="page-footer">
+            <div class="footer-inner">
+              <img src="./assets/images/logo.svg" alt="WINCE WEBDEV" class="footer-logo" />
+              <p class="footer-copy">© <span id="footer-year"></span> Winceslas ADJIHANOU · Tous droits réservés</p>
+              <div class="footer-links">
+                <a href="https://github.com/wince-webdev" target="_blank" rel="noopener" title="GitHub">
+                  <ion-icon name="logo-github"></ion-icon>
+                </a>
+                <a href="https://www.linkedin.com/in/winceslas-adjihanou-5a1159273" target="_blank" rel="noopener" title="LinkedIn">
+                  <ion-icon name="logo-linkedin"></ion-icon>
+                </a>
+                <a href="https://wa.me/2290198134199?text=Bonjour%20Winceslas%20!%20Je%20vous%20contacte%20depuis%20votre%20portfolio.%20Je%20souhaite%20échanger%20avec%20vous." target="_blank" rel="noopener" title="WhatsApp" class="footer-whatsapp">
+                  <ion-icon name="logo-whatsapp"></ion-icon>
+                </a>
+              </div>
+            </div>
+          </footer>
+        </article>
+
+        <!-- ═══ RÉSUMÉ ═══ -->
+        <article class="resume" data-page="résumé">
+          <header>
+            <h2 class="h2 article-title">Résumé</h2>
+          </header>
+
+          <!-- Formation -->
+          <section class="timeline">
+            <div class="title-wrapper">
+              <div class="icon-box"><ion-icon name="school-outline"></ion-icon></div>
+              <h3 class="h3">Formation</h3>
+            </div>
+            <ol class="timeline-list education"></ol>
+          </section>
+
+          <!-- Expériences -->
+          <section class="timeline">
+            <div class="title-wrapper">
+              <div class="icon-box"><ion-icon name="barbell-outline"></ion-icon></div>
+              <h3 class="h3">Expériences Professionnelles</h3>
+            </div>
+            <ol class="timeline-list experience"></ol>
+          </section>
+
+          <!-- Compétences techniques -->
+          <section class="skill">
+            <h3 class="h3 skills-title">Compétences Techniques</h3>
+            <ul class="skills-list content-card"></ul>
+          </section>
+
+          <!-- Langues -->
+          <section class="skill" style="margin-top:30px;">
+            <h3 class="h3 skills-title">Langues</h3>
+            <div class="languages-grid content-card" style="padding:15px;"></div>
+          </section>
+
+          <!-- Qualités -->
+          <section class="skill" style="margin-top:30px;">
+            <h3 class="h3 skills-title">Qualités Personnelles</h3>
+            <div class="content-card" style="padding:15px;">
+              <div class="soft-skills-list"></div>
+            </div>
+          </section>
+
+          <!-- Footer -->
+          <footer class="page-footer">
+            <div class="footer-inner">
+              <img src="./assets/images/logo.svg" alt="WINCE WEBDEV" class="footer-logo" />
+              <p class="footer-copy">© <span class="footer-year"></span> Winceslas ADJIHANOU · Tous droits réservés</p>
+              <div class="footer-links">
+                <a href="https://github.com/wince-webdev" target="_blank" rel="noopener" title="GitHub"><ion-icon name="logo-github"></ion-icon></a>
+                <a href="https://www.linkedin.com/in/winceslas-adjihanou-5a1159273" target="_blank" rel="noopener" title="LinkedIn"><ion-icon name="logo-linkedin"></ion-icon></a>
+                <a href="https://wa.me/2290198134199?text=Bonjour%20Winceslas%20!%20Je%20vous%20contacte%20depuis%20votre%20portfolio.%20Je%20souhaite%20échanger%20avec%20vous." target="_blank" rel="noopener" title="WhatsApp" class="footer-whatsapp"><ion-icon name="logo-whatsapp"></ion-icon></a>
+              </div>
+            </div>
+          </footer>
+        </article>
+
+        <!-- ═══ PROJETS ═══ -->
+        <article class="portfolio" data-page="projets">
+          <header>
+            <h2 class="h2 article-title">Projets</h2>
+          </header>
+
+          <section class="projects">
+            <!-- Filtres -->
+            <ul class="filter-list">
+              <li class="filter-item"><button class="active" data-filter-btn>Tout</button></li>
+              <li class="filter-item"><button data-filter-btn>Entreprise</button></li>
+              <li class="filter-item"><button data-filter-btn>Personnel</button></li>
+            </ul>
+
+            <!-- Sélect mobile -->
+            <div class="filter-select-box">
+              <button class="filter-select" data-select>
+                <div class="select-value" data-selecct-value>Catégorie</div>
+                <div class="select-icon"><ion-icon name="chevron-down"></ion-icon></div>
+              </button>
+              <ul class="select-list">
+                <li class="select-item"><button data-select-item>Tout</button></li>
+                <li class="select-item"><button data-select-item>Entreprise</button></li>
+                <li class="select-item"><button data-select-item>Personnel</button></li>
+              </ul>
+            </div>
+
+            <!-- Note informative -->
+            <div class="projects-info-note">
+              <ion-icon name="information-circle-outline"></ion-icon>
+              Les projets <strong>Entreprise</strong> sont des logiciels internes développés en équipe chez COSIT Bénin
+              pour des institutions publiques béninoises. L'accès est réservé aux utilisateurs autorisés.
+            </div>
+
+            <ul class="project-list"></ul>
+          </section>
+
+          <!-- Footer -->
+          <footer class="page-footer">
+            <div class="footer-inner">
+              <img src="./assets/images/logo.svg" alt="WINCE WEBDEV" class="footer-logo" />
+              <p class="footer-copy">© <span class="footer-year"></span> Winceslas ADJIHANOU · Tous droits réservés</p>
+              <div class="footer-links">
+                <a href="https://github.com/wince-webdev" target="_blank" rel="noopener" title="GitHub"><ion-icon name="logo-github"></ion-icon></a>
+                <a href="https://www.linkedin.com/in/winceslas-adjihanou-5a1159273" target="_blank" rel="noopener" title="LinkedIn"><ion-icon name="logo-linkedin"></ion-icon></a>
+                <a href="https://wa.me/2290198134199?text=Bonjour%20Winceslas%20!%20Je%20vous%20contacte%20depuis%20votre%20portfolio.%20Je%20souhaite%20échanger%20avec%20vous." target="_blank" rel="noopener" title="WhatsApp" class="footer-whatsapp"><ion-icon name="logo-whatsapp"></ion-icon></a>
+              </div>
+            </div>
+          </footer>
+        </article>
+
+        <!-- ═══ CONTACT ═══ -->
+        <article class="contact" data-page="contact">
+          <header>
+            <h2 class="h2 article-title">Contact</h2>
+          </header>
+
+          <!-- Carte contact rapide -->
+          <section class="contact-quick">
+            <h3 class="h3 contact-section-title">Contactez-moi directement</h3>
+            <div class="contact-quick-grid">
+
+              <!-- Email -->
+              <a href="mailto:adjihanounkpwinceslas@gmail.com" class="contact-quick-card">
+                <div class="cq-icon-box">
+                  <ion-icon name="mail-outline"></ion-icon>
+                </div>
+                <div class="cq-info">
+                  <p class="cq-label">E-mail</p>
+                  <p class="cq-value">adjihanounkpwinceslas@gmail.com</p>
+                </div>
+              </a>
+
+              <!-- Téléphone -->
+              <a href="tel:+2290198134199" class="contact-quick-card">
+                <div class="cq-icon-box">
+                  <ion-icon name="call-outline"></ion-icon>
+                </div>
+                <div class="cq-info">
+                  <p class="cq-label">Téléphone</p>
+                  <p class="cq-value">+229 01 98 13 41 99</p>
+                </div>
+              </a>
+
+              <!-- WhatsApp -->
+              <a href="https://wa.me/2290198134199?text=Bonjour%20Winceslas%20!%20Je%20vous%20contacte%20depuis%20votre%20portfolio.%20Je%20serais%20ravi(e)%20d'échanger%20avec%20vous%20à%20propos%20d'une%20opportunité%20professionnelle." target="_blank" rel="noopener" class="contact-quick-card contact-quick-card--whatsapp">
+                <div class="cq-icon-box">
+                  <ion-icon name="logo-whatsapp"></ion-icon>
+                </div>
+                <div class="cq-info">
+                  <p class="cq-label">WhatsApp</p>
+                  <p class="cq-value">Ouvrir la discussion →</p>
+                </div>
+              </a>
+
+              <!-- Localisation -->
+              <div class="contact-quick-card contact-quick-card--static">
+                <div class="cq-icon-box">
+                  <ion-icon name="location-outline"></ion-icon>
+                </div>
+                <div class="cq-info">
+                  <p class="cq-label">Localisation</p>
+                  <p class="cq-value">PK11, Cotonou, Bénin</p>
+                </div>
+              </div>
+
+            </div>
+          </section>
+
+          <!-- Formulaire d'envoi de message -->
+          <section class="contact-form">
+            <h3 class="h3 form-title">Envoyez-moi un message</h3>
+            <p class="contact-form-intro">
+              Vous avez un projet, une opportunité ou une question ? Remplissez ce formulaire et je vous répondrai dans les plus brefs délais.
+            </p>
+
+            <form id="contact-form" data-form action="https://formsubmit.co/adjihanounkpwinceslas@gmail.com" method="POST">
+
+              <!-- FormSubmit config - no CAPTCHA, redirect to portfolio -->
+              <input type="hidden" name="_captcha" value="false" />
+              <input type="hidden" name="_next" value="https://wince-webdev.github.io?sent=1" />
+              <input type="hidden" name="_subject" value="Nouveau message depuis votre portfolio" />
+              <input type="text" name="_honey" style="display:none" />
+
+              <div class="input-wrapper">
+                <input
+                  type="text"
+                  name="fullname"
+                  class="form-input"
+                  placeholder="Votre nom complet"
+                  required
+                  data-form-input
+                />
+                <input
+                  type="email"
+                  name="email"
+                  class="form-input"
+                  placeholder="Votre adresse e-mail"
+                  required
+                  data-form-input
+                />
+              </div>
+
+              <input
+                type="text"
+                name="subject"
+                class="form-input"
+                placeholder="Objet du message"
+                required
+                data-form-input
+                style="width:100%; margin-bottom:25px;"
+              />
+
+              <textarea
+                name="message"
+                class="form-input"
+                placeholder="Votre message…"
+                required
+                data-form-input
+              ></textarea>
+
+              <button class="form-btn" type="submit" data-form-btn>
+                <ion-icon name="paper-plane-outline"></ion-icon>
+                <span>Envoyer le message</span>
+              </button>
+            </form>
+          </section>
+
+          <!-- Footer -->
+          <footer class="page-footer">
+            <div class="footer-inner">
+              <img src="./assets/images/logo.svg" alt="WINCE WEBDEV" class="footer-logo" />
+              <p class="footer-copy">© <span class="footer-year"></span> Winceslas ADJIHANOU · Tous droits réservés</p>
+              <div class="footer-links">
+                <a href="https://github.com/wince-webdev" target="_blank" rel="noopener" title="GitHub"><ion-icon name="logo-github"></ion-icon></a>
+                <a href="https://www.linkedin.com/in/winceslas-adjihanou-5a1159273" target="_blank" rel="noopener" title="LinkedIn"><ion-icon name="logo-linkedin"></ion-icon></a>
+                <a href="https://wa.me/2290198134199?text=Bonjour%20Winceslas%20!%20Je%20vous%20contacte%20depuis%20votre%20portfolio.%20Je%20souhaite%20échanger%20avec%20vous." target="_blank" rel="noopener" title="WhatsApp" class="footer-whatsapp"><ion-icon name="logo-whatsapp"></ion-icon></a>
+              </div>
+            </div>
+          </footer>
+        </article>
+
+      </div><!-- /main-content -->
+    </main>
+
+    <!-- JS -->
+    <script src="./assets/js/data.js"></script>
+    <script src="./assets/js/script.js"></script>
+    <script src="./assets/js/main.js"></script>
+
+    <!-- Ionicons -->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+  </body>
+</html>
