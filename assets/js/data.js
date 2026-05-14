@@ -1,325 +1,285 @@
 "use strict";
 
-const currentYear = new Date().getFullYear();
+document.addEventListener("DOMContentLoaded", function () {
 
-// ── Helpers ──────────────────────────────────────────────────────────────
-const getSocialLink = (username, social) => {
-  if (social === "github")   return "https://github.com/" + username;
-  if (social === "linkedin") return "https://www.linkedin.com/in/" + username;
-  if (social === "twitter")  return "https://twitter.com/" + username;
-  throw new Error("Unknown social: " + social);
-};
+  // ── Helpers ──────────────────────────────────────────────────────────
+  const select  = (el, all = false) =>
+    all ? [...document.querySelectorAll(el)] : document.querySelector(el);
 
-const getRepo = (repoName, username = "wince-webdev") =>
-  getSocialLink(username, "github") + "/" + repoName;
+  const isCollection = (el) =>
+    el instanceof NodeList || el instanceof HTMLCollection || Array.isArray(el);
 
-// ── Profile ──────────────────────────────────────────────────────────────
-const profileInfo = {
-  surname:   "ADJIHANOU",
-  firstname: "Noukpo Winceslas",
-  fullname() { return `${this.firstname} ${this.surname}`; },
+  const innerHTML = (els, html) => {
+    if (!els) return;
+    if (isCollection(els)) els.forEach((el) => (el.innerHTML = html));
+    else els.innerHTML = html;
+  };
 
-  email:   "adjihanounkpwinceslas@gmail.com",
-  major:   "Développeur FullStack",
-  title:   { short: "Dev.", long: "Developer" },
-  degree:  "FullStack",
-  fulldegree() { return `${this.degree} ${this.title.long}`; },
+  const innerText = (els, text) => {
+    if (!els) return;
+    if (isCollection(els)) els.forEach((el) => (el.innerText = text));
+    else els.innerText = text;
+  };
 
-  imgSrc:  "assets/images/profil_wince.jpg",
+  const durationTo = (from, to, ongoing) => {
+    if (from === to) to = ongoing ? " - présent" : "";
+    else to = " - " + (to >= currentYear && ongoing !== false ? "présent" : to);
+    return from + to;
+  };
 
-  social: [
-    { id: "linkedin", name: "LinkedIn", icon: "logo-linkedin",
-      url: getSocialLink("winceslas-adjihanou-5a1159273", "linkedin") },
-    { id: "github",   name: "GitHub",   icon: "logo-github",
-      url: getSocialLink("wince-webdev", "github") },
-  ],
+  // ── Title ─────────────────────────────────────────────────────────────
+  innerText(select("title"), `${profileInfo.firstname} – Portfolio`);
 
-  phone: {
-    mobile:   "+229 01 98 13 41 99",
-    whatsapp: "+229 01 98 13 41 99",
-  },
+  // ── Sidebar Profile ───────────────────────────────────────────────────
+  (function () {
+    // favicon
+    const headIcon = select("head link.head-icon");
+    if (headIcon) headIcon.href = profileInfo.imgSrc;
 
-  address: {
-    country: "Bénin",
-    city:    "Cotonou",
-    district:"PK11",
-  },
-  fulladdress(detailled = false) {
-    const { address } = this;
-    return detailled
-      ? `${address.district}, ${address.city}, ${address.country}`
-      : `${address.city}, ${address.country}`;
-  },
+    // name & degree
+    innerText(select(".my-name",   true), profileInfo.fullname());
+    innerText(select(".my-degree", true), profileInfo.fulldegree());
 
-  website: "wince-webdev.github.io",
+    // profile image
+    select("img.my-profile", true).forEach((el) => {
+      el.src = profileInfo.imgSrc;
+      el.alt = profileInfo.fullname();
+    });
 
-  getAbout() {
-    return [
-      { id: "website",  name: "Website",  class: "my-website",  icon: "globe-outline" },
-      { id: "degree",   name: "Degree",   text: "Licence Pro.", icon: "school-outline" },
-      { id: "address",  name: "Address",  class: "my-address",  icon: "location-outline" },
-      { id: "phone",    name: "Phone",    class: "my-phone",    icon: "phone-portrait-outline" },
-      { id: "email",    name: "Email",    class: "my-email",    icon: "mail-outline" },
-      { id: "whatsapp", name: "WhatsApp", class: "my-whatsapp", icon: "logo-whatsapp" },
-    ];
-  },
-};
+    // social links
+    const socialsEl = select(".sidebar-info_more .social-list");
+    socialsEl.innerHTML = profileInfo.social.map((s) => `
+      <li class="social-item">
+        <a href="${s.url}" class="social-link" target="_blank" rel="noopener noreferrer">
+          <ion-icon name="${s.icon}"></ion-icon>
+        </a>
+      </li>`).join("");
 
-// ── Resume ───────────────────────────────────────────────────────────────
-const resumeInfo = {
+    // contact list
+    const contactEl = select(".sidebar-info_more .contacts-list");
+    const aboutItems = profileInfo.getAbout();
+    const dataKeys   = contactEl.getAttribute("data-contact-info").split(",").map((s) => s.trim());
+    contactEl.innerHTML = dataKeys.map((key) => {
+      const item = aboutItems.find((i) => i.id === key);
+      return item ? `
+        <li class="contact-item">
+          <div class="icon-box">
+            <ion-icon name="${item.icon}"></ion-icon>
+          </div>
+          <div class="contact-info">
+            <p class="contact-title">${item.name}</p>
+            <span class="${item.class || ""}">${item.text || ""}</span>
+          </div>
+        </li>` : "";
+    }).join("");
 
-  education: [
-    {
-      id: "irgib",
-      institution: "IRGIB Africa University",
-      shortname:   "IRGIB",
-      city: "Cotonou", country: "Bénin",
-      degree: "Licence Professionnelle d'État – Systèmes Informatiques et Logiciels",
-      grade:  null,
-      duration: { from: 2020, to: 2023 },
-      ongoing: false,
-      description:
-        "<p>Formation pluridisciplinaire couvrant la conception et le développement de logiciels, l'architecture des systèmes d'information, les bases de données et les méthodes de gestion de projet. Les enseignements pratiques ont permis de maîtriser Symfony, PHP, MySQL, UML et Merise, ainsi que des notions en sécurité informatique et en réseaux.</p>",
-    },
-    {
-      id: "ceg2",
-      institution: "CEG Sekandji",
-      shortname:   "CEG Sekandji",
-      city: "Bénin", country: "",
-      degree: "Baccalauréat série D (Sciences)",
-      grade:  null,
-      duration: { from: 2019, to: 2020 },
-      ongoing: false,
-      description: "<p>Obtention du baccalauréat scientifique série D avec mention.</p>",
-    },
-  ],
+    // fill dynamic spans
+    select(".my-website", true).forEach((el) =>
+      (el.innerHTML = `<a href="https://${profileInfo.website}" class="contact-link" target="_blank">${profileInfo.website}</a>`));
+    select(".my-email", true).forEach((el) =>
+      (el.innerHTML = `<a href="mailto:${profileInfo.email}" class="contact-link" target="_blank">${profileInfo.email}</a>`));
+    select(".my-phone", true).forEach((el) =>
+      (el.innerHTML = `<a href="tel:${profileInfo.phone.mobile}" class="contact-link" target="_blank">${profileInfo.phone.mobile}</a>`));
+    select(".my-whatsapp", true).forEach((el) =>
+      (el.innerHTML = `<a href="https://wa.me/${profileInfo.phone.whatsapp.replace(/\s/g,'')}" class="contact-link" target="_blank">${profileInfo.phone.whatsapp}</a>`));
+    select(".my-address", true).forEach((el) =>
+      (el.innerHTML = `<address>${profileInfo.fulladdress()}</address>`));
+  })();
 
-  experience: [
-    {
-      id: "cosit-dev",
-      company:  "COSIT Bénin",
-      position: "Développeur FullStack & Maître de Stage",
-      duration: { from: 2023, to: currentYear },
-      ongoing:  true,
-      city: "Cotonou", country: "Bénin",
-      description:
-        "Développement de modules ERP pour plusieurs structures nationales, déploiement sur serveurs Linux (cPanel & Grizzly), génération et documentation d'API REST Symfony, et encadrement des étudiants stagiaires.",
-      achievements: [
-        "Ministère de la Santé – Sécurité avancée, traçage des actions par utilisateur avec reconnaissance des appareils connectés.",
-        "Ministère du Cadre de Vie et des Transports (MCVT) – Module Suivi & Évaluation.",
-        "Ministère du Plan / PPBSE – Modules Suivi & Évaluation, Planification, Programmation.",
-        "FNDA – Module de gestion de stock.",
-        "INF (SIG) – Comptabilité Matières (gestion de stock) + module gestion de carrière des employés.",
-        "INRAB, PAVICC, PDI-CVA, ONAB, SISE_PREMOPEF – Développement et intégration de modules métier variés.",
-        "SIG UNSTIM – Documentation complète des API.",
-        "Déploiement des logiciels sur serveurs Linux (cPanel et Grizzly).",
-        "Maître de stage : encadrement des étudiants de l'école Faucon et accompagnement de leurs projets web de soutenance.",
-      ],
-    },
-    {
-      id: "cosit-pro",
-      company:  "COSIT Bénin",
-      position: "Stagiaire – Développeur Web (Stage Professionnel)",
-      duration: { from: 2023, to: 2023 },
-      ongoing:  false,
-      city: "Cotonou", country: "Bénin",
-      description:
-        "Stage professionnel axé sur le développement de fonctionnalités spécifiques et l'insertion de données sur des plateformes ERP nationales.",
-      achievements: [
-        "SIG INF – Développement de la fonctionnalité de gestion de carrière des employés.",
-        "Insertion et vérification des données sur les plateformes ANEPIJ et PAVICC.",
-      ],
-    },
-    {
-      id: "cosit-acad",
-      company:  "COSIT Bénin",
-      position: "Stagiaire – Développeur Web (Stage Académique)",
-      duration: { from: 2022, to: 2023 },
-      ongoing:  false,
-      city: "Cotonou", country: "Bénin",
-      description:
-        "Premier stage en entreprise : participation active au développement de plusieurs plateformes ERP nationales.",
-      achievements: [
-        "Contribution aux plateformes : INRAB, UNSTIM, ABSSA, ONAB, FNDA, La Poste, PRESREDI, ANEPIJ, SBEE LPEDER.",
-        "Travaux d'intégration front-end, insertion de données et développement de fonctionnalités sur FNDA, La Poste, INRAB, ABSSA et PRESREDI.",
-      ],
-    },
-  ],
+  // ── About – Interests ─────────────────────────────────────────────────
+  (function () {
+    const el = select(".service-list");
+    if (!el) return;
+    el.innerHTML = aboutInfo.interests.map((item) => `
+      <li class="service-item">
+        <div class="service-icon-box">
+          <img src="${item.icon}" alt="${item.title}" width="40" />
+        </div>
+        <div class="service-content-box">
+          <h4 class="h4 service-item-title">${item.title}</h4>
+          <p class="service-item-text text-justify">${item.description}</p>
+        </div>
+      </li>`).join("");
+  })();
 
-  skills: [
-    { id: "symfony",    name: "Symfony",        level: 85 },
-    { id: "php",        name: "PHP",            level: 82 },
-    { id: "javascript", name: "JavaScript",     level: 75 },
-    { id: "html-css",   name: "HTML / CSS",     level: 90 },
-    { id: "bootstrap",  name: "Bootstrap",      level: 85 },
-    { id: "mysql",      name: "MySQL / SQL",    level: 78 },
-    { id: "api-rest",   name: "API REST",       level: 80 },
-    { id: "git",        name: "Git / GitHub",   level: 72 },
-    { id: "docker",     name: "Docker (bases)", level: 50 },
-    { id: "laravel",    name: "Laravel (bases)",level: 45 },
-    { id: "linux",      name: "Linux / cPanel / Grizzly", level: 65 },
-    { id: "python",     name: "Python",         level: 40 },
-  ],
+  // ── Resume – Education ────────────────────────────────────────────────
+  (function () {
+    const el = select(".timeline-list.education");
+    if (!el) return;
+    el.innerHTML = resumeInfo.education.map((item) => `
+      <li class="timeline-item">
+        <h4 class="h4 timeline-item-title">${item.degree}</h4>
+        <h5 class="h4 univ-comp">${item.institution}, ${item.city}${item.country ? ", " + item.country : ""}</h5>
+        <span>${durationTo(item.duration.from, item.duration.to, item.ongoing)}</span>
+        <div class="timeline-text text-justify">${item.description}</div>
+      </li>`).join("");
+  })();
 
-  languages: [
-    { name: "Français",  flag: "🇫🇷", level: "Courant (C1)" },
-    { name: "Anglais",   flag: "🇬🇧", level: "Intermédiaire (B1)" },
-    { name: "Fon",       flag: "🇧🇯", level: "Langue maternelle" },
-    //{ name: "Yoruba",    flag: "🇧🇯", level: "Notions" },
-  ],
+  // ── Resume – Experience ───────────────────────────────────────────────
+  (function () {
+    const el = select(".timeline-list.experience");
+    if (!el) return;
+    el.innerHTML = resumeInfo.experience.map((item) => `
+      <li class="timeline-item">
+        <h4 class="h4 timeline-item-title">${item.position}</h4>
+        <h5 class="h4 univ-comp">${item.company} – ${item.city}, ${item.country}</h5>
+        <span>${durationTo(item.duration.from, item.duration.to, item.ongoing)}</span>
+        <p class="timeline-text text-justify">${item.description}</p>
+        ${item.achievements ? `<ul style="margin-top:8px;padding-left:16px;">${item.achievements.map((a)=>
+          `<li style="font-size:var(--fs-7);color:var(--light-gray);margin-bottom:4px;list-style:disc;">
+            ${a}
+          </li>`).join("")}</ul>` : ""}
+      </li>`).join("");
+  })();
 
-  softSkills: [
-    "Esprit d'équipe", "Rigueur", "Autonomie", "Curiosité",
-    "Organisation", "Pédagogie (Mentorat)", "Dynamisme", "Adaptabilité",
-  ],
-};
+  // ── Resume – Skills (Tech) ────────────────────────────────────────────
+  (function () {
+    const el = select(".skills-list");
+    if (!el) return;
+    el.innerHTML = resumeInfo.skills.map((skill) => `
+      <li class="skills-item">
+        <div class="title-wrapper">
+          <h5 class="h5">${skill.name}</h5>
+          <data value="${skill.level}">${skill.level}%</data>
+        </div>
+        <div class="skill-progress-bg">
+          <div class="skill-progress-fill" style="width:${skill.level}%"></div>
+        </div>
+      </li>`).join("");
+  })();
 
-// ── Projects ─────────────────────────────────────────────────────────────
-const projects = [
-  // ── Entreprise ─────────────────────────────────────────────
-  {
-    id: "ms-sante",
-    title: "Plateforme Passation de Marchés – Ministère de la Santé",
-    category: "Entreprise",
-    type: "enterprise",
-    imgSrc: "assets/images/MCVT1.png",
-    liveUrl: "https://ppbse.cadredevie.gouv.bj/login", // logiciel interne, pas d'accès public
-    loginCapture: null,
-    tags: ["Symfony", "PHP", "MySQL", "Security"],
-    description:
-      "Module de passation de marchés pour le Ministère de la Santé du Bénin. Travail sur la sécurité avancée, le traçage de l'historique de toutes les actions effectuées par chaque utilisateur avec reconnaissance des appareils spécifiques sur lesquels les utilisateurs se connectent.",
-  },
-  {
-    id: "fnda-stock",
-    title: "Gestion de Stock – FNDA (Fonds National de Développement Agricole)",
-    category: "Entreprise",
-    type: "enterprise",
-    imgSrc: "assets/images/premopef login.png",
-    liveUrl: "https://fnda.bj",
-    loginCapture: null,
-    tags: ["Symfony", "PHP", "MySQL", "ERP"],
-    description:
-      "Développement complet du module de gestion de stock pour le FNDA. Suivi des entrées/sorties, alertes de seuil, reporting et tableaux de bord pour les gestionnaires de l'institution.",
-  },
-  {
-    id: "inf-sig",
-    title: "SIG Institut National de la Femme – Comptabilité Matières",
-    category: "Entreprise",
-    type: "enterprise",
-    imgPlaceholder: "📊",
-    liveUrl: null,
-    loginCapture: null,
-    tags: ["Symfony", "PHP", "MySQL", "GRH"],
-    description:
-      "Module de comptabilité matières (gestion de stock) et développement d'une fonctionnalité de gestion de carrière des employés (mobilité, promotions, congés) pour le SIG de l'Institut National de la Femme.",
-  },
-  {
-    id: "ppbse",
-    title: "Système PPBSE – Ministère du Plan",
-    category: "Entreprise",
-    type: "enterprise",
-    imgPlaceholder: "📈",
-    liveUrl: null,
-    loginCapture: null,
-    tags: ["Symfony", "PHP", "API REST", "MySQL"],
-    description:
-      "Travail sur les modules Suivi & Évaluation, Planification et Programmation dans le cadre du Système Informatisé de Gestion de la Chaîne PPBSE (Plan, Programme, Budget, Suivi & Évaluation) du Ministère du Plan, de la Statistique et de l'Intégration Régionale.",
-  },
-  {
-    id: "inrab",
-    title: "INRAB – Module Suivi & Évaluation",
-    category: "Entreprise",
-    type: "enterprise",
-    imgPlaceholder: "🔬",
-    liveUrl: null,
-    loginCapture: null,
-    tags: ["Symfony", "PHP", "Bootstrap", "MySQL"],
-    description:
-      "Développement et intégration du module Suivi & Évaluation pour l'Institut National des Recherches Agricoles du Bénin (INRAB). Intégration du front-end du projet et participation aux tests de recette.",
-  },
-  {
-    id: "pdi-cva",
-    title: "PDI-CVA – Gestion de Stock & Ressources Humaines",
-    category: "Entreprise",
-    type: "enterprise",
-    imgPlaceholder: "🏗️",
-    liveUrl: null,
-    loginCapture: null,
-    tags: ["Symfony", "PHP", "ERP", "MySQL"],
-    description:
-      "Modules de gestion de stock et de Ressources Humaines (RH) pour le Projet de Développement Intégré des Chaînes de Valeurs Agricoles au Bénin (PDI-CVA), en équipe pluridisciplinaire.",
-  },
-  // ── Personnels ─────────────────────────────────────────────
-  {
-    id: "portfolio",
-    title: "Portfolio Personnel",
-    category: "Personnel",
-    type: "personal",
-    imgPlaceholder: "🌐",
-    liveUrl: "https://wince-webdev.github.io",
-    githubUrl: getRepo("wince-webdev.github.io"),
-    tags: ["HTML", "CSS", "JavaScript"],
-    description:
-      "Site portfolio responsive présentant mes projets, compétences, expériences et coordonnées. Déployé sur GitHub Pages, optimisé mobile-first.",
-  },
-  {
-    id: "gestion-ecole",
-    title: "Plateforme de Gestion Scolaire (en développement)",
-    category: "Personnel",
-    type: "personal",
-    imgPlaceholder: "🎓",
-    liveUrl: null,
-    githubUrl: getRepo("gestion-ecole"),
-    tags: ["Symfony", "MySQL", "Bootstrap", "Chart.js"],
-    description:
-      "Application web complète de gestion d'école : inscriptions, notes, emplois du temps, bulletins automatiques, gestion des rôles (admin, enseignant, étudiant). Projet en cours de développement.",
-  },
-];
+  // ── Resume – Languages ────────────────────────────────────────────────
+  (function () {
+    const el = select(".languages-grid");
+    if (!el) return;
+    el.innerHTML = resumeInfo.languages.map((lang) => `
+      <div class="lang-card">
+        <span class="lang-flag">${lang.flag}</span>
+        <div class="lang-info">
+          <h5>${lang.name}</h5>
+          <span>${lang.level}</span>
+        </div>
+      </div>`).join("");
+  })();
 
-// ── Interests (About page) ────────────────────────────────────────────────
-const aboutInfo = {
-  interests: [
-    {
-      id: "dev",
-      title: "Développement Web",
-      icon: "./assets/icons/dev.svg",
-      description:
-        "Passionné par la conception d'applications web robustes et performantes, de la définition de l'architecture à la mise en production sur des serveurs Linux.",
-    },
-    {
-      id: "api",
-      title: "API & Architecture Backend",
-      icon: "./assets/icons/app.svg",
-      description:
-        "Fasciné par la conception d'API REST propres et documentées avec Symfony, permettant l'interopérabilité entre systèmes d'information nationaux.",
-    },
-    {
-      id: "education",
-      title: "Transmission & Mentorat",
-      icon: "./assets/icons/education1.svg",
-      description:
-        "Maître de stage engagé, j'accompagne les étudiants dans leurs projets de soutenance et leur transmission des bonnes pratiques du développement.",
-    },
-    {
-      id: "community",
-      title: "Impact Numérique au Bénin",
-      icon: "./assets/icons/community.svg",
-      description:
-        "Convaincu que la technologie peut transformer les institutions publiques, je contribue à la digitalisation de ministères et d'organismes nationaux.",
-    },
-    {
-      id: "innovation",
-      title: "Innovation & Veille Technologique",
-      icon: "./assets/icons/design.svg",
-      description:
-        "Curieux de nature, je m'intéresse aux nouvelles technologies (Docker, Laravel, architectures cloud) pour rester à la pointe des outils du développeur moderne.",
-    },
-    {
-      id: "ethics",
-      title: "Sécurité & Qualité du Code",
-      icon: "./assets/icons/ethics1.svg",
-      description:
-        "Soucieux de la sécurité des applications et de la qualité du code, j'applique les bonnes pratiques de traçabilité, d'authentification et de gestion des droits.",
-    },
-  ],
-};
+  // ── Resume – Soft Skills ──────────────────────────────────────────────
+  (function () {
+    const el = select(".soft-skills-list");
+    if (!el) return;
+    el.innerHTML = resumeInfo.softSkills.map((s) =>
+      `<span class="soft-skill-tag">${s}</span>`).join("");
+  })();
+
+  // ── Projects ──────────────────────────────────────────────────────────
+  (function () {
+    const el = select(".project-list");
+    if (!el) return;
+
+    el.innerHTML = projects.map((item) => {
+
+      // Image ou placeholder emoji
+      const imgHtml = item.imgSrc
+        ? `<img src="${item.imgSrc}" alt="Capture – ${item.title}" loading="lazy" />`
+        : `<div class="project-img-placeholder" title="${item.title}">
+             ${item.imgPlaceholder || "🖥️"}
+           </div>`;
+
+      // Badge GitHub
+      const githubBadge = item.githubUrl
+        ? `<a href="${item.githubUrl}" target="_blank" rel="noopener" title="Voir sur GitHub">
+             <img src="https://img.shields.io/badge/GitHub-Repo-FFBC5E?logo=github" alt="GitHub" style="height:20px;">
+           </a>` : "";
+
+      // Bouton Voir → ouvre la lightbox avec les captures du projet
+      const imgs = item.previewImages && item.previewImages.length > 0
+        ? item.previewImages
+        : (item.imgSrc ? [item.imgSrc] : []);
+      const liveBtn = imgs.length > 0
+        ? `<button class="project-live-link" onclick='winceOpenLightbox(${JSON.stringify(imgs)}, 0)' title="Voir les captures du projet">
+             <ion-icon name="eye-outline" style="font-size:12px;"></ion-icon> Voir
+           </button>`
+        : "";
+
+      // Badges tech
+      const tags = item.tags.map(t =>
+        `<span class="lang-badge">${t}</span>`).join("");
+
+      // Badge type
+      const typeBadge = item.type === "enterprise"
+        ? `<span class="lang-badge" style="background:#1a3a5c;color:#7ec8e3;border-color:#2a5a8c;">🏢 Entreprise</span>`
+        : `<span class="lang-badge" style="background:#1a3d1a;color:#7ec87e;border-color:#2a6a2a;">👤 Personnel</span>`;
+
+      return `
+        <li class="project-item active" data-filter-item data-category="${item.category}">
+          <div class="project-inner">
+
+            <!-- IMAGE GAUCHE -->
+            <div class="project-img-wrap">${imgHtml}</div>
+
+            <!-- CONTENU DROITE -->
+            <div class="project-right">
+              <div class="project-content-box">
+                <h4 class="h4 project-item-title">${item.title}</h4>
+                <p class="project-item-text">${item.description}</p>
+              </div>
+              <div class="project-item-extra">
+                <div class="project-item-tags">
+                  <div class="languages">
+                    ${typeBadge} ${tags}
+                  </div>
+                  <div style="display:flex;gap:6px;align-items:center;flex-shrink:0;">
+                    ${githubBadge}${liveBtn}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </li>`;
+    }).join("");
+  })();
+
+  // ── Filter buttons ────────────────────────────────────────────────────
+  (function () {
+    const filterBtns  = select("[data-filter-btn]", true);
+    const filterItems = select("[data-filter-item]", true);
+    const selectEl    = select("[data-select]");
+    const selectVal   = select("[data-selecct-value]");
+    const selectItems = select("[data-select-item]", true);
+
+    const filterFunc = (value) => {
+      filterItems.forEach((item) => {
+        if (value === "all" || value === item.dataset.category.toLowerCase()) {
+          item.classList.add("active");
+        } else {
+          item.classList.remove("active");
+        }
+      });
+    };
+
+    let lastBtn = filterBtns[0];
+    filterBtns.forEach((btn) => {
+      btn.addEventListener("click", function () {
+        const val = this.innerText.toLowerCase();
+        if (selectVal) selectVal.innerText = this.innerText;
+        filterFunc(val);
+        if (lastBtn) lastBtn.classList.remove("active");
+        this.classList.add("active");
+        lastBtn = this;
+      });
+    });
+
+    if (selectEl) {
+      selectEl.addEventListener("click", () => selectEl.classList.toggle("active"));
+    }
+    selectItems.forEach((item) => {
+      item.addEventListener("click", function () {
+        const val = this.innerText.toLowerCase();
+        if (selectVal) selectVal.innerText = this.innerText;
+        if (selectEl) selectEl.classList.remove("active");
+        filterFunc(val);
+      });
+    });
+  })();
+
+});

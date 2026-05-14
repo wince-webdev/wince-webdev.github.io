@@ -140,6 +140,7 @@ html {
 
 body {
   background: var(--smoky-black);
+  padding-top: 60px; /* espace pour la navbar fixe en haut sur mobile */
 }
 
 /*-----------------------------------*\
@@ -311,7 +312,7 @@ main {
 }
 
 .sidebar.active {
-  max-height: 405px;
+  max-height: 750px;
 }
 
 .sidebar-info {
@@ -452,15 +453,16 @@ main {
 
 .navbar {
   position: fixed;
-  bottom: 0;
+  top: 0;
+  bottom: auto;
   left: 0;
   width: 100%;
-  background: hsla(240, 1%, 17%, 0.75);
+  background: hsla(240, 1%, 12%, 0.97);
   backdrop-filter: blur(10px);
   border: 1px solid var(--jet);
-  border-radius: 12px 12px 0 0;
+  border-radius: 0 0 14px 14px;
   box-shadow: var(--shadow-2);
-  z-index: 5;
+  z-index: 100;
 }
 
 .navbar-list {
@@ -1408,7 +1410,7 @@ textarea.form-input::-webkit-resizer {
   }
 
   .sidebar.active {
-    max-height: 584px;
+    max-height: 850px;
   }
 
   .sidebar-info {
@@ -1467,7 +1469,7 @@ textarea.form-input::-webkit-resizer {
    */
 
   .navbar {
-    border-radius: 20px 20px 0 0;
+    border-radius: 0 0 20px 20px;
   }
 
   .navbar-list {
@@ -1828,6 +1830,10 @@ textarea.form-input::-webkit-resizer {
   /**
    * NAVBAR
    */
+
+  body {
+    padding-top: 0; /* sur desktop la navbar est dans le layout, pas fixe */
+  }
 
   .navbar {
     position: absolute;

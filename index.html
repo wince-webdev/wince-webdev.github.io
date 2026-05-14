@@ -308,18 +308,13 @@
               Vous avez un projet, une opportunité ou une question ? Remplissez ce formulaire et je vous répondrai dans les plus brefs délais.
             </p>
 
-            <form id="contact-form" data-form action="https://formsubmit.co/adjihanounkpwinceslas@gmail.com" method="POST">
-
-              <!-- FormSubmit config - no CAPTCHA, redirect to portfolio -->
-              <input type="hidden" name="_captcha" value="false" />
-              <input type="hidden" name="_next" value="https://wince-webdev.github.io?sent=1" />
-              <input type="hidden" name="_subject" value="Nouveau message depuis votre portfolio" />
-              <input type="text" name="_honey" style="display:none" />
+            <!-- Formulaire qui envoie via mailto (aucun serveur requis, fonctionne sur GitHub Pages) -->
+            <div id="contact-form" data-form>
 
               <div class="input-wrapper">
                 <input
                   type="text"
-                  name="fullname"
+                  id="cf-name"
                   class="form-input"
                   placeholder="Votre nom complet"
                   required
@@ -327,7 +322,7 @@
                 />
                 <input
                   type="email"
-                  name="email"
+                  id="cf-email"
                   class="form-input"
                   placeholder="Votre adresse e-mail"
                   required
@@ -337,7 +332,7 @@
 
               <input
                 type="text"
-                name="subject"
+                id="cf-subject"
                 class="form-input"
                 placeholder="Objet du message"
                 required
@@ -346,18 +341,26 @@
               />
 
               <textarea
-                name="message"
+                id="cf-message"
                 class="form-input"
                 placeholder="Votre message…"
                 required
                 data-form-input
               ></textarea>
 
-              <button class="form-btn" type="submit" data-form-btn>
+              <!-- Message de confirmation -->
+              <div id="cf-success" style="display:none;background:rgba(100,200,100,0.12);border:1px solid #4caf50;border-radius:10px;padding:14px 18px;margin-bottom:16px;color:#7ec87e;font-size:14px;">
+                ✅ Votre client mail s'est ouvert avec votre message prêt à envoyer. Merci !
+              </div>
+              <div id="cf-error" style="display:none;background:rgba(200,80,80,0.12);border:1px solid #e57373;border-radius:10px;padding:14px 18px;margin-bottom:16px;color:#e57373;font-size:14px;">
+                ⚠️ Veuillez remplir tous les champs avant d'envoyer.
+              </div>
+
+              <button class="form-btn" type="button" id="cf-submit-btn" data-form-btn onclick="winceSendMail()">
                 <ion-icon name="paper-plane-outline"></ion-icon>
                 <span>Envoyer le message</span>
               </button>
-            </form>
+            </div>
           </section>
 
           <!-- Footer -->
@@ -385,5 +388,86 @@
     <!-- Ionicons -->
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+    <!-- ══════════ LIGHTBOX ══════════ -->
+    <div id="wince-lightbox" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.93);align-items:center;justify-content:center;flex-direction:column;gap:14px;padding:20px;">
+      <button onclick="winceCloseLightbox()" title="Fermer" style="position:absolute;top:16px;right:20px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:#fff;font-size:26px;width:42px;height:42px;border-radius:50%;cursor:pointer;line-height:1;display:flex;align-items:center;justify-content:center;">✕</button>
+      <div style="display:flex;align-items:center;gap:12px;max-width:95vw;max-height:85vh;">
+        <button id="lb-prev" onclick="winceLightboxNav(-1)" style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.15);color:#fff;font-size:30px;padding:8px 14px;border-radius:10px;cursor:pointer;flex-shrink:0;">‹</button>
+        <img id="lb-img" src="" alt="Aperçu projet" style="max-width:82vw;max-height:80vh;border-radius:12px;box-shadow:0 10px 50px rgba(0,0,0,0.8);object-fit:contain;" />
+        <button id="lb-next" onclick="winceLightboxNav(1)" style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.15);color:#fff;font-size:30px;padding:8px 14px;border-radius:10px;cursor:pointer;flex-shrink:0;">›</button>
+      </div>
+      <div id="lb-counter" style="color:#aaa;font-size:13px;margin-top:4px;"></div>
+    </div>
+
+    <script>
+      // ── LIGHTBOX ─────────────────────────────────────────────
+      var _lbImgs = [], _lbIdx = 0;
+      var _lb     = document.getElementById('wince-lightbox');
+      var _lbImg  = document.getElementById('lb-img');
+      var _lbCnt  = document.getElementById('lb-counter');
+
+      function winceOpenLightbox(imgs, idx) {
+        _lbImgs = imgs; _lbIdx = idx;
+        _lb.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+        _winceLbRender();
+      }
+      function winceCloseLightbox() {
+        _lb.style.display = 'none';
+        document.body.style.overflow = '';
+      }
+      function winceLightboxNav(dir) {
+        _lbIdx = (_lbIdx + dir + _lbImgs.length) % _lbImgs.length;
+        _winceLbRender();
+      }
+      function _winceLbRender() {
+        _lbImg.src = _lbImgs[_lbIdx];
+        var multi = _lbImgs.length > 1;
+        _lbCnt.textContent = multi ? (_lbIdx + 1) + ' / ' + _lbImgs.length : '';
+        document.getElementById('lb-prev').style.display = multi ? 'block' : 'none';
+        document.getElementById('lb-next').style.display = multi ? 'block' : 'none';
+      }
+      // Fermer en cliquant sur le fond noir
+      _lb.addEventListener('click', function(e){ if(e.target === _lb) winceCloseLightbox(); });
+      // Fermer avec la touche Échap
+      document.addEventListener('keydown', function(e){
+        if(e.key === 'Escape') winceCloseLightbox();
+        if(e.key === 'ArrowRight') winceLightboxNav(1);
+        if(e.key === 'ArrowLeft')  winceLightboxNav(-1);
+      });
+
+      // ── FORMULAIRE CONTACT (mailto, sans serveur) ──────────────
+      function winceSendMail() {
+        var name    = (document.getElementById('cf-name')    || {}).value || '';
+        var email   = (document.getElementById('cf-email')   || {}).value || '';
+        var subject = (document.getElementById('cf-subject') || {}).value || '';
+        var message = (document.getElementById('cf-message') || {}).value || '';
+
+        if (!name.trim() || !email.trim() || !subject.trim() || !message.trim()) {
+          document.getElementById('cf-error').style.display   = 'block';
+          document.getElementById('cf-success').style.display = 'none';
+          return;
+        }
+        document.getElementById('cf-error').style.display = 'none';
+
+        var body = 'Nom : ' + name + '\nEmail : ' + email + '\n\n' + message;
+        var mailto = 'mailto:adjihanounkpwinceslas@gmail.com'
+          + '?subject=' + encodeURIComponent('[Portfolio] ' + subject)
+          + '&body='    + encodeURIComponent(body);
+
+        window.location.href = mailto;
+
+        document.getElementById('cf-success').style.display = 'block';
+        // Vider le formulaire après 3 secondes
+        setTimeout(function(){
+          document.getElementById('cf-name').value    = '';
+          document.getElementById('cf-email').value   = '';
+          document.getElementById('cf-subject').value = '';
+          document.getElementById('cf-message').value = '';
+          document.getElementById('cf-success').style.display = 'none';
+        }, 3000);
+      }
+    </script>
   </body>
 </html>
