@@ -42,7 +42,7 @@ const profileInfo = {
   address: {
     country: "Bénin",
     city:    "Cotonou",
-    district:"PK11",
+    district:"Abomey Calavi",
   },
   fulladdress(detailled = false) {
     const { address } = this;
