@@ -165,7 +165,7 @@ const resumeInfo = {
     { name: "Français",  flag: "🇫🇷", level: "Courant (C1)" },
     { name: "Anglais",   flag: "🇬🇧", level: "Intermédiaire (B1)" },
     { name: "Fon",       flag: "🇧🇯", level: "Langue maternelle" },
-    { name: "Yoruba",    flag: "🇧🇯", level: "Notions" },
+    //{ name: "Yoruba",    flag: "🇧🇯", level: "Notions" },
   ],
 
   softSkills: [
