@@ -190,15 +190,11 @@ document.addEventListener("DOMContentLoaded", function () {
              <img src="https://img.shields.io/badge/GitHub-Repo-FFBC5E?logo=github" alt="GitHub" style="height:20px;">
            </a>` : "";
 
-      // Bouton Voir → ouvre la lightbox avec les captures du projet
-      const imgs = item.previewImages && item.previewImages.length > 0
-        ? item.previewImages
-        : (item.imgSrc ? [item.imgSrc] : []);
-      const liveBtn = imgs.length > 0
-        ? `<button class="project-live-link" onclick='winceOpenLightbox(${JSON.stringify(imgs)}, 0)' title="Voir les captures du projet">
-             <ion-icon name="eye-outline" style="font-size:12px;"></ion-icon> Voir
-           </button>`
-        : "";
+      // Bouton Voir en live
+      const liveBtn = item.liveUrl
+        ? `<a href="${item.liveUrl}" target="_blank" rel="noopener" class="project-live-link">
+             <ion-icon name="open-outline" style="font-size:12px;"></ion-icon> Voir
+           </a>` : "";
 
       // Badges tech
       const tags = item.tags.map(t =>

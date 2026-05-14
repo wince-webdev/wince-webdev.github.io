@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 210" width="220" height="210">
+  <!-- Fond transparent - s'adapte automatiquement au fond sombre du portfolio -->
+
+  <!-- Carré stylisé avec checkmark (reprend l'identité du logo original) -->
+  <!-- Ombre subtile -->
+  <rect x="78" y="18" width="64" height="64" rx="10" fill="rgba(212,160,23,0.08)"/>
+  <!-- Carré extérieur doré -->
+  <rect x="76" y="16" width="64" height="64" rx="10" fill="none" stroke="#d4a017" stroke-width="2" opacity="0.6"/>
+  <!-- Carré intérieur fond sombre -->
+  <rect x="82" y="22" width="52" height="52" rx="7" fill="#1d1d1d" opacity="0.7"/>
+  <!-- Checkmark doré bold -->
+  <polyline
+    points="91,50 103,63 130,37"
+    fill="none"
+    stroke="#d4a017"
+    stroke-width="6"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+
+  <!-- WiNCE en blanc gras -->
+  <text
+    x="110"
+    y="122"
+    font-family="'Arial Black', 'Impact', sans-serif"
+    font-size="36"
+    font-weight="900"
+    fill="#ffffff"
+    text-anchor="middle"
+    letter-spacing="3"
+  >WiNCE</text>
+
+  <!-- Ligne décorative dorée -->
+  <line x1="38" y1="132" x2="182" y2="132" stroke="#d4a017" stroke-width="1.5" opacity="0.55"/>
+
+  <!-- WEBDEV en doré espacé -->
+  <text
+    x="110"
+    y="155"
+    font-family="Arial, sans-serif"
+    font-size="14"
+    font-weight="400"
+    fill="#d4a017"
+    text-anchor="middle"
+    letter-spacing="7"
+  >WEBDEV</text>
+
+  <!-- Tagline optionnel -->
+  <text
+    x="110"
+    y="178"
+    font-family="Arial, sans-serif"
+    font-size="10"
+    font-weight="300"
+    fill="rgba(255,255,255,0.4)"
+    text-anchor="middle"
+    letter-spacing="1.5"
+  >FullStack Developer · Bénin</text>
+</svg>

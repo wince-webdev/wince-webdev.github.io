@@ -1,0 +1,241 @@
+/* ============================================================
+   FICHIER: assets/css/mobile-fixes.css
+   INSTRUCTIONS: Ajouter ce fichier dans ton projet et linker
+   dans chaque page HTML AVANT la fermeture </head> :
+   <link rel="stylesheet" href="assets/css/mobile-fixes.css">
+   ============================================================ */
+
+/* ============================================================
+   FIX 1 : NAVIGATION MOBILE EN HAUT
+   ============================================================ */
+
+/* Sur mobile, forcer la nav en haut (position fixed top) */
+@media (max-width: 768px) {
+
+  /* La barre de navigation principale */
+  .navbar,
+  nav,
+  .nav,
+  [class*="nav-"],
+  .bottom-nav,
+  .mobile-nav {
+    position: fixed !important;
+    top: 0 !important;
+    bottom: auto !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    z-index: 9999 !important;
+  }
+
+  /* Si les liens de nav sont positionnés en bas */
+  .navbar-nav,
+  .nav-links,
+  .nav-menu,
+  .menu {
+    position: fixed !important;
+    top: 0 !important;
+    bottom: auto !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-around !important;
+    align-items: center !important;
+    padding: 8px 0 !important;
+    z-index: 9999 !important;
+  }
+
+  /* Ajouter du padding en haut du contenu principal pour pas qu'il soit caché */
+  main,
+  .main-content,
+  #main,
+  body > .container,
+  .page-content {
+    padding-top: 60px !important;
+  }
+}
+
+/* ============================================================
+   FIX SIDEBAR / DROPDOWN MOBILE : afficher tout le contenu
+   ============================================================ */
+@media (max-width: 768px) {
+  /* Forcer l'affichage complet du sidebar quand ouvert */
+  .sidebar.active,
+  .sidebar.open,
+  .sidebar.show,
+  aside.active,
+  aside.open {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    max-height: none !important;
+    overflow: visible !important;
+    height: auto !important;
+  }
+
+  /* S'assurer que le contenu du sidebar est visible */
+  .sidebar-content,
+  .sidebar-info,
+  .sidebar .contacts,
+  .sidebar .social-list {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+}
+
+/* ============================================================
+   FIX 2 : LIGHTBOX POUR AFFICHER L'IMAGE DU PROJET
+   ============================================================ */
+
+/* Overlay sombre derrière l'image */
+#lightbox-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.92);
+  z-index: 99999;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  backdrop-filter: blur(4px);
+}
+
+#lightbox-overlay.active {
+  display: flex;
+}
+
+/* Conteneur de la lightbox */
+#lightbox-box {
+  position: relative;
+  max-width: 90vw;
+  max-height: 90vh;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 25px 60px rgba(0,0,0,0.8);
+  animation: lightboxIn 0.3s ease;
+}
+
+@keyframes lightboxIn {
+  from { transform: scale(0.85); opacity: 0; }
+  to   { transform: scale(1);    opacity: 1; }
+}
+
+/* L'image dans la lightbox */
+#lightbox-img {
+  display: block;
+  max-width: 90vw;
+  max-height: 85vh;
+  object-fit: contain;
+  border-radius: 12px;
+}
+
+/* Titre du projet en dessous */
+#lightbox-title {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent, rgba(0,0,0,0.85));
+  color: #fff;
+  text-align: center;
+  padding: 20px 16px 14px;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+/* Bouton fermer (X) */
+#lightbox-close {
+  position: fixed;
+  top: 18px;
+  right: 22px;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.15);
+  border: 2px solid rgba(255,255,255,0.4);
+  color: #fff;
+  font-size: 1.3rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+  z-index: 100000;
+}
+
+#lightbox-close:hover {
+  background: rgba(255,255,255,0.3);
+}
+
+/* Loader pendant le chargement de l'image */
+#lightbox-loader {
+  display: none;
+  width: 48px;
+  height: 48px;
+  border: 4px solid rgba(255,255,255,0.2);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ============================================================
+   FIX 3 : MESSAGE DE SUCCÈS / ERREUR DU FORMULAIRE CONTACT
+   ============================================================ */
+
+.form-notification {
+  display: none;
+  padding: 16px 20px;
+  border-radius: 10px;
+  margin-top: 16px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-align: center;
+  animation: fadeInUp 0.4s ease;
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.form-notification.success {
+  display: block;
+  background: rgba(34, 197, 94, 0.15);
+  border: 1px solid rgba(34, 197, 94, 0.4);
+  color: #22c55e;
+}
+
+.form-notification.error {
+  display: block;
+  background: rgba(239, 68, 68, 0.15);
+  border: 1px solid rgba(239, 68, 68, 0.4);
+  color: #ef4444;
+}
+
+/* Spinner sur le bouton pendant l'envoi */
+.btn-sending {
+  opacity: 0.7;
+  pointer-events: none;
+  position: relative;
+}
+
+.btn-sending::after {
+  content: '';
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border: 2px solid rgba(255,255,255,0.4);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+  margin-left: 10px;
+  vertical-align: middle;
+}
