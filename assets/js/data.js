@@ -79,7 +79,7 @@ const resumeInfo = {
       duration: { from: 2020, to: 2023 },
       ongoing: false,
       description:
-        "<p>Formation pluridisciplinaire couvrant la conception et le développement de logiciels, l'architecture des systèmes d'information, les bases de données et les méthodes de gestion de projet. Les enseignements pratiques ont permis de maîtriser Symfony, PHP, MySQL, UML et Merise, ainsi que des notions en sécurité informatique et en réseaux.</p>",
+        "<p>Formation pluridisciplinaire couvrant la conception et le développement de logiciels, l'architecture des systèmes d'information, les bases de données et les méthodes de gestion de projet. Les enseignements pratiques ont permis de maîtriser Laravel, Symfony, PHP, JavaScript, Java, HTML5, CSS3, C++, MySQL, UML et Merise, ainsi que des notions en sécurité informatique et en réseaux.</p>",
     },
     {
       id: "ceg2",
@@ -90,7 +90,7 @@ const resumeInfo = {
       grade:  null,
       duration: { from: 2019, to: 2020 },
       ongoing: false,
-      description: "<p>Obtention du baccalauréat scientifique série D avec mention.</p>",
+      description: "<p>Obtention du baccalauréat scientifique série D.</p>",
     },
   ],
 
