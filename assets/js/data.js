@@ -177,6 +177,28 @@ const resumeInfo = {
 // ── Projects ─────────────────────────────────────────────────────────────
 const projects = [
   // ── Entreprise ─────────────────────────────────────────────
+    {
+    id: "anagem",
+    title: "SIG ANaGeM – Agence Nationale de Gestion des Marchés",
+    category: "Entreprise",
+    type: "enterprise",
+    imgSrc: "assets/images/anagemlogin.png",
+    previewImages: ["assets/images/anagemlogin.png", "assets/images/anagem accueil.png"],
+    tags: ["Symfony", "PHP","JavaScript", "ERP", "MySQL"],
+    description:
+      "Développement d'ERP composé modules de gestion suivant: passation des marchés, comptabité matière(gestion de stock), planification suivi budgétaire, rh et paie.",
+  },
+  {
+    id: "abssa",
+    title: "SISE ABSSA – Agence Béninoise de Sécurité Sanitaire des Aliments",
+    category: "Entreprise",
+    type: "enterprise",
+    imgSrc: "assets/images/abssa.png",
+    previewImages: ["assets/images/abssa.png", "assets/images/abssa accueilpng.png"],
+    tags: ["Symfony", "PHP", "MySQL", "JavaScript", "Bootstrap"],
+    description:  
+      "Modules Suivi & Évaluation et Passation des marchés pour l'Agence Béninoise de Sécurité Sanitaire des Aliments (ABSSA). Gestion du plan de travail annuel, suivi des marchés.",
+  },
   {
     id: "ms-sante",
     title: "MS – Ministère de la Santé",
@@ -187,6 +209,18 @@ const projects = [
     tags: ["Symfony", "PHP", "MySQL", "JavaScript", "Security"],
     description:
       "Développement en équipe des module de passation de marchés et archivage des documents pour le Ministère de la Santé du Bénin. Travail sur la sécurité avancée, le traçage de l'historique de toutes les actions effectuées par chaque utilisateur avec reconnaissance des appareils spécifiques sur lesquels les utilisateurs se connectent.",
+  },
+  {
+    id: "ms-cadrevie",
+    title: "SISE MCVT – Ministère du Cadre de Vie et des Transports",
+    category: "Entreprise",
+    type: "enterprise",
+    imgSrc: "assets/images/ms.png",
+    previewImages: ["assets/images/mcvt.png"],
+    tags: ["Symfony", "PHP", "JavaScript", "MySQL", "Security"],
+    description:
+      "Système Intégré de Suivi-Évaluation(développement en équipe du module Planification Suivi & Évaluation).",
+
   },
   {
     id: "fnda-stock",
@@ -206,20 +240,20 @@ const projects = [
     type: "enterprise",
     imgSrc: "assets/images/inflogin.png",
     previewImages: ["assets/images/inflogin.png", "assets/images/infaccueil.png"],
-    tags: ["Symfony", "PHP", "MySQL", "GRH"],
+    tags: ["Symfony", "PHP","JavaScript", "MySQL", "GRH"],
     description:
       "Module de comptabilité matières (gestion de stock) et développement d'une fonctionnalité de gestion de carrière des employés.",
   },
   {
     id: "ppbse",
-    title: "SIG PPBSE – Ministère du Plan",
+    title: "SIG PPBSE – Ministère du Plan, de la Statistique et de l'Intégration Régionale (MPSIR)",
     category: "Entreprise",
     type: "enterprise",
     imgSrc: "assets/images/PPBSE_MPSIR LOGIN.png",
     previewImages: ["assets/images/PPBSE_MPSIR LOGIN.png", "assets/images/PPBSE_MPSIR accueil.png"],
-    tags: ["Symfony", "PHP", "API REST", "MySQL"],
+    tags: ["Symfony", "PHP","JavaScript", "API REST", "MySQL"],
     description:
-      "Travail sur les modules Suivi & Évaluation, Planification et Programmation dans le cadre du Système Informatisé de Gestion de la Chaîne PPBSE (Plan, Programme, Budget, Suivi & Évaluation) du Ministère du Plan, de la Statistique et de l'Intégration Régionale.",
+      " Développement en équipe des modules Planification Suivi & Évaluation et Budgétisation dans le cadre du Système Informatisé de Gestion de la Chaîne PPBSE.",
   },
   {
     id: "inrab",
@@ -234,37 +268,16 @@ const projects = [
   },
   {
     id: "pdi-cva",
-    title: "PDI-CVA – Gestion de Stock & Ressources Humaines",
+    title: "SIGPDI-CVA – Projet de Développement Intégré des Chaînes de Valeurs Agricoles au Bénin (PDI-CVA)",
     category: "Entreprise",
     type: "enterprise",
     imgSrc: "assets/images/PDICVA.png",
     previewImages: ["assets/images/PDICVA.png"],
-    tags: ["Symfony", "PHP", "ERP", "MySQL"],
+    tags: ["Symfony", "PHP","JavaScript", "Bootstrap", "MySQL"],
     description:
-      "Modules de gestion de stock et de Ressources Humaines (RH) pour le Projet de Développement Intégré des Chaînes de Valeurs Agricoles au Bénin (PDI-CVA), en équipe pluridisciplinaire.",
+      "Développement en équipe d'ERP composé des modules de gestion suivant: passation des marchés, comptabité matière(gestion de stock), planification suivi budgétaire, rh et paie.",
   },
-  {
-    id: "anagem",
-    title: "SIG ANaGeM – Agence Nationale de Gestion des Marchés",
-    category: "Entreprise",
-    type: "enterprise",
-    imgSrc: "assets/images/anagemlogin.png",
-    previewImages: ["assets/images/anagemlogin.png", "assets/images/anagem accueil.png"],
-    tags: ["Symfony", "PHP","JavaScript", "ERP", "MySQL"],
-    description:
-      "Développement d'ERP compsé modules de gestion suivant: passation des marchés, comptabité matière(gestion de stock), planification suivi budgétaire, rh et paie.",
-  },
-  {
-    id: "abssa",
-    title: "SISE ABSSA – Agence Béninoise de Sécurité Sanitaire des Aliments",
-    category: "Entreprise",
-    type: "enterprise",
-    imgSrc: "assets/images/abssa.png",
-    previewImages: ["assets/images/abssa.png", "assets/images/abssa accueilpng.png"],
-    tags: ["Symfony", "PHP", "MySQL", "JavaScript", "Bootstrap"],
-    description:  
-      "Modules Suivi & Évaluation et Passation des marchés pour l'Agence Béninoise de Sécurité Sanitaire des Aliments (ABSSA). Gestion du plan de travail annuel, suivi des marchés.",
-  },
+
   {
     id: "premopef",
     title: "SISE_PREMOPEF – Projet de Renforcement des Moyens de subsistance des Petits Exploitants et des Femmes (PREMOPEF)",
