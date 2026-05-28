@@ -179,40 +179,40 @@ const projects = [
   // ── Entreprise ─────────────────────────────────────────────
   {
     id: "ms-sante",
-    title: "Plateforme Passation de Marchés – Ministère de la Santé",
+    title: "MS – Ministère de la Santé",
     category: "Entreprise",
     type: "enterprise",
     imgSrc: "assets/images/ms.png",
     previewImages: ["assets/images/ms.png"],
-    tags: ["Symfony", "PHP", "MySQL", "Security"],
+    tags: ["Symfony", "PHP", "MySQL", "JavaScript", "Security"],
     description:
-      "Module de passation de marchés pour le Ministère de la Santé du Bénin. Travail sur la sécurité avancée, le traçage de l'historique de toutes les actions effectuées par chaque utilisateur avec reconnaissance des appareils spécifiques sur lesquels les utilisateurs se connectent.",
+      "Développement en équipe des module de passation de marchés et archivage des documents pour le Ministère de la Santé du Bénin. Travail sur la sécurité avancée, le traçage de l'historique de toutes les actions effectuées par chaque utilisateur avec reconnaissance des appareils spécifiques sur lesquels les utilisateurs se connectent.",
   },
   {
     id: "fnda-stock",
-    title: "Gestion de Stock – FNDA (Fonds National de Développement Agricole)",
+    title: "SIG FNDA - Fonds National de Développement Agricole",
     category: "Entreprise",
     type: "enterprise",
     imgSrc: "assets/images/fnda.png",
     previewImages: ["assets/images/fnda.png", "assets/images/fndaaccueil.png"],
-    tags: ["Symfony", "PHP", "MySQL", "ERP"],
+    tags: ["Symfony", "PHP", "MySQL", "JavaScript", "Bootstrap"],
     description:
-      "Développement complet du module de gestion de stock pour le FNDA. Suivi des entrées/sorties, alertes de seuil, reporting et tableaux de bord pour les gestionnaires de l'institution.",
+      "Développement complet du module de gestion de stock en équipe pour le FNDA. Suivi des entrées/sorties, alertes de seuil, reporting et tableaux de bord pour les gestionnaires de l'institution.",
   },
   {
     id: "inf-sig",
-    title: "SIG Institut National de la Femme – Comptabilité Matières",
+    title: "SIG INF – Institut National de la Femme",
     category: "Entreprise",
     type: "enterprise",
     imgSrc: "assets/images/inflogin.png",
     previewImages: ["assets/images/inflogin.png", "assets/images/infaccueil.png"],
     tags: ["Symfony", "PHP", "MySQL", "GRH"],
     description:
-      "Module de comptabilité matières (gestion de stock) et développement d'une fonctionnalité de gestion de carrière des employés (mobilité, promotions, congés) pour le SIG de l'Institut National de la Femme.",
+      "Module de comptabilité matières (gestion de stock) et développement d'une fonctionnalité de gestion de carrière des employés.",
   },
   {
     id: "ppbse",
-    title: "Système PPBSE – Ministère du Plan",
+    title: "SIG PPBSE – Ministère du Plan",
     category: "Entreprise",
     type: "enterprise",
     imgSrc: "assets/images/PPBSE_MPSIR LOGIN.png",
@@ -223,14 +223,14 @@ const projects = [
   },
   {
     id: "inrab",
-    title: "INRAB – Module Suivi & Évaluation",
+    title: "SISE INRAB – Module Suivi & Évaluation",
     category: "Entreprise",
     type: "enterprise",
     imgSrc: "assets/images/inrabolgin.png",
     previewImages: ["assets/images/inrabolgin.png", "assets/images/inrab accueil.png"],
-    tags: ["Symfony", "PHP", "Bootstrap", "MySQL"],
+    tags: ["Symfony", "PHP", "Bootstrap", "JavaScript", "MySQL"],
     description:
-      "Développement et intégration du module Suivi & Évaluation pour l'Institut National des Recherches Agricoles du Bénin (INRAB). Intégration du front-end du projet et participation aux tests de recette.",
+      "Développement en équipe des modules Suivi & Évaluation et Passation des marchés pour l'Institut National des Recherches Agricoles du Bénin (INRAB). Intégration du front-end du projet.",
   },
   {
     id: "pdi-cva",
@@ -245,36 +245,37 @@ const projects = [
   },
   {
     id: "anagem",
-    title: "ANaGeM – Agence Nationale de Gestion des Marchés",
+    title: "SIG ANaGeM – Agence Nationale de Gestion des Marchés",
     category: "Entreprise",
     type: "enterprise",
     imgSrc: "assets/images/anagemlogin.png",
     previewImages: ["assets/images/anagemlogin.png", "assets/images/anagem accueil.png"],
-    tags: ["Symfony", "PHP", "ERP", "MySQL"],
+    tags: ["Symfony", "PHP","JavaScript", "ERP", "MySQL"],
     description:
-      "Développement de modules de gestion pour l'Agence Nationale de Gestion des Marchés (ANaGeM) : passation des marchés, suivi budgétaire et reporting.",
+      "Développement d'ERP compsé modules de gestion suivant: passation des marchés, comptabité matière(gestion de stock), planification suivi budgétaire, rh et paie.",
   },
   {
     id: "abssa",
-    title: "ABSSA – Agence Béninoise de Sécurité Sanitaire des Aliments",
+    title: "SISE ABSSA – Agence Béninoise de Sécurité Sanitaire des Aliments",
     category: "Entreprise",
     type: "enterprise",
     imgSrc: "assets/images/abssa.png",
     previewImages: ["assets/images/abssa.png", "assets/images/abssa accueilpng.png"],
-    tags: ["Symfony", "PHP", "MySQL", "SE"],
-    description:
-      "Module Suivi & Évaluation pour l'Agence Béninoise de Sécurité Sanitaire des Aliments (ABSSA). Gestion du plan de travail annuel et reporting institutionnel.",
+    tags: ["Symfony", "PHP", "MySQL", "JavaScript", "Bootstrap"],
+    description:  
+      "Modules Suivi & Évaluation et Passation des marchés pour l'Agence Béninoise de Sécurité Sanitaire des Aliments (ABSSA). Gestion du plan de travail annuel, suivi des marchés.",
   },
   {
     id: "premopef",
-    title: "SISE_PREMOPEF – Suivi Évaluation",
+    title: "SISE_PREMOPEF – Projet de Renforcement des Moyens de subsistance des Petits Exploitants et des Femmes (PREMOPEF)",
     category: "Entreprise",
     type: "enterprise",
     imgSrc: "assets/images/premopef login.png",
     previewImages: ["assets/images/premopef login.png", "assets/images/premopef accueil.png"],
-    tags: ["Symfony", "PHP", "MySQL", "SE"],
+    tags: ["Symfony", "PHP", "MySQL", "JavaScript", "Bootstrap"],
     description:
-      "Système Intégré de Suivi-Évaluation pour le Projet de Renforcement des Moyens de subsistance des Petits Exploitants et des Femmes (PREMOPEF).",
+      "Système Intégré de Suivi-Évaluation(développement en équipe des modules Suivi & Évaluation et Passation des marchés).",
+
   },
   // ── Personnels ─────────────────────────────────────────────
   {
