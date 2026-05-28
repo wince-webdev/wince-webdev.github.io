@@ -21,7 +21,7 @@ const profileInfo = {
 
   email:   "adjihanounkpwinceslas@gmail.com",
   major:   "Développeur FullStack",
-  title:   { short: "Dev.", long: "Developer" },
+  title:   { short: "Dev.", long: "Développeur FullStack" },
   degree:  "FullStack",
   fulldegree() { return `${this.degree} ${this.title.long}`; },
 
@@ -146,21 +146,49 @@ const resumeInfo = {
     },
   ],
 
+  // skills: [
+  //   { id: "symfony",    name: "Symfony Framework", level: 85 },
+  //   { id: "laravel",    name: "Laravel (Level)", level: 70 },
+  //   { id: "laravel", name: "Laravel Framework", level: 70 },
+  //   { id: "php",        name: "PHP",            level: 82 },
+  //   { id: "javascript", name: "JavaScript",     level: 75 },
+  //   { id: "html-css",   name: "HTML / CSS",     level: 90 },
+  //   { id: "bootstrap",  name: "Bootstrap",      level: 85 },
+  //   { id: "mysql",      name: "MySQL / SQL",    level: 78 },
+  //   { id: "api-rest",   name: "API REST",       level: 80 },
+  //   { id: "git",        name: "Git / GitHub",   level: 72 },
+  //   { id: "docker",     name: "Docker (bases)", level: 40 },
+  //   { id: "linux",      name: "Linux / cPanel / Grizzly", level: 65 },
+  //   { id: "python",     name: "Python",         level: 40 },
+  // ],
+
   skills: [
-    { id: "symfony",    name: "Symfony Framework", level: 85 },
-    { id: "laravel",    name: "Laravel (Level)", level: 70 },
-    { id: "laravel", name: "Laravel Framework", level: 70 },
-    { id: "php",        name: "PHP",            level: 82 },
-    { id: "javascript", name: "JavaScript",     level: 75 },
-    { id: "html-css",   name: "HTML / CSS",     level: 90 },
-    { id: "bootstrap",  name: "Bootstrap",      level: 85 },
-    { id: "mysql",      name: "MySQL / SQL",    level: 78 },
-    { id: "api-rest",   name: "API REST",       level: 80 },
-    { id: "git",        name: "Git / GitHub",   level: 72 },
-    { id: "docker",     name: "Docker (bases)", level: 40 },
-    { id: "linux",      name: "Linux / cPanel / Grizzly", level: 65 },
-    { id: "python",     name: "Python",         level: 40 },
-  ],
+  { id: "symfony",        name: "Symfony Framework", level: 85 },
+  { id: "laravel",        name: "Laravel Framework", level: 70 },
+  { id: "php",            name: "PHP", level: 82 },
+  { id: "javascript",     name: "JavaScript", level: 75 },
+  { id: "html-css",       name: "HTML / CSS", level: 90 },
+  { id: "bootstrap",      name: "Bootstrap", level: 85 },
+
+  { id: "postgresql",     name: "PostgreSQL", level: 72 },
+  { id: "mysql",          name: "MySQL / SQL", level: 78 },
+
+  { id: "api-rest",       name: "API REST", level: 80 },
+  { id: "sanctum",        name: "Laravel Sanctum", level: 70 },
+  { id: "breeze",         name: "Laravel Breeze", level: 68 },
+  { id: "spatie",         name: "Spatie Permission", level: 65 },
+
+  { id: "git",            name: "Git / GitHub", level: 72 },
+  { id: "postman",        name: "Postman API Testing", level: 70 },
+
+  { id: "docker",         name: "Docker (bases)", level: 40 },
+  { id: "linux",          name: "Linux / cPanel / Grizzly", level: 65 },
+  { id: "python",         name: "Python", level: 40 },
+
+  { id: "tailwind", name: "Tailwind CSS", level: 72 },
+  { id: "twig", name: "Twig", level: 75 },
+  { id: "doctrine", name: "Doctrine ORM", level: 78 },
+],
 
   languages: [
     { name: "Français",  flag: "🇫🇷", level: "Courant (C1)" },
@@ -187,7 +215,7 @@ const projects = [
     previewImages: ["assets/images/anagemlogin.png", "assets/images/anagem accueil.png"],
     tags: ["Symfony", "PHP","JavaScript", "ERP", "MySQL"],
     description:
-      "Participation au développement d’un ERP de gestion administrative intégrant les modules suivants: passation des marchés, gestion des stocks, la comptabilité, , planification suivi & évaluation, suivi budgétaire, rh et paie pour l’Agence Nationale de Gestion des Marchés.",
+      "Participation au développement d’un ERP de gestion administrative intégrant les modules suivants: passation des marchés, gestion des stocks, la comptabilité, planification suivi & évaluation, suivi budgétaire, rh et paie pour l’Agence Nationale de Gestion des Marchés.",
   },
    {
     id: "unstim",
@@ -198,7 +226,7 @@ const projects = [
     previewImages: ["assets/images/unstim cast login.png", "assets/images/unstim accueil.png"],
     tags: ["Symfony", "PHP","JavaScript", "ERP", "MySQL"],
     description:
-      "Contribution au développement d’un système ERP universitaire et conception d’API REST pour l’interconnexion des modules suivant: passation des marchés, comptabité matières(gestion de stock), comptabilité générale, planification suivi & évaluation, suivi budgétaire, rh et paie.",
+      "Contribution au développement d’un système ERP universitaire et conception d’API REST pour l’interconnexion des modules suivants: passation des marchés, comptabilité matières(gestion de stock), comptabilité générale, planification suivi & évaluation, suivi budgétaire, rh et paie.",
   },
   {
     id: "abssa",
@@ -220,7 +248,7 @@ const projects = [
     previewImages: ["assets/images/ms.png"],
     tags: ["Symfony", "PHP", "MySQL", "JavaScript", "Security"],
     description:
-      "Développement en équipe des module de passation de marchés et archivage des documents. Implémentation de fonctionnalités avancées de sécurité, traçabilité des actions utilisateurs et reconnaissance des appareils connectés.",
+      "Développement en équipe des modules de passation de marchés et d’archivage des documents. Implémentation de fonctionnalités avancées de sécurité, traçabilité des actions utilisateurs et reconnaissance des appareils connectés.",
   },
   {
     id: "ms-cadrevie",
@@ -231,7 +259,7 @@ const projects = [
     previewImages: ["assets/images/mcvt.png"],
     tags: ["Symfony", "PHP", "JavaScript", "MySQL", "Security"],
     description:
-      "Système Intégré de Suivi-Évaluation(développement en équipe du module Planification Suivi & Évaluation).",
+      "Système Intégré de Suivi-Évaluation (développement en équipe du module Planification Suivi & Évaluation).",
 
   },
   {
@@ -265,18 +293,18 @@ const projects = [
     previewImages: ["assets/images/pavicc login.png", "assets/images/PAVICC1.png"],
     tags: ["Symfony", "PHP","JavaScript", "ERP", "MySQL"],
     description:
-      "Développement en équipe d'ERP composé des modules de gestion suivant: planification suivi & Évaluation, suivi budgétaire. Il s'agit du logiciel interne PAVICC regroupant les modules suivants : comptabilité, suivi budgétaire, personnel, gestion des stocks, gestion de projet, suivi et évaluation de l'activité annuelle et du marché.",
+      "Contribution à la mise en place d’un système ERP composé des modules de gestion suivant: planification suivi & Évaluation, suivi budgétaire. Il s'agit du logiciel interne PAVICC regroupant les modules suivants : comptabilité, suivi budgétaire, personnel, gestion des stocks, gestion de projet, suivi et évaluation de l'activité annuelle et du marché.",
   },
   {
     id: "benin-tourisme",
-    title: "SIG ABT – Agence Bénin Touriste",
+    title: "SIG ABT – Agence Bénin Tourisme",
     category: "Entreprise",
     type: "enterprise",
     imgSrc: "assets/images/abt.png",
     previewImages: ["assets/images/abt.png"],
     tags: ["Symfony", "PHP","JavaScript", "ERP", "MySQL"],
     description:
-      "Développement en équipe d'ERP composé des modules de gestion suivant: passation des marchés, comptabité matières(gestion de stock), comptabilité générale, suivi budgétaire, planification suivi & Évaluation.",
+      "Développement en équipe d'ERP composé des modules de gestion suivant: passation des marchés, comptabilité matières(gestion de stock), comptabilité générale, suivi budgétaire, planification suivi & Évaluation.",
   },
   {
     id: "ppbse",
@@ -309,7 +337,7 @@ const projects = [
     previewImages: ["assets/images/PDICVA.png"],
     tags: ["Symfony", "PHP","JavaScript", "Bootstrap", "MySQL"],
     description:
-      "Développement en équipe d'ERP composé des modules de gestion suivant: passation des marchés, comptabité matières(gestion de stock), comptabilité générale, planification suivi & évaluation, suivi budgétaire, rh et paie.",
+      "Participation au développement d’un ERP composé des modules de gestion suivant: passation des marchés, comptabilité matières(gestion de stock), comptabilité générale, planification suivi & évaluation, suivi budgétaire, rh et paie.",
   },
 
   {
@@ -321,14 +349,14 @@ const projects = [
     previewImages: ["assets/images/premopef login.png", "assets/images/premopef accueil.png"],
     tags: ["Symfony", "PHP", "MySQL", "JavaScript", "Bootstrap"],
     description:
-      "Système Intégré de Suivi-Évaluation(développement en équipe des modules Suivi & Évaluation et Passation des marchés).",
+      "Système Intégré de Suivi-Évaluation (développement en équipe des modules Suivi & Évaluation et Passation des marchés).",
 
   },
   
 
   {
     id: "pndf-karite",
-    title: "SISE_PNDF-KARITE – Projet de Renforcement des Moyens de subsistance des Petits Exploitants et des Femmes (PREMOPEF)",
+    title: "SISE_PNDF-KARITE – Système de Gestion des données de la filière karité",
     category: "Entreprise",
     type: "enterprise",
     imgSrc: "assets/images/pndf_karite.png",
@@ -364,7 +392,7 @@ const projects = [
       "JavaScript"
     ],
     description:
-      "Application web de gestion des dépenses et revenus au sein d’une entreprise développée avec Laravel 12. Intégration d’API REST sécurisées avec Sanctum, gestion des rôles et permissions, export PDF et Excel puis, authentification sécurisée.",
+      "Application web de gestion des dépenses et revenus au sein d’une entreprise développée avec Laravel 12. Intégration d’API REST sécurisées avec Sanctum, gestion des rôles et permissions, export PDF et Excel, authentification sécurisée et tableau de bord analytique.",
   },
 
   {
