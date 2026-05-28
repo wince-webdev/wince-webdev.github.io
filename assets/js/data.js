@@ -197,7 +197,7 @@ const projects = [
     previewImages: ["assets/images/unstim cast login.png", "assets/images/unstim accueil.png"],
     tags: ["Symfony", "PHP","JavaScript", "ERP", "MySQL"],
     description:
-      "Développement en équipe d'ERP composé des modules de gestion suivant: passation des marchés, comptabité matières(gestion de stock), comptabilité générale, planification suivi & évaluation, suivi budgétaire, rh et paie.",
+      "Développement en équipe d'ERP composé des modules de gestion suivant: passation des marchés, comptabité matières(gestion de stock), comptabilité générale, planification suivi & évaluation, suivi budgétaire, rh et paie. Développement d'API pour le SIG de l'UNSTIM",
   },
   {
     id: "abssa",
@@ -323,17 +323,18 @@ const projects = [
       "Système Intégré de Suivi-Évaluation(développement en équipe des modules Suivi & Évaluation et Passation des marchés).",
 
   },
+  
 
   {
     id: "pndf-karite",
     title: "SISE_PNDF-KARITE – Projet de Renforcement des Moyens de subsistance des Petits Exploitants et des Femmes (PREMOPEF)",
     category: "Entreprise",
     type: "enterprise",
-    imgSrc: "assets/images/pndf-karite login.png",
-    previewImages: ["assets/images/pndf-karite login.png", "assets/images/pndf-karite accueil.png"],
-    tags: ["Symfony", "PHP", "MySQL", "JavaScript", "Bootstrap"],
+    imgSrc: "assets/images/pndf_karite.png",
+    previewImages: ["assets/images/pndf_karite.png", "assets/images/pndf karité dashboard.png"],
+    tags: ["Symfony", "PHP", "MySQL", "JavaScript", "Bootstrap", "Tailwind CSS"],
     description:
-      "Système Intégré de Suivi-Évaluation(développement en équipe des modules Suivi & Évaluation et Passation des marchés).",
+      "Système de gestion des données de la filière Karité. Le projet vise à améliorer la production et la productivité de la ressource karité, accroître de la quantité et de la qualité des amandes et du beurre de karité et des produits dérivésAccroître de la quantité et de la qualité des amandes et du beurre de karité et des produits dérivés et améliorer la gouvernance de la filière karité",
 
   },
   // ── Personnels ─────────────────────────────────────────────
