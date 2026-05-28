@@ -186,7 +186,18 @@ const projects = [
     previewImages: ["assets/images/anagemlogin.png", "assets/images/anagem accueil.png"],
     tags: ["Symfony", "PHP","JavaScript", "ERP", "MySQL"],
     description:
-      "Développement d'ERP composé modules de gestion suivant: passation des marchés, comptabité matière(gestion de stock), planification suivi budgétaire, rh et paie.",
+      "Développement d'ERP composé des modules de gestion suivant: passation des marchés, comptabité matières(gestion de stock), comptabilité générale, planification suivi & évaluation, suivi budgétaire, rh et paie.",
+  },
+   {
+    id: "unstim",
+    title: "SIG UNSTIM – Université Nationale des Sciences, Technologies, Ingénierie et Mathématiques (UNSTIM)",
+    category: "Entreprise",
+    type: "enterprise",
+    imgSrc: "assets/images/unstim cast login.png",
+    previewImages: ["assets/images/unstim cast login.png", "assets/images/unstim accueil.png"],
+    tags: ["Symfony", "PHP","JavaScript", "ERP", "MySQL"],
+    description:
+      "Développement en équipe d'ERP composé des modules de gestion suivant: passation des marchés, comptabité matières(gestion de stock), comptabilité générale, planification suivi & évaluation, suivi budgétaire, rh et paie.",
   },
   {
     id: "abssa",
@@ -215,7 +226,7 @@ const projects = [
     title: "SISE MCVT – Ministère du Cadre de Vie et des Transports",
     category: "Entreprise",
     type: "enterprise",
-    imgSrc: "assets/images/ms.png",
+    imgSrc: "assets/images/mcvt.png",
     previewImages: ["assets/images/mcvt.png"],
     tags: ["Symfony", "PHP", "JavaScript", "MySQL", "Security"],
     description:
@@ -243,6 +254,28 @@ const projects = [
     tags: ["Symfony", "PHP","JavaScript", "MySQL", "GRH"],
     description:
       "Module de comptabilité matières (gestion de stock) et développement d'une fonctionnalité de gestion de carrière des employés.",
+  },
+   {
+    id: "pavicc",
+    title: "SIG PAVICC – Programme d'Adaptation des Villes au Changement Climatique(PAVICC)",
+    category: "Entreprise",
+    type: "enterprise",
+    imgSrc: "assets/images/pavicc login.png",
+    previewImages: ["assets/images/pavicc login.png", "assets/images/PAVICC1.png"],
+    tags: ["Symfony", "PHP","JavaScript", "ERP", "MySQL"],
+    description:
+      "Développement en équipe d'ERP composé des modules de gestion suivant: planification suivi & Évaluation, suivi budgétaire. Il s'agit du logiciel interne PAVICC regroupant les modules suivants : comptabilité, suivi budgétaire, personnel, gestion des stocks, gestion de projet, suivi et évaluation de l'activité annuelle et du marché.",
+  },
+  {
+    id: "benin-tourisme",
+    title: "SIG ABT – Agence Bénin Touriste",
+    category: "Entreprise",
+    type: "enterprise",
+    imgSrc: "assets/images/abt.png",
+    previewImages: ["assets/images/abt.png"],
+    tags: ["Symfony", "PHP","JavaScript", "ERP", "MySQL"],
+    description:
+      "Développement en équipe d'ERP composé des modules de gestion suivant: passation des marchés, comptabité matières(gestion de stock), comptabilité générale, suivi budgétaire, planification suivi & Évaluation.",
   },
   {
     id: "ppbse",
@@ -275,7 +308,7 @@ const projects = [
     previewImages: ["assets/images/PDICVA.png"],
     tags: ["Symfony", "PHP","JavaScript", "Bootstrap", "MySQL"],
     description:
-      "Développement en équipe d'ERP composé des modules de gestion suivant: passation des marchés, comptabité matière(gestion de stock), planification suivi budgétaire, rh et paie.",
+      "Développement en équipe d'ERP composé des modules de gestion suivant: passation des marchés, comptabité matières(gestion de stock), comptabilité générale, planification suivi & évaluation, suivi budgétaire, rh et paie.",
   },
 
   {
@@ -285,6 +318,19 @@ const projects = [
     type: "enterprise",
     imgSrc: "assets/images/premopef login.png",
     previewImages: ["assets/images/premopef login.png", "assets/images/premopef accueil.png"],
+    tags: ["Symfony", "PHP", "MySQL", "JavaScript", "Bootstrap"],
+    description:
+      "Système Intégré de Suivi-Évaluation(développement en équipe des modules Suivi & Évaluation et Passation des marchés).",
+
+  },
+
+  {
+    id: "pndf-karite",
+    title: "SISE_PNDF-KARITE – Projet de Renforcement des Moyens de subsistance des Petits Exploitants et des Femmes (PREMOPEF)",
+    category: "Entreprise",
+    type: "enterprise",
+    imgSrc: "assets/images/pndf-karite login.png",
+    previewImages: ["assets/images/pndf-karite login.png", "assets/images/pndf-karite accueil.png"],
     tags: ["Symfony", "PHP", "MySQL", "JavaScript", "Bootstrap"],
     description:
       "Système Intégré de Suivi-Évaluation(développement en équipe des modules Suivi & Évaluation et Passation des marchés).",
