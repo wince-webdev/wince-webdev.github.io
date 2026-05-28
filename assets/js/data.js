@@ -339,6 +339,34 @@ const projects = [
   },
   // ── Personnels ─────────────────────────────────────────────
   {
+    id: "expenseflow",
+    title: "ExpenseFlow – Application de Gestion Financière au sein d’une entreprise",
+    category: "Projet Personnel",
+    type: "personal",
+    imgSrc: "assets/images/expenseflow_login.png",
+    previewImages: [
+      "assets/images/expenseflow_login.png",
+      "assets/images/expenseflow_dashboard.png",
+      "assets/images/expenseflow_depenses.png",
+      "assets/images/expenseflow_revenues.png",
+      "assets/images/expenseflow_categories.png",
+      "assets/images/expenseflow_users.png",
+    ],
+    githubUrl: getRepo("ExpenseFlow"),
+    tags: [
+      "Laravel 12",
+      "PHP",
+      "PostgreSQL",
+      "API REST",
+      "Sanctum",
+      "Tailwind CSS",
+      "JavaScript"
+    ],
+    description:
+      "Application web de gestion des dépenses et revenus au sein d’une entreprise développée avec Laravel 12. Intégration d’API REST sécurisées avec Sanctum, gestion des rôles et permissions, export PDF et Excel puis, authentification sécurisée.",
+  },
+
+  {
     id: "portfolio",
     title: "Portfolio Personnel",
     category: "Personnel",
