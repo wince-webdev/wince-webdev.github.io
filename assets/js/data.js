@@ -147,7 +147,9 @@ const resumeInfo = {
   ],
 
   skills: [
-    { id: "symfony",    name: "Symfony",        level: 85 },
+    { id: "symfony",    name: "Symfony Framework", level: 85 },
+    { id: "laravel",    name: "Laravel (Level)", level: 70 },
+    { id: "laravel", name: "Laravel Framework", level: 70 },
     { id: "php",        name: "PHP",            level: 82 },
     { id: "javascript", name: "JavaScript",     level: 75 },
     { id: "html-css",   name: "HTML / CSS",     level: 90 },
@@ -155,8 +157,7 @@ const resumeInfo = {
     { id: "mysql",      name: "MySQL / SQL",    level: 78 },
     { id: "api-rest",   name: "API REST",       level: 80 },
     { id: "git",        name: "Git / GitHub",   level: 72 },
-    { id: "docker",     name: "Docker (bases)", level: 50 },
-    { id: "laravel",    name: "Laravel (bases)",level: 45 },
+    { id: "docker",     name: "Docker (bases)", level: 40 },
     { id: "linux",      name: "Linux / cPanel / Grizzly", level: 65 },
     { id: "python",     name: "Python",         level: 40 },
   ],
@@ -186,7 +187,7 @@ const projects = [
     previewImages: ["assets/images/anagemlogin.png", "assets/images/anagem accueil.png"],
     tags: ["Symfony", "PHP","JavaScript", "ERP", "MySQL"],
     description:
-      "Développement d'ERP composé des modules de gestion suivant: passation des marchés, comptabité matières(gestion de stock), comptabilité générale, planification suivi & évaluation, suivi budgétaire, rh et paie.",
+      "Participation au développement d’un ERP de gestion administrative intégrant les modules suivants: passation des marchés, gestion des stocks, la comptabilité, , planification suivi & évaluation, suivi budgétaire, rh et paie pour l’Agence Nationale de Gestion des Marchés.",
   },
    {
     id: "unstim",
@@ -197,7 +198,7 @@ const projects = [
     previewImages: ["assets/images/unstim cast login.png", "assets/images/unstim accueil.png"],
     tags: ["Symfony", "PHP","JavaScript", "ERP", "MySQL"],
     description:
-      "Développement en équipe d'ERP composé des modules de gestion suivant: passation des marchés, comptabité matières(gestion de stock), comptabilité générale, planification suivi & évaluation, suivi budgétaire, rh et paie. Développement d'API pour le SIG de l'UNSTIM",
+      "Contribution au développement d’un système ERP universitaire et conception d’API REST pour l’interconnexion des modules suivant: passation des marchés, comptabité matières(gestion de stock), comptabilité générale, planification suivi & évaluation, suivi budgétaire, rh et paie.",
   },
   {
     id: "abssa",
@@ -219,7 +220,7 @@ const projects = [
     previewImages: ["assets/images/ms.png"],
     tags: ["Symfony", "PHP", "MySQL", "JavaScript", "Security"],
     description:
-      "Développement en équipe des module de passation de marchés et archivage des documents pour le Ministère de la Santé du Bénin. Travail sur la sécurité avancée, le traçage de l'historique de toutes les actions effectuées par chaque utilisateur avec reconnaissance des appareils spécifiques sur lesquels les utilisateurs se connectent.",
+      "Développement en équipe des module de passation de marchés et archivage des documents. Implémentation de fonctionnalités avancées de sécurité, traçabilité des actions utilisateurs et reconnaissance des appareils connectés.",
   },
   {
     id: "ms-cadrevie",
@@ -242,7 +243,7 @@ const projects = [
     previewImages: ["assets/images/fnda.png", "assets/images/fndaaccueil.png"],
     tags: ["Symfony", "PHP", "MySQL", "JavaScript", "Bootstrap"],
     description:
-      "Développement complet du module de gestion de stock en équipe pour le FNDA. Suivi des entrées/sorties, alertes de seuil, reporting et tableaux de bord pour les gestionnaires de l'institution.",
+      "Développement du module de gestion de stock avec suivi des mouvements, alertes de seuil critique et tableaux de bord analytiques.",
   },
   {
     id: "inf-sig",
@@ -334,7 +335,7 @@ const projects = [
     previewImages: ["assets/images/pndf_karite.png", "assets/images/pndf karité dashboard.png"],
     tags: ["Symfony", "PHP", "MySQL", "JavaScript", "Bootstrap", "Tailwind CSS"],
     description:
-      "Système de gestion des données de la filière Karité. Le projet vise à améliorer la production et la productivité de la ressource karité, accroître de la quantité et de la qualité des amandes et du beurre de karité et des produits dérivésAccroître de la quantité et de la qualité des amandes et du beurre de karité et des produits dérivés et améliorer la gouvernance de la filière karité",
+      "Système de gestion des données de la filière karité visant à améliorer la production, la qualité des produits dérivés et la gouvernance de la chaîne de valeur.",
 
   },
   // ── Personnels ─────────────────────────────────────────────
@@ -367,29 +368,57 @@ const projects = [
   },
 
   {
-    id: "portfolio",
-    title: "Portfolio Personnel",
-    category: "Personnel",
+    id: "smartcourier",
+    title: "SmartCourier System – Système de Gestion Administrative du Courrier",
+    category: "Projet Personnel",
     type: "personal",
-    imgSrc: "assets/images/sig_demo_express_soft.png",
-    previewImages: ["assets/images/sig_demo_express_soft.png"],
-    githubUrl: getRepo("wince-webdev.github.io"),
-    tags: ["HTML", "CSS", "JavaScript"],
+    imgSrc: "assets/images/courier_login.png",
+    previewImages: [
+      "assets/images/courier_login.png",
+      "assets/images/courier_dashboard.png",
+      "assets/images/courier_categorie.png",
+      "assets/images/courier.png",
+      "assets/images/courier_service.png",
+      "assets/images/courier_users.png",
+    ],
+    githubUrl: getRepo("SmartCourier-System"),
+    tags: [
+      "Symfony",
+      "PHP",
+      "MySQL",
+      "Twig",
+      "Bootstrap",
+      "Doctrine ORM",
+      "JavaScript"
+    ],
     description:
-      "Site portfolio responsive présentant mes projets, compétences, expériences et coordonnées. Déployé sur GitHub Pages, optimisé mobile-first.",
+      "Application web de gestion et suivi du courrier administratif développée avec Symfony. Gestion des utilisateurs, services, catégories de courriers, rôles et permissions, suivi des courriers entrants/sortants, tableau de bord statistique et sécurisation des accès.",
   },
-  {
-    id: "gestion-ecole",
-    title: "Plateforme de Gestion Scolaire (en développement)",
-    category: "Personnel",
-    type: "personal",
-    imgPlaceholder: "🎓",
-    previewImages: [],
-    githubUrl: getRepo("gestion-ecole"),
-    tags: ["Symfony", "MySQL", "Bootstrap", "Chart.js"],
-    description:
-      "Application web complète de gestion d'école : inscriptions, notes, emplois du temps, bulletins automatiques, gestion des rôles (admin, enseignant, étudiant). Projet en cours de développement.",
-  },
+
+  // {
+  //   id: "portfolio",
+  //   title: "Portfolio Personnel",
+  //   category: "Personnel",
+  //   type: "personal",
+  //   imgSrc: "assets/images/sig_demo_express_soft.png",
+  //   previewImages: ["assets/images/sig_demo_express_soft.png"],
+  //   githubUrl: getRepo("wince-webdev.github.io"),
+  //   tags: ["HTML", "CSS", "JavaScript"],
+  //   description:
+  //     "Site portfolio responsive présentant mes projets, compétences, expériences et coordonnées. Déployé sur GitHub Pages, optimisé mobile-first.",
+  // },
+  // {
+  //   id: "gestion-ecole",
+  //   title: "Plateforme de Gestion Scolaire (en développement)",
+  //   category: "Personnel",
+  //   type: "personal",
+  //   imgPlaceholder: "🎓",
+  //   previewImages: [],
+  //   githubUrl: getRepo("gestion-ecole"),
+  //   tags: ["Symfony", "MySQL", "Bootstrap", "Chart.js"],
+  //   description:
+  //     "Application web complète de gestion d'école : inscriptions, notes, emplois du temps, bulletins automatiques, gestion des rôles (admin, enseignant, étudiant). Projet en cours de développement.",
+  // },
 ];
 
 // ── Interests (About page) ────────────────────────────────────────────────
