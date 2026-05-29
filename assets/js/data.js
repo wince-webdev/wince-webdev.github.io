@@ -35,8 +35,8 @@ const profileInfo = {
   ],
 
   phone: {
-    mobile:   "+229 01 98 13 41 99",
-    whatsapp: "+229 01 98 13 41 99",
+    mobile:   "+229 01 96 11 22 47",
+    whatsapp: "+229 01 96 11 22 47",
   },
 
   address: {
