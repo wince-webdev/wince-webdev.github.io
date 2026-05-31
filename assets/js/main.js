@@ -239,17 +239,21 @@ document.addEventListener("DOMContentLoaded", function () {
     }).join("");
   })();
 
-  // ── Filter buttons ────────────────────────────────────────────────────
+  // ── Filter buttons ─────────────────────────────────────────────────
+  // CORRECTION : document.querySelectorAll() après génération des projets
+  // "tout" = afficher tout, "entreprise"/"personnel" = filtrer par catégorie
   (function () {
     const filterBtns  = select("[data-filter-btn]", true);
-    const filterItems = select("[data-filter-item]", true);
     const selectEl    = select("[data-select]");
     const selectVal   = select("[data-selecct-value]");
     const selectItems = select("[data-select-item]", true);
 
     const filterFunc = (value) => {
+      const filterItems = document.querySelectorAll("[data-filter-item]");
+      const isAll = value === "tout" || value === "all";
       filterItems.forEach((item) => {
-        if (value === "all" || value === item.dataset.category.toLowerCase()) {
+        const cat = (item.dataset.category || "").toLowerCase();
+        if (isAll || cat === value) {
           item.classList.add("active");
         } else {
           item.classList.remove("active");
@@ -260,7 +264,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let lastBtn = filterBtns[0];
     filterBtns.forEach((btn) => {
       btn.addEventListener("click", function () {
-        const val = this.innerText.toLowerCase();
+        const val = this.innerText.toLowerCase().trim();
         if (selectVal) selectVal.innerText = this.innerText;
         filterFunc(val);
         if (lastBtn) lastBtn.classList.remove("active");
@@ -274,7 +278,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     selectItems.forEach((item) => {
       item.addEventListener("click", function () {
-        const val = this.innerText.toLowerCase();
+        const val = this.innerText.toLowerCase().trim();
         if (selectVal) selectVal.innerText = this.innerText;
         if (selectEl) selectEl.classList.remove("active");
         filterFunc(val);

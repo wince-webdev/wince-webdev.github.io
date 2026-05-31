@@ -571,7 +571,7 @@ main {
   font-size: var(--fs-6);
   font-weight: var(--fw-3);
   line-height: 1.6;
-  text-align: justify;
+  text-align: left;
 }
 
 /**
@@ -1309,8 +1309,9 @@ textarea.form-input::-webkit-resizer {
 /*-----------------------------------*\
   #OTHERS
 \*-----------------------------------*/
+
 .text-justify {
-  text-align: justify;
+  text-align: left;
 }
 
 /*-----------------------------------*\

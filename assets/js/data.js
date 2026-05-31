@@ -370,7 +370,7 @@ const projects = [
   {
     id: "expenseflow",
     title: "ExpenseFlow – Application de Gestion Financière au sein d’une entreprise",
-    category: "Projet Personnel",
+    category: "Personnel",
     type: "personal",
     imgSrc: "assets/images/expenseflow_login.png",
     previewImages: [
@@ -398,7 +398,7 @@ const projects = [
   {
     id: "smartcourier",
     title: "SmartCourier System – Système de Gestion Administrative du Courrier",
-    category: "Projet Personnel",
+    category: "Personnel",
     type: "personal",
     imgSrc: "assets/images/courier_login.png",
     previewImages: [
