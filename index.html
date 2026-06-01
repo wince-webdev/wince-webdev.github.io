@@ -343,18 +343,11 @@
              <!-- Messages -->
               <!-- Message de confirmation -->
               <div id="cf-success" style="display:none;background:rgba(100,200,100,0.12);border:1px solid #4caf50;border-radius:10px;padding:14px 18px;margin-bottom:16px;color:#7ec87e;font-size:14px;">
-                ✅ Message envoyé avec succès ! Je vous répondrai très bientôt.
+                ✅ Votre application mail s'est ouverte avec votre message prêt à envoyer. Merci !
               </div>
               <div id="cf-error" style="display:none;background:rgba(200,80,80,0.12);border:1px solid #e57373;border-radius:10px;padding:14px 18px;margin-bottom:16px;color:#e57373;font-size:14px;">
                 ⚠️ Veuillez remplir tous les champs avant d'envoyer.
               </div>
-              <div id="cf-send-error" style="display:none;background:rgba(200,80,80,0.12);border:1px solid #e57373;border-radius:10px;padding:14px 18px;margin-bottom:16px;color:#e57373;font-size:14px;">
-                ❌ Échec de l'envoi. Veuillez réessayer ou me contacter directement par e-mail.
-              </div>
-              <div id="cf-activation" style="display:none;background:rgba(255,188,94,0.12);border:1px solid #ffbc5e;border-radius:10px;padding:14px 18px;margin-bottom:16px;color:#ffbc5e;font-size:14px;">
-                ⚠️ Vérification nécessaire : ouvrez votre boîte Gmail et confirmez l'activation FormSubmit une seule fois. Après validation, les messages seront envoyés directement.
-              </div>
-
               <button class="form-btn" type="button" id="cf-submit-btn" data-form-btn onclick="winceSendMail()">
                 <ion-icon name="paper-plane-outline"></ion-icon>
                 <span id="cf-btn-text">Envoyer le message</span>
@@ -437,7 +430,7 @@
       });
 
       // ── FORMULAIRE CONTACT (envoi direct sans ouvrir Outlook/Gmail) ──────────────
-      function winceSendMail() {
+      function winceSendMailFormSubmitDisabled() {
         var name    = (document.getElementById('cf-name')    || {}).value || '';
         var email   = (document.getElementById('cf-email')   || {}).value || '';
         var subject = (document.getElementById('cf-subject') || {}).value || '';
@@ -464,21 +457,24 @@
         btn.disabled = true;
         if (btnText) btnText.textContent = 'Envoi en cours...';
 
-        var formData = new FormData();
-        formData.append('name', name);
-        formData.append('email', email);
-        formData.append('subject', '[Portfolio] ' + subject);
-        formData.append('message', message);
-        formData.append('_subject', '[Portfolio] ' + subject);
-        formData.append('_template', 'table');
-        formData.append('_captcha', 'false');
+        var payload = {
+          name: name,
+          email: email,
+          _replyto: email,
+          subject: '[Portfolio] ' + subject,
+          message: message,
+          _subject: '[Portfolio] ' + subject,
+          _template: 'table',
+          _captcha: 'false'
+        };
 
         fetch('https://formsubmit.co/ajax/adjihanounkpwinceslas@gmail.com', {
           method: 'POST',
           headers: {
+            'Content-Type': 'application/json',
             'Accept': 'application/json'
           },
-          body: formData
+          body: JSON.stringify(payload)
         })
         .then(function(response) {
           return response.json().then(function(data) {
@@ -518,7 +514,8 @@
           document.getElementById('cf-subject').value = '';
           document.getElementById('cf-message').value = '';
         })
-        .catch(function() {
+        .catch(function(error) {
+          console.error('FormSubmit error:', error);
           sendErrorEl.style.display = 'block';
         })
         .finally(function() {
@@ -526,6 +523,47 @@
           if (btnText) btnText.textContent = 'Envoyer le message';
         });
       }
+
+      window.winceSendMail = function() {
+        var name    = (document.getElementById('cf-name')    || {}).value || '';
+        var email   = (document.getElementById('cf-email')   || {}).value || '';
+        var subject = (document.getElementById('cf-subject') || {}).value || '';
+        var message = (document.getElementById('cf-message') || {}).value || '';
+        var successEl = document.getElementById('cf-success');
+        var errorEl = document.getElementById('cf-error');
+        var sendErrorEl = document.getElementById('cf-send-error');
+        var activationEl = document.getElementById('cf-activation');
+
+        if (!name.trim() || !email.trim() || !subject.trim() || !message.trim()) {
+          errorEl.style.display = 'block';
+          successEl.style.display = 'none';
+          if (sendErrorEl) sendErrorEl.style.display = 'none';
+          if (activationEl) activationEl.style.display = 'none';
+          return;
+        }
+
+        errorEl.style.display = 'none';
+        successEl.style.display = 'none';
+        if (sendErrorEl) sendErrorEl.style.display = 'none';
+        if (activationEl) activationEl.style.display = 'none';
+
+        var body = 'Nom : ' + name + '\n'
+          + 'Email : ' + email + '\n\n'
+          + message;
+        var mailto = 'mailto:adjihanounkpwinceslas@gmail.com'
+          + '?subject=' + encodeURIComponent('[Portfolio] ' + subject)
+          + '&body=' + encodeURIComponent(body);
+
+        window.location.href = mailto;
+        successEl.style.display = 'block';
+
+        setTimeout(function() {
+          document.getElementById('cf-name').value = '';
+          document.getElementById('cf-email').value = '';
+          document.getElementById('cf-subject').value = '';
+          document.getElementById('cf-message').value = '';
+        }, 3000);
+      };
     </script>
   </body>
 </html>
