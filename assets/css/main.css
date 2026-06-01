@@ -158,7 +158,7 @@ a.contact-link:hover {
   font-size: var(--fs-7) !important;
   color: var(--light-gray) !important;
   line-height: 1.65 !important;
-  text-align: justify !important;
+  text-align: left !important;
   margin-bottom: 0 !important;
 }
 
@@ -323,8 +323,8 @@ a.contact-link:hover {
   color: var(--orange-yellow-crayola);
 }
 
-/* ── Text justify ── */
-.text-justify { text-align: justify; }
+/* ── Text alignment ── */
+.text-justify { text-align: left; }
 
 @media (min-width: 580px) {
   .project-item-extra { padding: 12px 25px 16px; }
