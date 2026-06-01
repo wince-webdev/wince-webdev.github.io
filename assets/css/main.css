@@ -88,6 +88,11 @@ a.contact-link:hover {
   box-shadow: var(--shadow-2) !important;
   transition: transform 0.25s ease, box-shadow 0.25s ease !important;
 }
+
+.project-list .project-item:not(.active) {
+  display: none !important;
+}
+
 .project-item::before {
   border-radius: 14px !important;
 }

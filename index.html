@@ -299,7 +299,7 @@
               Vous avez un projet, une opportunité ou une question ? Remplissez ce formulaire et je vous répondrai dans les plus brefs délais.
             </p>
 
-            <!-- Formulaire qui envoie via mailto (aucun serveur requis, fonctionne sur GitHub Pages) -->
+            <!-- Formulaire qui envoie directement sans ouvrir l'application mail du visiteur -->
             <div id="contact-form" data-form>
 
               <div class="input-wrapper">
@@ -343,15 +343,21 @@
              <!-- Messages -->
               <!-- Message de confirmation -->
               <div id="cf-success" style="display:none;background:rgba(100,200,100,0.12);border:1px solid #4caf50;border-radius:10px;padding:14px 18px;margin-bottom:16px;color:#7ec87e;font-size:14px;">
-                ✅ Votre client mail s'est ouvert avec votre message prêt à envoyer. Merci !
+                ✅ Message envoyé avec succès ! Je vous répondrai très bientôt.
               </div>
               <div id="cf-error" style="display:none;background:rgba(200,80,80,0.12);border:1px solid #e57373;border-radius:10px;padding:14px 18px;margin-bottom:16px;color:#e57373;font-size:14px;">
                 ⚠️ Veuillez remplir tous les champs avant d'envoyer.
               </div>
+              <div id="cf-send-error" style="display:none;background:rgba(200,80,80,0.12);border:1px solid #e57373;border-radius:10px;padding:14px 18px;margin-bottom:16px;color:#e57373;font-size:14px;">
+                ❌ Échec de l'envoi. Veuillez réessayer ou me contacter directement par e-mail.
+              </div>
+              <div id="cf-activation" style="display:none;background:rgba(255,188,94,0.12);border:1px solid #ffbc5e;border-radius:10px;padding:14px 18px;margin-bottom:16px;color:#ffbc5e;font-size:14px;">
+                ⚠️ Vérification nécessaire : ouvrez votre boîte Gmail et confirmez l'activation FormSubmit une seule fois. Après validation, les messages seront envoyés directement.
+              </div>
 
               <button class="form-btn" type="button" id="cf-submit-btn" data-form-btn onclick="winceSendMail()">
                 <ion-icon name="paper-plane-outline"></ion-icon>
-                <span>Envoyer le message</span>
+                <span id="cf-btn-text">Envoyer le message</span>
               </button>
             </div>
           </section>
@@ -430,36 +436,95 @@
         if(e.key === 'ArrowLeft')  winceLightboxNav(-1);
       });
 
-      // ── FORMULAIRE CONTACT (mailto, sans serveur) ──────────────
+      // ── FORMULAIRE CONTACT (envoi direct sans ouvrir Outlook/Gmail) ──────────────
       function winceSendMail() {
         var name    = (document.getElementById('cf-name')    || {}).value || '';
         var email   = (document.getElementById('cf-email')   || {}).value || '';
         var subject = (document.getElementById('cf-subject') || {}).value || '';
         var message = (document.getElementById('cf-message') || {}).value || '';
+        var successEl = document.getElementById('cf-success');
+        var errorEl = document.getElementById('cf-error');
+        var sendErrorEl = document.getElementById('cf-send-error');
+        var activationEl = document.getElementById('cf-activation');
+        var btn = document.getElementById('cf-submit-btn');
+        var btnText = document.getElementById('cf-btn-text');
 
         if (!name.trim() || !email.trim() || !subject.trim() || !message.trim()) {
-          document.getElementById('cf-error').style.display   = 'block';
-          document.getElementById('cf-success').style.display = 'none';
+          errorEl.style.display = 'block';
+          successEl.style.display = 'none';
+          sendErrorEl.style.display = 'none';
+          activationEl.style.display = 'none';
           return;
         }
-        document.getElementById('cf-error').style.display = 'none';
 
-        var body = 'Nom : ' + name + '\nEmail : ' + email + '\n\n' + message;
-        var mailto = 'mailto:adjihanounkpwinceslas@gmail.com'
-          + '?subject=' + encodeURIComponent('[Portfolio] ' + subject)
-          + '&body='    + encodeURIComponent(body);
+        errorEl.style.display = 'none';
+        successEl.style.display = 'none';
+        sendErrorEl.style.display = 'none';
+        activationEl.style.display = 'none';
+        btn.disabled = true;
+        if (btnText) btnText.textContent = 'Envoi en cours...';
 
-        window.location.href = mailto;
+        var formData = new FormData();
+        formData.append('name', name);
+        formData.append('email', email);
+        formData.append('subject', '[Portfolio] ' + subject);
+        formData.append('message', message);
+        formData.append('_subject', '[Portfolio] ' + subject);
+        formData.append('_template', 'table');
+        formData.append('_captcha', 'false');
 
-        document.getElementById('cf-success').style.display = 'block';
-        // Vider le formulaire après 3 secondes
-        setTimeout(function(){
-          document.getElementById('cf-name').value    = '';
-          document.getElementById('cf-email').value   = '';
+        fetch('https://formsubmit.co/ajax/adjihanounkpwinceslas@gmail.com', {
+          method: 'POST',
+          headers: {
+            'Accept': 'application/json'
+          },
+          body: formData
+        })
+        .then(function(response) {
+          return response.json().then(function(data) {
+            return {
+              ok: response.ok,
+              status: response.status,
+              data: data
+            };
+          }).catch(function() {
+            return {
+              ok: response.ok,
+              status: response.status,
+              data: {}
+            };
+          });
+        })
+        .then(function(result) {
+          var responseText = JSON.stringify(result.data || {}).toLowerCase();
+          var needsActivation =
+            result.status === 403 ||
+            responseText.includes('activate') ||
+            responseText.includes('confirm') ||
+            responseText.includes('verification');
+
+          if (!result.ok && needsActivation) {
+            activationEl.style.display = 'block';
+            return;
+          }
+
+          if (!result.ok) {
+            throw new Error((result.data && (result.data.message || result.data.error)) || 'send failed');
+          }
+
+          successEl.style.display = 'block';
+          document.getElementById('cf-name').value = '';
+          document.getElementById('cf-email').value = '';
           document.getElementById('cf-subject').value = '';
           document.getElementById('cf-message').value = '';
-          document.getElementById('cf-success').style.display = 'none';
-        }, 3000);
+        })
+        .catch(function() {
+          sendErrorEl.style.display = 'block';
+        })
+        .finally(function() {
+          btn.disabled = false;
+          if (btnText) btnText.textContent = 'Envoyer le message';
+        });
       }
     </script>
   </body>
