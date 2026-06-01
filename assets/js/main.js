@@ -136,11 +136,39 @@ document.addEventListener("DOMContentLoaded", function () {
   (function () {
     const el = select(".skills-list");
     if (!el) return;
+    const skillIcons = {
+      "symfony": "https://cdn.simpleicons.org/symfony/ffffff",
+      "laravel": "https://cdn.simpleicons.org/laravel/ff6b4a",
+      "php": "https://cdn.simpleicons.org/php/8892bf",
+      "javascript": "https://cdn.simpleicons.org/javascript/f7df1e",
+      "html-css": "https://cdn.simpleicons.org/html5/e34f26",
+      "bootstrap": "https://cdn.simpleicons.org/bootstrap/7952b3",
+      "postgresql": "https://cdn.simpleicons.org/postgresql/4169e1",
+      "mysql": "https://cdn.simpleicons.org/mysql/4479a1",
+      "api-rest": "https://cdn.simpleicons.org/openapiinitiative/6ba539",
+      "sanctum": "https://cdn.simpleicons.org/laravel/ff6b4a",
+      "breeze": "https://cdn.simpleicons.org/laravel/ff6b4a",
+      "spatie": "https://cdn.simpleicons.org/laravel/ff6b4a",
+      "git": "https://cdn.simpleicons.org/git/f05032",
+      "postman": "https://cdn.simpleicons.org/postman/ff6c37",
+      "docker": "https://cdn.simpleicons.org/docker/2496ed",
+      "linux": "https://cdn.simpleicons.org/linux/fcc624",
+      "python": "https://cdn.simpleicons.org/python/3776ab",
+      "tailwind": "https://cdn.simpleicons.org/tailwindcss/06b6d4",
+      "twig": "https://cdn.simpleicons.org/twig/8bc34a",
+      "doctrine": "https://cdn.simpleicons.org/doctrine/fc6a31",
+    };
     el.innerHTML = resumeInfo.skills.map((skill) => `
-      <li class="skills-item">
-        <div class="title-wrapper">
-          <h5 class="h5">${skill.name}</h5>
-          <data value="${skill.level}">${skill.level}%</data>
+      <li class="skills-item skill-card">
+        <div class="skill-card-head">
+          <div class="skill-icon-wrap">
+            <img src="${skillIcons[skill.id] || skillIcons["api-rest"]}" alt="${skill.name}" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';" />
+            <span class="skill-icon-fallback">${skill.name.slice(0, 2).toUpperCase()}</span>
+          </div>
+          <div class="skill-card-info">
+            <h5 class="h5">${skill.name}</h5>
+            <data value="${skill.level}">${skill.level}%</data>
+          </div>
         </div>
         <div class="skill-progress-bg">
           <div class="skill-progress-fill" style="width:${skill.level}%"></div>
