@@ -44,6 +44,136 @@ a.contact-link:hover {
   color: var(--orange-yellow-crayola);
 }
 
+/* ═══════════════════════════════════════════════════
+   ANIMATIONS GLOBALES - sobres pour un rendu recruteur
+   ═══════════════════════════════════════════════════ */
+.sidebar,
+.navbar,
+article.active .article-title,
+article.active .service-item,
+article.active .timeline,
+article.active .skill,
+article.active .project-item,
+article.active .contact-quick-card,
+article.active .contact-form,
+article.active .page-footer {
+  animation: wince-rise-in 620ms ease both;
+}
+
+.sidebar { animation-delay: 40ms; }
+.navbar { animation-delay: 90ms; }
+article.active .article-title { animation-delay: 120ms; }
+article.active .timeline:nth-of-type(1),
+article.active .service-item:nth-child(1),
+article.active .project-item:nth-child(1),
+article.active .contact-quick-card:nth-child(1) { animation-delay: 150ms; }
+article.active .timeline:nth-of-type(2),
+article.active .service-item:nth-child(2),
+article.active .project-item:nth-child(2),
+article.active .contact-quick-card:nth-child(2) { animation-delay: 210ms; }
+article.active .skill,
+article.active .service-item:nth-child(3),
+article.active .project-item:nth-child(3),
+article.active .contact-quick-card:nth-child(3) { animation-delay: 270ms; }
+article.active .project-item:nth-child(n+4),
+article.active .contact-quick-card:nth-child(4),
+article.active .contact-form,
+article.active .page-footer { animation-delay: 330ms; }
+
+.article-title::after {
+  transform-origin: left;
+  animation: wince-title-line 760ms ease both;
+}
+
+.navbar-link {
+  position: relative;
+}
+
+.navbar-link::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  right: 50%;
+  bottom: -6px;
+  height: 2px;
+  border-radius: 999px;
+  background: var(--orange-yellow-crayola);
+  opacity: 0;
+  transition: left 220ms ease, right 220ms ease, opacity 220ms ease;
+}
+
+.navbar-link:hover::after,
+.navbar-link.active::after {
+  left: 18%;
+  right: 18%;
+  opacity: 1;
+}
+
+.timeline-item {
+  animation: wince-slide-left 560ms ease both;
+}
+
+.timeline-item:nth-child(2n) { animation-delay: 70ms; }
+.timeline-item:nth-child(3n) { animation-delay: 130ms; }
+
+.timeline-item::after {
+  transition: transform 220ms ease, box-shadow 220ms ease;
+}
+
+.timeline-item:hover::after {
+  transform: scale(1.35);
+  box-shadow: 0 0 0 6px rgba(255, 188, 94, 0.16);
+}
+
+.service-item,
+.lang-card,
+.soft-skill-tag,
+.contact-quick-card,
+.footer-links a,
+.form-btn,
+.project-live-link {
+  will-change: transform;
+}
+
+.service-item:hover,
+.lang-card:hover,
+.soft-skill-tag:hover {
+  transform: translateY(-2px);
+  border-color: rgba(255, 188, 94, 0.28);
+}
+
+.form-btn:hover,
+.project-live-link:hover {
+  transform: translateY(-2px);
+}
+
+@keyframes wince-rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes wince-slide-left {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes wince-title-line {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
 .timeline-item-title {
   position: relative;
   display: inline-flex;
@@ -406,11 +536,32 @@ a.contact-link:hover {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .sidebar,
+  .navbar,
+  article.active .article-title,
+  article.active .service-item,
+  article.active .timeline,
+  article.active .skill,
+  article.active .project-item,
+  article.active .contact-quick-card,
+  article.active .contact-form,
+  article.active .page-footer,
+  .article-title::after,
+  .timeline-item,
   .skill-card,
   .skill-card .skill-progress-fill {
     animation: none;
   }
 
+  .navbar-link::after,
+  .timeline-item::after,
+  .service-item,
+  .lang-card,
+  .soft-skill-tag,
+  .contact-quick-card,
+  .footer-links a,
+  .form-btn,
+  .project-live-link,
   .skill-card {
     transition: none;
   }
