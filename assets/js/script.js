@@ -31,11 +31,12 @@ const pages           = document.querySelectorAll("[data-page]");
 
 navigationLinks.forEach((link, linkIndex) => {
   link.addEventListener("click", function () {
-    const clickedLabel = this.innerText.toLowerCase().trim();
+    const clickedKey = this.dataset.navKey;
 
     pages.forEach((page, pageIndex) => {
-      const pageLabel = page.dataset.page.toLowerCase().trim();
-      const isMatch   = pageLabel === clickedLabel;
+      const isMatch = clickedKey
+        ? page.dataset.pageKey === clickedKey
+        : page.dataset.page.toLowerCase().trim() === this.innerText.toLowerCase().trim();
 
       page.classList.toggle("active", isMatch);
       navigationLinks[pageIndex]?.classList.toggle("active", isMatch);

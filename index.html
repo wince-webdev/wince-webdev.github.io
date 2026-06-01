@@ -37,7 +37,7 @@
           </div>
 
           <button class="info_more-btn" data-sidebar-btn>
-            <span>Contacts</span>
+            <span data-i18n="sidebar.contacts">Contacts</span>
             <ion-icon name="chevron-down"></ion-icon>
           </button>
         </div>
@@ -60,23 +60,29 @@
         <!-- NAV -->
         <nav class="navbar">
           <ul class="navbar-list">
-            <li class="navbar-item">
-              <button class="navbar-link active" data-nav-link>À propos</button>
+            <li class="navbar-item navbar-lang-item">
+              <div class="language-switch" aria-label="Choisir la langue">
+                <button type="button" class="lang-toggle active" data-lang-switch="fr">FR</button>
+                <button type="button" class="lang-toggle" data-lang-switch="en">EN</button>
+              </div>
             </li>
             <li class="navbar-item">
-              <button class="navbar-link" data-nav-link>Résumé</button>
+              <button class="navbar-link active" data-nav-link data-nav-key="about" data-i18n="nav.about">À propos</button>
             </li>
             <li class="navbar-item">
-              <button class="navbar-link" data-nav-link>Projets</button>
+              <button class="navbar-link" data-nav-link data-nav-key="resume" data-i18n="nav.resume">Résumé</button>
             </li>
             <li class="navbar-item">
-              <button class="navbar-link" data-nav-link>Contact</button>
+              <button class="navbar-link" data-nav-link data-nav-key="projects" data-i18n="nav.projects">Projets</button>
+            </li>
+            <li class="navbar-item">
+              <button class="navbar-link" data-nav-link data-nav-key="contact" data-i18n="nav.contact">Contact</button>
             </li>
           </ul>
         </nav>
 
         <!-- ═══ À PROPOS ═══ -->
-        <article class="about active" data-page="à propos">
+        <article class="about active" data-page="à propos" data-page-key="about">
           <header>
             <h2 class="h2 article-title">À propos de moi</h2>
           </header>
@@ -99,6 +105,12 @@
               Je maîtrise le déploiement sur serveurs Linux (cPanel, Grizzly), la conception d'API REST sécurisées, et continue d'élargir mes compétences (Docker, cloud) pour rester un développeur moderne et efficace.
             </p>
           </section>
+          <div class="about-cv-action">
+            <a class="cv-download-btn" href="./assets/images/CV_Winceslas_ADJIHANOU_Dev_FullStack_PHP_JS.pdf" target="_blank" rel="noopener">
+              <ion-icon name="document-text-outline"></ion-icon>
+              <span data-i18n="actions.cv">Télécharger mon CV</span>
+            </a>
+          </div>
           <!-- Centres d'intérêt -->
           <section class="service">
             <h3 class="h3 service-title">Centres d'intérêt</h3>
@@ -126,7 +138,7 @@
         </article>
 
         <!-- ═══ RÉSUMÉ ═══ -->
-        <article class="resume" data-page="résumé">
+        <article class="resume" data-page="résumé" data-page-key="resume">
           <header>
             <h2 class="h2 article-title">Résumé</h2>
           </header>
@@ -184,7 +196,7 @@
         </article>
 
         <!-- ═══ PROJETS ═══ -->
-        <article class="portfolio" data-page="projets">
+        <article class="portfolio" data-page="projets" data-page-key="projects">
           <header>
             <h2 class="h2 article-title">Projets</h2>
           </header>
@@ -192,21 +204,21 @@
           <section class="projects">
             <!-- Filtres -->
             <ul class="filter-list">
-              <li class="filter-item"><button class="active" data-filter-btn>Tout</button></li>
-              <li class="filter-item"><button data-filter-btn>Entreprise</button></li>
-              <li class="filter-item"><button data-filter-btn>Personnel</button></li>
+              <li class="filter-item"><button class="active" data-filter-btn data-filter-value="all" data-i18n="filters.all">Tout</button></li>
+              <li class="filter-item"><button data-filter-btn data-filter-value="enterprise" data-i18n="filters.enterprise">Entreprise</button></li>
+              <li class="filter-item"><button data-filter-btn data-filter-value="personal" data-i18n="filters.personal">Personnel</button></li>
             </ul>
 
             <!-- Sélect mobile -->
             <div class="filter-select-box">
               <button class="filter-select" data-select>
-                <div class="select-value" data-selecct-value>Catégorie</div>
+                <div class="select-value" data-selecct-value data-i18n="filters.category">Catégorie</div>
                 <div class="select-icon"><ion-icon name="chevron-down"></ion-icon></div>
               </button>
               <ul class="select-list">
-                <li class="select-item"><button data-select-item>Tout</button></li>
-                <li class="select-item"><button data-select-item>Entreprise</button></li>
-                <li class="select-item"><button data-select-item>Personnel</button></li>
+                <li class="select-item"><button data-select-item data-filter-value="all" data-i18n="filters.all">Tout</button></li>
+                <li class="select-item"><button data-select-item data-filter-value="enterprise" data-i18n="filters.enterprise">Entreprise</button></li>
+                <li class="select-item"><button data-select-item data-filter-value="personal" data-i18n="filters.personal">Personnel</button></li>
               </ul>
             </div>
 
@@ -235,7 +247,7 @@
         </article>
 
         <!-- ═══ CONTACT ═══ -->
-        <article class="contact" data-page="contact">
+        <article class="contact" data-page="contact" data-page-key="contact">
           <header>
             <h2 class="h2 article-title">Contact</h2>
           </header>
@@ -547,7 +559,8 @@
         if (sendErrorEl) sendErrorEl.style.display = 'none';
         if (activationEl) activationEl.style.display = 'none';
 
-        var body = 'Nom : ' + name + '\n'
+        var isEnglish = document.documentElement.lang === 'en';
+        var body = (isEnglish ? 'Name: ' : 'Nom : ') + name + '\n'
           + 'Email : ' + email + '\n\n'
           + message;
         var mailto = 'mailto:adjihanounkpwinceslas@gmail.com'
