@@ -134,7 +134,7 @@ const resumeInfo = {
       id: "cosit-acad",
       company:  "COSIT Bénin",
       position: "Stagiaire – Développeur Web (Stage Académique)",
-      duration: { from: 2022, to: 2023 },
+      duration: { from: "09/2022", to: "12/2023" },
       ongoing:  false,
       city: "Cotonou", country: "Bénin",
       description:
