@@ -49,7 +49,6 @@ a.contact-link:hover {
    ═══════════════════════════════════════════════════ */
 .sidebar,
 .navbar,
-article.active .article-title,
 article.active .service-item,
 article.active .timeline,
 article.active .skill,
@@ -62,7 +61,36 @@ article.active .page-footer {
 
 .sidebar { animation-delay: 40ms; }
 .navbar { animation-delay: 90ms; }
-article.active .article-title { animation-delay: 120ms; }
+
+/* Titre de page : glissement + léger skew, rejoué à chaque navigation */
+article.active .article-title {
+  animation: wince-title-in 700ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes wince-title-in {
+  0% {
+    opacity: 0;
+    transform: translateX(-28px) skewX(-5deg);
+  }
+  60% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) skewX(0);
+  }
+}
+
+/* Lien de nav actif : petit pop */
+.navbar-link.active {
+  animation: wince-nav-pop 420ms cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+@keyframes wince-nav-pop {
+  0% { transform: scale(1); }
+  45% { transform: scale(1.15); }
+  100% { transform: scale(1); }
+}
 article.active .timeline:nth-of-type(1),
 article.active .service-item:nth-child(1),
 article.active .project-item:nth-child(1),
@@ -82,7 +110,7 @@ article.active .page-footer { animation-delay: 330ms; }
 
 .article-title::after {
   transform-origin: left;
-  animation: wince-title-line 760ms ease both;
+  animation: wince-title-line 820ms 180ms cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 .timeline-item {
@@ -974,34 +1002,47 @@ article.active .page-footer { animation-delay: 330ms; }
 
 /* ── Light theme variable overrides ── */
 [data-theme="light"] {
-  --bg-gradient-onyx: linear-gradient(to bottom right, hsl(40, 20%, 96%) 3%, hsl(30, 15%, 92%) 97%);
-  --bg-gradient-jet: linear-gradient(to bottom right, hsla(30, 20%, 50%, 0.06) 0%, hsla(30, 20%, 50%, 0.01) 100%), hsl(0, 0%, 100%);
-  --border-gradient-onyx: linear-gradient(to bottom right, hsl(30, 8%, 82%) 0%, hsla(30, 8%, 82%, 0) 50%);
+  --bg-gradient-onyx: linear-gradient(to bottom right, hsl(42, 32%, 97%) 0%, hsl(30, 24%, 92%) 100%);
+  --bg-gradient-jet: linear-gradient(to bottom right, hsla(30, 25%, 40%, 0.07) 0%, hsla(30, 25%, 40%, 0.02) 100%), hsl(0, 0%, 100%);
+  --border-gradient-onyx: linear-gradient(to bottom right, hsl(30, 12%, 80%) 0%, hsla(30, 12%, 80%, 0) 60%);
 
-  --jet: hsl(30, 10%, 88%);
-  --onyx: hsl(30, 12%, 92%);
-  --eerie-black-1: hsl(40, 20%, 97%);
-  --eerie-black-2: hsl(40, 25%, 95%);
-  --smoky-black: hsl(30, 10%, 20%);
+  --jet: hsl(30, 14%, 85%);
+  --onyx: hsl(38, 24%, 92%);
+  --eerie-black-1: hsl(42, 25%, 96%);
+  --eerie-black-2: hsl(42, 32%, 99%);
+  --smoky-black: hsl(32, 22%, 90%);
 
-  --white-1: hsl(240, 15%, 12%);
-  --white-2: hsl(240, 12%, 16%);
-  --orange-yellow-crayola: hsl(28, 85%, 45%);
-  --vegas-gold: hsl(28, 50%, 40%);
-  --light-gray: hsl(240, 6%, 32%);
-  --light-gray-70: hsla(240, 6%, 32%, 0.72);
-  --bittersweet-shimmer: hsl(0, 55%, 48%);
+  --white-1: hsl(240, 20%, 11%);
+  --white-2: hsl(240, 14%, 15%);
+  --orange-yellow-crayola: hsl(28, 88%, 44%);
+  --vegas-gold: hsl(28, 58%, 40%);
+  --light-gray: hsl(240, 8%, 34%);
+  --light-gray-70: hsla(240, 8%, 34%, 0.72);
+  --bittersweet-shimmer: hsl(0, 62%, 50%);
 
-  --shadow-1: -4px 8px 24px hsla(30, 20%, 40%, 0.12);
-  --shadow-2: 0 16px 30px hsla(30, 20%, 40%, 0.12);
-  --shadow-3: 0 16px 40px hsla(30, 20%, 40%, 0.12);
-  --shadow-4: 0 25px 50px hsla(30, 20%, 40%, 0.08);
-  --shadow-5: 0 24px 80px hsla(30, 20%, 40%, 0.12);
+  --shadow-1: 0 4px 16px hsla(30, 25%, 35%, 0.08);
+  --shadow-2: 0 10px 28px hsla(30, 25%, 35%, 0.10);
+  --shadow-3: 0 14px 36px hsla(30, 25%, 35%, 0.12);
+  --shadow-4: 0 20px 44px hsla(30, 25%, 35%, 0.10);
+  --shadow-5: 0 22px 60px hsla(30, 25%, 35%, 0.12);
 }
 
-[data-theme="light"] body,
-[data-theme="light"] .main-content article {
-  background: var(--eerie-black-1);
+/* Fond : douce dégradé crème chaud, fixé */
+[data-theme="light"] body {
+  background: linear-gradient(160deg, hsl(42, 34%, 97%) 0%, hsl(34, 28%, 94%) 50%, hsl(26, 30%, 91%) 100%);
+}
+
+/* Cartes : blanc chaud + ombres douces */
+[data-theme="light"] .sidebar,
+[data-theme="light"] article {
+  background: var(--eerie-black-2);
+  box-shadow: 0 6px 24px hsla(30, 25%, 35%, 0.07), 0 1px 3px hsla(30, 25%, 35%, 0.05);
+}
+
+/* Logo : version texte sombre */
+[data-theme="light"] .sidebar-logo-box img,
+[data-theme="light"] .footer-logo {
+  content: url("../images/logo-light.svg");
 }
 
 [data-theme="light"] .sidebar-info .title,
@@ -1010,47 +1051,128 @@ article.active .page-footer { animation-delay: 330ms; }
   color: var(--white-2);
 }
 
+/* Navbar : conserve le contraste sombre, ombre portée en plus */
+[data-theme="light"] .navbar {
+  box-shadow: 0 12px 32px hsla(30, 25%, 20%, 0.28);
+  border-color: hsla(30, 15%, 15%, 0.9);
+}
+
 [data-theme="light"] .navbar .language-switch,
 [data-theme="light"] .theme-toggle {
-  background: rgba(0, 0, 0, 0.03);
+  background: rgba(255, 255, 255, 0.07);
 }
 
-[data-theme="light"] .project-item:hover {
-  box-shadow: 0 12px 32px rgba(60, 40, 10, 0.14) !important;
-}
-
-[data-theme="light"] .contact-quick-card:hover {
-  box-shadow: 0 8px 24px rgba(60, 40, 10, 0.12);
-}
-
-[data-theme="light"] .skill-card {
-  box-shadow: 0 12px 26px rgba(60, 40, 10, 0.08);
-}
-
-[data-theme="light"] .skill-card:hover {
-  box-shadow: 0 16px 34px rgba(60, 40, 10, 0.12);
-}
-
-[data-theme="light"] .project-item-extra {
-  border-top-color: rgba(0, 0, 0, 0.06) !important;
-}
-
-[data-theme="light"] .project-item-extra {
-  border-left-color: rgba(0, 0, 0, 0.06) !important;
-}
-
+/* Onglets / badges */
 [data-theme="light"] .lang-badge {
   background: var(--jet);
   color: var(--light-gray);
   border-color: var(--onyx);
 }
 
+/* Cartes projets */
+[data-theme="light"] .project-item:hover {
+  box-shadow: 0 16px 40px hsla(30, 25%, 30%, 0.16) !important;
+  transform: translateY(-4px);
+}
+
+[data-theme="light"] .project-item-extra {
+  border-top-color: rgba(0, 0, 0, 0.06) !important;
+  border-left-color: rgba(0, 0, 0, 0.06) !important;
+}
+
 [data-theme="light"] .project-img-wrap {
   background: var(--jet) !important;
 }
 
+/* Cartes contact rapide */
+[data-theme="light"] .contact-quick-card:hover {
+  box-shadow: 0 12px 28px hsla(30, 25%, 30%, 0.14);
+}
+
+/* Cartes compétences */
+[data-theme="light"] .skill-card {
+  background: hsl(42, 34%, 100%);
+  box-shadow: 0 10px 26px hsla(30, 25%, 35%, 0.08);
+  border-color: hsl(30, 14%, 88%);
+}
+
+[data-theme="light"] .skill-card:hover {
+  box-shadow: 0 18px 38px hsla(30, 25%, 30%, 0.14);
+  border-color: hsla(28, 88%, 44%, 0.35);
+}
+
+/* Formulaire de contact */
+[data-theme="light"] .form-input {
+  background: hsl(42, 34%, 100%);
+  border-color: hsl(30, 14%, 84%);
+}
+
+[data-theme="light"] .form-input::placeholder {
+  color: hsla(240, 8%, 40%, 0.65);
+}
+
+[data-theme="light"] .form-input:focus {
+  border-color: var(--orange-yellow-crayola);
+  box-shadow: 0 0 0 3px hsla(28, 88%, 44%, 0.15);
+}
+
 [data-theme="light"] .form-btn {
-  box-shadow: 0 12px 30px rgba(255, 188, 94, 0.25);
+  box-shadow: 0 12px 30px rgba(230, 160, 30, 0.3);
+}
+
+[data-theme="light"] .form-btn:hover {
+  box-shadow: 0 16px 36px rgba(230, 160, 30, 0.38);
+}
+
+/* Bouton CV : texte foncé net sur le dégradé doré */
+[data-theme="light"] .cv-download-btn {
+  color: #2b1d05;
+  border-color: rgba(200, 140, 20, 0.55);
+  box-shadow: 0 10px 26px rgba(230, 160, 30, 0.3);
+}
+
+[data-theme="light"] .cv-download-btn:hover {
+  box-shadow: 0 16px 36px rgba(230, 160, 30, 0.4);
+}
+
+/* Icônes "Centres d'intérêt" : badge doré discret + icône assombrie */
+[data-theme="light"] .service-icon-box {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 60px;
+  min-height: 60px;
+  padding: 12px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, hsla(38, 90%, 48%, 0.16), hsla(38, 90%, 48%, 0.05));
+  border: 1px solid hsla(34, 85%, 42%, 0.28);
+  box-shadow: 0 4px 14px hsla(34, 85%, 42%, 0.12);
+}
+
+[data-theme="light"] .service-icon-box img {
+  filter: brightness(0.68) saturate(1.45);
+  transition: filter 0.25s ease, transform 0.25s ease;
+}
+
+[data-theme="light"] .service-item:hover .service-icon-box img {
+  filter: brightness(0.6) saturate(1.6);
+  transform: scale(1.06);
+}
+
+[data-theme="light"] .service-item:hover {
+  border-color: hsla(28, 88%, 44%, 0.4);
+  box-shadow: 0 14px 32px hsla(30, 25%, 30%, 0.14);
+}
+
+/* Timeline : pastilles plus marquées */
+[data-theme="light"] .timeline-item::after {
+  background: var(--bg-gradient-onyx);
+  border-color: hsla(28, 88%, 44%, 0.45);
+}
+
+/* Barres de progression des skills */
+[data-theme="light"] .skill-progress-bg {
+  background: hsl(30, 14%, 88%);
 }
 
 /* Smooth theme transition */
