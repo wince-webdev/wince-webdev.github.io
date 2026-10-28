@@ -27,6 +27,18 @@ document.addEventListener("DOMContentLoaded", function () {
     return from + to;
   };
 
+  // Découpe les titres de page en lettres pour l'animation
+  const splitTitleChars = () => {
+    document.querySelectorAll(".article-title").forEach((title) => {
+      const text = title.textContent;
+      title.innerHTML = [...text]
+        .map((ch, i) => ch === " "
+          ? `<span class="char" style="--i:${i}">&nbsp;</span>`
+          : `<span class="char" style="--i:${i}">${ch}</span>`)
+        .join("");
+    });
+  };
+
   // ── Title ─────────────────────────────────────────────────────────────
   innerText(select("title"), `${profileInfo.firstname} - Portfolio`);
 
@@ -711,6 +723,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (skillTitles[2]) skillTitles[2].textContent = sectionText.softSkills;
     setText(".portfolio .article-title", sectionText.projects);
     setText(".contact .article-title", sectionText.contact);
+    splitTitleChars();
     setText(".contact-section-title", sectionText.quickContact);
     setText(".form-title", sectionText.formTitle);
     const projectNote = select(".projects-info-note");
