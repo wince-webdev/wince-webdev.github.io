@@ -8,12 +8,10 @@ img {
   height: auto;
 }
 
+/* overflow-x: clip (et non hidden) : clippe sans créer de contexte
+   de scroll, ce qui casserait position:sticky de la sidebar */
 html {
-  overflow-x: hidden;
-}
-
-body {
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 /* ── Fix: Nom/Prénom sidebar - texte sur plusieurs lignes ─────────────── */

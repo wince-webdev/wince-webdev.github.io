@@ -1966,7 +1966,7 @@ textarea.form-input::-webkit-resizer {
     margin-inline: auto;
     display: flex;
     justify-content: center;
-    align-items: stretch;
+    align-items: flex-start;
     gap: 25px;
   }
 
@@ -1983,11 +1983,17 @@ textarea.form-input::-webkit-resizer {
   .sidebar {
     position: sticky;
     top: 60px;
-    max-height: max-content;
-    height: 100%;
+    align-self: flex-start;
+    height: auto;
+    max-height: calc(100vh - 80px);
+    overflow-y: auto;
     margin-bottom: 0;
     padding-top: 60px;
     z-index: 1;
+  }
+
+  .sidebar::-webkit-scrollbar {
+    width: 0;
   }
 
   .sidebar-info {
