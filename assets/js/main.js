@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", function () {
   };
 
   // ── Title ─────────────────────────────────────────────────────────────
-  innerText(select("title"), `${profileInfo.firstname} – Portfolio`);
+  innerText(select("title"), `${profileInfo.firstname} - Portfolio`);
 
   // ── Sidebar Profile ───────────────────────────────────────────────────
   (function () {
@@ -86,7 +86,7 @@ document.addEventListener("DOMContentLoaded", function () {
       (el.innerHTML = `<address>${profileInfo.fulladdress()}</address>`));
   })();
 
-  // ── About – Interests ─────────────────────────────────────────────────
+  // ── About - Interests ─────────────────────────────────────────────────
   (function () {
     const el = select(".service-list");
     if (!el) return;
@@ -102,27 +102,27 @@ document.addEventListener("DOMContentLoaded", function () {
       </li>`).join("");
   })();
 
-  // ── Resume – Education ────────────────────────────────────────────────
+  // ── Resume - Education ────────────────────────────────────────────────
   (function () {
     const el = select(".timeline-list.education");
     if (!el) return;
     el.innerHTML = resumeInfo.education.map((item) => `
       <li class="timeline-item">
         <h4 class="h4 timeline-item-title">${item.degree}</h4>
-        <h5 class="h4 univ-comp">${item.institution}, ${item.city}${item.country ? ", " + item.country : ""}</h5>
+        <h5 class="h4 univ-comp">${item.institution}${item.city ? ", " + item.city : ""}${item.country ? ", " + item.country : ""}</h5>
         <span>${durationTo(item.duration.from, item.duration.to, item.ongoing)}</span>
         <div class="timeline-text text-justify">${item.description}</div>
       </li>`).join("");
   })();
 
-  // ── Resume – Experience ───────────────────────────────────────────────
+  // ── Resume - Experience ───────────────────────────────────────────────
   (function () {
     const el = select(".timeline-list.experience");
     if (!el) return;
     el.innerHTML = resumeInfo.experience.map((item) => `
       <li class="timeline-item">
         <h4 class="h4 timeline-item-title">${item.position}</h4>
-        <h5 class="h4 univ-comp">${item.company} – ${item.city}, ${item.country}</h5>
+        <h5 class="h4 univ-comp">${item.company} - ${item.city}, ${item.country}</h5>
         <span>${durationTo(item.duration.from, item.duration.to, item.ongoing)}</span>
         <p class="timeline-text text-justify">${item.description}</p>
         ${item.achievements ? `<ul style="margin-top:8px;padding-left:16px;">${item.achievements.map((a)=>
@@ -132,7 +132,7 @@ document.addEventListener("DOMContentLoaded", function () {
       </li>`).join("");
   })();
 
-  // ── Resume – Skills (Tech) ────────────────────────────────────────────
+  // ── Resume - Skills (Tech) ────────────────────────────────────────────
   (function () {
     const el = select(".skills-list");
     if (!el) return;
@@ -141,22 +141,30 @@ document.addEventListener("DOMContentLoaded", function () {
       "laravel": "https://cdn.simpleicons.org/laravel/ff6b4a",
       "php": "https://cdn.simpleicons.org/php/8892bf",
       "javascript": "https://cdn.simpleicons.org/javascript/f7df1e",
+      "typescript": "https://cdn.simpleicons.org/typescript/3178c6",
+      "react": "https://cdn.simpleicons.org/react/61dafb",
+      "inertia": "https://cdn.simpleicons.org/inertia/929292",
       "html-css": "https://cdn.simpleicons.org/html5/e34f26",
       "bootstrap": "https://cdn.simpleicons.org/bootstrap/7952b3",
       "postgresql": "https://cdn.simpleicons.org/postgresql/4169e1",
       "mysql": "https://cdn.simpleicons.org/mysql/4479a1",
       "api-rest": "https://cdn.simpleicons.org/openapiinitiative/6ba539",
       "sanctum": "https://cdn.simpleicons.org/laravel/ff6b4a",
-      "breeze": "https://cdn.simpleicons.org/laravel/ff6b4a",
       "spatie": "https://cdn.simpleicons.org/laravel/ff6b4a",
       "git": "https://cdn.simpleicons.org/git/f05032",
       "postman": "https://cdn.simpleicons.org/postman/ff6c37",
       "docker": "https://cdn.simpleicons.org/docker/2496ed",
       "linux": "https://cdn.simpleicons.org/linux/fcc624",
       "python": "https://cdn.simpleicons.org/python/3776ab",
+      "java": "https://cdn.simpleicons.org/openjdk/ffffff",
       "tailwind": "https://cdn.simpleicons.org/tailwindcss/06b6d4",
       "twig": "https://cdn.simpleicons.org/twig/8bc34a",
       "doctrine": "https://cdn.simpleicons.org/doctrine/fc6a31",
+      "alpine": "https://cdn.simpleicons.org/alpinedotjs/8bc0d0",
+      "vite": "https://cdn.simpleicons.org/vite/646cff",
+      "uml": "https://cdn.simpleicons.org/uml/ffffff",
+      "mvc": "https://cdn.simpleicons.org/laravel/ff6b4a",
+      "genai": "https://cdn.simpleicons.org/googlegemini/8e75b2",
     };
     el.innerHTML = resumeInfo.skills.map((skill) => `
       <li class="skills-item skill-card">
@@ -176,7 +184,7 @@ document.addEventListener("DOMContentLoaded", function () {
       </li>`).join("");
   })();
 
-  // ── Resume – Languages ────────────────────────────────────────────────
+  // ── Resume - Languages ────────────────────────────────────────────────
   (function () {
     const el = select(".languages-grid");
     if (!el) return;
@@ -190,7 +198,7 @@ document.addEventListener("DOMContentLoaded", function () {
       </div>`).join("");
   })();
 
-  // ── Resume – Soft Skills ──────────────────────────────────────────────
+  // ── Resume - Soft Skills ──────────────────────────────────────────────
   (function () {
     const el = select(".soft-skills-list");
     if (!el) return;
@@ -207,7 +215,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // Image ou placeholder emoji
       const imgHtml = item.imgSrc
-        ? `<img src="${item.imgSrc}" alt="Capture – ${item.title}" loading="lazy" />`
+        ? `<img src="${item.imgSrc}" alt="Capture - ${item.title}" loading="lazy" />`
         : `<div class="project-img-placeholder" title="${item.title}">
              ${item.imgPlaceholder || "🖥️"}
            </div>`;
@@ -322,7 +330,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const i18n = {
     fr: {
       meta: {
-        title: `${profileInfo.firstname} – Portfolio`,
+        title: `${profileInfo.firstname} - Portfolio`,
         degree: "Développeur FullStack",
         present: "présent",
         see: "Voir",
@@ -357,11 +365,11 @@ document.addEventListener("DOMContentLoaded", function () {
         formTitle: "Envoyez-moi un message",
       },
       aboutHtml: `
-        <p>Bonjour ! Je suis <strong>Noukpo Winceslas ADJIHANOU</strong>, développeur Full Stack PHP basé à Abomey-Calavi, Cotonou (Bénin). Fort de plus de 3 ans d'expérience professionnelle, je conçois et maintiens des applications web robustes pour des institutions publiques et privées béninoises.</p>
-        <p>Titulaire d'une Licence Professionnelle en Systèmes Informatiques et Logiciels (IRGIB Africa University), je me suis spécialisé dans l'écosystème <strong>Symfony / Laravel / PHP</strong>. Chez <strong>COSIT Bénin</strong>, je contribue activement à la digitalisation de plusieurs ministères et organismes nationaux via des modules ERP variés : suivi-évaluation, passation des marchés, ressources humaines, comptabilité générale et gestion de stock.</p>
-        <p>En parallèle, je développe mes compétences <strong>Laravel 12</strong> à travers des projets personnels concrets, notamment <strong>ExpenseFlow</strong> : application de gestion financière avec API REST Sanctum, rôles et permissions Spatie, dashboard Chart.js et export PDF. Disponible sur GitHub.</p>
-        <p>Au-delà du code, je suis <strong>maître de stage</strong> et mentor pour les étudiants des écoles Faucon et INSPEI que j'accompagne dans leurs projets de soutenance et de stage académique. Transmettre, expliquer et faire grandir les autres est pour moi aussi important que la technique.</p>
-        <p>Je maîtrise le déploiement sur serveurs Linux (cPanel, Grizzly), la conception d'API REST sécurisées, et continue d'élargir mes compétences (Docker, cloud) pour rester un développeur moderne et efficace.</p>`,
+        <p>Bonjour ! Je suis <strong>Noukpo Winceslas ADJIHANOU</strong>, développeur Full Stack PHP spécialisé en Symfony et Laravel, basé à Abomey-Calavi, Cotonou (Bénin). Fort de plus de 3 ans d'expérience professionnelle, je conçois, développe et maintiens des applications web et ERP métiers robustes pour des institutions publiques et privées.</p>
+        <p>Titulaire d'une Licence Professionnelle en Systèmes Informatiques et Logiciels (IRGIB Africa University), je me suis spécialisé dans l'écosystème <strong>Symfony / Laravel / PHP</strong>. Chez <strong>COSIT Bénin</strong>, je contribue activement à la digitalisation de plusieurs ministères et organismes nationaux via des modules ERP variés : suivi-évaluation, passation des marchés, ressources humaines, comptabilité générale et gestion de stock - avec des API REST sécurisées et un déploiement Linux.</p>
+        <p>En parallèle, je développe des projets personnels concrets en <strong>Laravel 12</strong>, notamment <strong>Locatia</strong> : plateforme multi-tenant de gestion locative (React 19, PostgreSQL, reçus PDF vérifiables par QR, signature électronique) destinée aux propriétaires de la diaspora et aux agences immobilières, et <strong>ExpenseFlow</strong> : application de gestion financière avec API REST Sanctum et permissions Spatie.</p>
+        <p>Au-delà du code, je suis <strong>maître de stage et mentor</strong> pour les étudiants des écoles Faucon et INSPEI que j'accompagne dans leurs projets de soutenance et de stage académique. Disponible <strong>full-remote à l'international (GMT+1)</strong>, ouvert aux missions freelance et aux opportunités de relocalisation.</p>
+        <p>Je maîtrise le déploiement sur serveurs Linux (SSH, cPanel), la conception d'API REST sécurisées, et continue d'élargir mes compétences (Docker, IA générative, Google Cloud) pour rester un développeur moderne et efficace.</p>`,
       contact: {
         labels: ["E-mail", "Téléphone", "WhatsApp", "Localisation"],
         whatsapp: "Ouvrir la discussion →",
@@ -385,8 +393,8 @@ document.addEventListener("DOMContentLoaded", function () {
     },
     en: {
       meta: {
-        title: `${profileInfo.firstname} – Portfolio`,
-        degree: "Full-Stack Developer",
+        title: `${profileInfo.firstname} - Portfolio`,
+        degree: "Full Stack PHP Developer",
         present: "present",
         see: "View",
         github: "View on GitHub",
@@ -420,11 +428,11 @@ document.addEventListener("DOMContentLoaded", function () {
         formTitle: "Send me a message",
       },
       aboutHtml: `
-        <p>Hello! I am <strong>Noukpo Winceslas ADJIHANOU</strong>, a PHP Full-Stack Developer based in Abomey-Calavi, Cotonou, Benin. With more than 3 years of professional experience, I design and maintain robust web applications for public institutions and private organizations.</p>
-        <p>I hold a Professional Bachelor's Degree in Computer Systems and Software from IRGIB Africa University, and I specialize in the <strong>Symfony / Laravel / PHP</strong> ecosystem. At <strong>COSIT Benin</strong>, I actively contribute to the digital transformation of ministries and national organizations through ERP modules covering monitoring and evaluation, procurement, HR, general accounting and stock management.</p>
-        <p>Alongside my professional work, I strengthen my <strong>Laravel 12</strong> skills through concrete personal projects such as <strong>ExpenseFlow</strong>, a financial management application with REST APIs, Sanctum authentication, Spatie roles and permissions, Chart.js dashboards and PDF exports.</p>
-        <p>Beyond coding, I serve as a <strong>student internship supervisor</strong> and mentor for students from Faucon and INSPEI schools, helping them with academic internship and graduation projects. Sharing knowledge and helping others grow is an important part of my work.</p>
-        <p>I am comfortable with Linux deployment environments (cPanel, Grizzly), secure REST API design, and I keep expanding my skills in Docker, cloud workflows and modern development practices.</p>`,
+        <p>Hello! I am <strong>Noukpo Winceslas ADJIHANOU</strong>, a PHP Full-Stack Developer specialized in Symfony and Laravel, based in Abomey-Calavi, Cotonou, Benin. With more than 3 years of professional experience, I design, develop and maintain robust web applications and business ERPs for public and private institutions.</p>
+        <p>Holding a Professional Bachelor's Degree in Computer Systems and Software (IRGIB Africa University), I specialize in the <strong>Symfony / Laravel / PHP</strong> ecosystem. At <strong>COSIT Benin</strong>, I actively contribute to the digital transformation of ministries and national organizations through ERP modules: monitoring and evaluation, procurement, HR/payroll, general accounting and stock management - with secure REST APIs and Linux deployment.</p>
+        <p>Alongside my professional work, I build concrete <strong>Laravel 12</strong> personal projects, notably <strong>Locatia</strong>, a multi-tenant rental management platform (React 19, PostgreSQL, QR-verified PDF receipts, e-signatures) for owners in the diaspora and real estate agencies, and <strong>ExpenseFlow</strong>, a financial management app with Sanctum REST APIs and Spatie roles and permissions.</p>
+        <p>Beyond coding, I serve as an <strong>internship supervisor and mentor</strong> for students from Faucon and INSPEI schools, guiding them through academic internships and graduation projects. Available <strong>full-remote internationally (GMT+1)</strong>, open to freelance missions and relocation opportunities.</p>
+        <p>I am comfortable with Linux deployment (SSH, cPanel), secure REST API design, and I keep expanding my skills (Docker, Generative AI, Google Cloud) to stay a modern and efficient developer.</p>`,
       contact: {
         labels: ["Email", "Phone", "WhatsApp", "Location"],
         whatsapp: "Open chat →",
@@ -446,61 +454,67 @@ document.addEventListener("DOMContentLoaded", function () {
         website: "Website", degree: "Degree", address: "Address", phone: "Phone", email: "Email", whatsapp: "WhatsApp",
       },
       education: {
+        gcloud: {
+          degree: "Google Cloud Skills Certification - Introduction to Generative AI",
+          description: "<p>Fundamentals of generative AI, large language models (LLMs) and Google tools for building AI applications.</p>",
+        },
         irgib: {
-          degree: "Professional Bachelor's Degree – Computer Systems and Software",
+          degree: "Professional Bachelor's Degree - Computer Systems and Software",
           country: "Benin",
           description: "<p>Multidisciplinary training covering software design and development, information system architecture, databases and project management methods. Practical coursework strengthened my skills in Laravel, Symfony, PHP, JavaScript, Java, HTML5, CSS3, C++, MySQL, UML, Merise, as well as fundamentals of cybersecurity and networking.</p>",
         },
+        "symfony-formation": {
+          degree: "Backend PHP/Symfony Training",
+          description: "<p>Web development with PHP / Symfony, SQL queries and backend architecture, development best practices.</p>",
+        },
         ceg2: {
-          degree: "Scientific Baccalaureate – Series D",
+          degree: "Scientific Baccalaureate - Series D",
           city: "Benin",
           description: "<p>Obtained a scientific high school diploma, Series D.</p>",
         },
       },
       experience: {
         "cosit-dev": {
-          position: "Full-Stack Developer & Internship Supervisor",
+          position: "Full-Stack Developer",
           country: "Benin",
-          description: "Development of ERP modules for national institutions, deployment on Linux servers (cPanel & Grizzly), generation and documentation of Symfony REST APIs, and supervision of student interns.",
+          description: "Design, optimization and maintenance of web applications and business ERPs in PHP/Symfony for public and private institutions.",
           achievements: [
-            "Ministry of Health – advanced security, user action tracking and connected-device recognition.",
-            "Ministry of Living Environment and Transport (MCVT) – Monitoring & Evaluation module.",
-            "Ministry of Planning / PPBSE – Monitoring & Evaluation, Planning and Programming modules.",
-            "FNDA – stock management module.",
-            "INF (SIG) – materials accounting and employee career management module.",
-            "INRAB, PAVICC, PDI-CVA, ONAB, SISE_PREMOPEF – development and integration of business modules.",
-            "SIG UNSTIM – complete API documentation.",
-            "Deployment of software solutions on Linux servers (cPanel and Grizzly).",
-            "Internship supervision: mentoring students from Faucon school and supporting their web graduation projects.",
+            "Business ERP development: General accounting, HR/Payroll, Budget tracking, Stock management (PHP/Symfony).",
+            "Institutional deployment: integration and delivery of critical solutions and Monitoring & Evaluation systems for major state and ministerial structures (Ministry of Health, Ministry of Planning - Congo, ABSSA, ABT, ANaGeM, INF, UNSTIM, FNDA, INRAB, MCVT, PAVICC).",
+            "Architecture & APIs: design, securing and generation of robust REST APIs with Symfony.",
+            "DevOps & Infrastructure: application deployment and maintenance on remote Linux servers (SSH, cPanel).",
+            "User training & support: training users, supporting them until full adoption, fixing issues and writing per-module user guides.",
+            "Technical mentoring: supervision of final-year projects and internships for 2nd and 3rd year students (INSPEI, FAUCON).",
           ],
         },
         "cosit-pro": {
-          position: "Web Developer Intern – Professional Internship",
+          position: "Full-Stack Developer Intern - Professional Internship",
           country: "Benin",
-          description: "Professional internship focused on feature development and data entry/verification for national ERP platforms.",
+          description: "Professional internship focused on feature development and data entry/processing on national ERP platforms.",
           achievements: [
-            "SIG INF – development of an employee career management feature.",
-            "Data entry and verification on ANEPIJ and PAVICC platforms.",
+            "Development of an employee career management module for the National Institute for Women (INF) SIG, an existing Symfony project.",
+            "Data entry and processing on the ANEPIJ and PAVICC platforms.",
           ],
         },
         "cosit-acad": {
-          position: "Web Developer Intern – Academic Internship",
+          position: "Web Developer Intern - Academic Internship",
           country: "Benin",
-          description: "First company internship with active participation in the development of several national ERP platforms.",
+          description: "First company internship with active participation in the development and maintenance of internal web applications.",
           achievements: [
-            "Contribution to INRAB, UNSTIM, ABSSA, ONAB, FNDA, La Poste, PRESREDI, ANEPIJ and SBEE LPEDER platforms.",
-            "Front-end integration, data entry and feature development on FNDA, La Poste, INRAB, ABSSA and PRESREDI.",
+            "Contribution to the development and maintenance of several internal web applications.",
           ],
         },
       },
       languages: [
-        { name: "French", flag: "🇫🇷", level: "Fluent (C1)" },
+        { name: "French", flag: "🇫🇷", level: "Advanced" },
         { name: "English", flag: "🇬🇧", level: "Intermediate (B1)" },
         { name: "Fon", flag: "🇧🇯", level: "Native language" },
       ],
       softSkills: [
-        "Team spirit", "Rigor", "Autonomy", "Curiosity",
-        "Organization", "Mentoring", "Dynamism", "Adaptability",
+        "Leadership", "Team management", "Availability", "Rigor",
+        "Attention to detail", "Sense of responsibility", "Autonomy",
+        "Team spirit", "International & multicultural environment",
+        "Professional ethics", "Adaptability",
       ],
       interests: {
         dev: { title: "Web Development", description: "Passionate about designing robust and high-performance web applications, from architecture definition to production deployment on Linux servers." },
@@ -511,22 +525,23 @@ document.addEventListener("DOMContentLoaded", function () {
         ethics: { title: "Security & Code Quality", description: "Careful about application security and code quality, I apply best practices for traceability, authentication and permission management." },
       },
       projects: {
-        anagem: { title: "SIG ANaGeM – National Market Management Agency", description: "Team contribution to an administrative ERP integrating procurement, stock management, accounting, planning, monitoring and evaluation, budget tracking, HR and payroll modules for the National Market Management Agency." },
-        unstim: { title: "SIG UNSTIM – National University of Sciences, Technology, Engineering and Mathematics", description: "Contribution to a university ERP system and REST API design for module interoperability: procurement, materials accounting, general accounting, planning, monitoring and evaluation, budget tracking, HR and payroll." },
-        abssa: { title: "SISE ABSSA – Beninese Food Safety Agency", description: "Monitoring & Evaluation and Procurement modules for ABSSA, including annual work-plan management and procurement tracking." },
-        "ms-sante": { title: "MS – Ministry of Health", description: "Team development of procurement and document-archiving modules. Implementation of advanced security features, user action traceability and connected-device recognition." },
-        "ms-cadrevie": { title: "SISE MCVT – Ministry of Living Environment and Transport", description: "Integrated Monitoring and Evaluation System, developed as part of a team for planning, monitoring and evaluation workflows." },
-        "fnda-stock": { title: "SIG FNDA – National Fund for Agricultural Development", description: "Development of the stock management module with movement tracking, critical threshold alerts and analytical dashboards." },
-        "inf-sig": { title: "SIG INF – National Institute for Women", description: "Materials accounting module and development of an employee career management feature." },
-        pavicc: { title: "SIG PAVICC – City Adaptation to Climate Change Program", description: "Contribution to an ERP covering planning, monitoring and evaluation, budget tracking, accounting, HR, stock management and project management." },
-        "benin-tourisme": { title: "SIG ABT – Benin Tourism Agency", description: "Team development of an ERP with procurement, materials accounting, general accounting, budget tracking, planning, monitoring and evaluation modules." },
-        ppbse: { title: "SIG PPBSE – Ministry of Planning, Statistics and Regional Integration", description: "Team development of Planning, Monitoring & Evaluation and Budgeting modules within the computerized PPBSE management chain." },
-        inrab: { title: "SISE INRAB – Monitoring & Evaluation Module", description: "Team development of Monitoring & Evaluation and Procurement modules for the National Institute of Agricultural Research of Benin, including front-end integration." },
-        "pdi-cva": { title: "SIGPDI-CVA – Integrated Agricultural Value Chains Development Project", description: "Contribution to an ERP covering procurement, materials accounting, general accounting, planning, monitoring and evaluation, budget tracking, HR and payroll." },
-        premopef: { title: "SISE_PREMOPEF – Smallholder and Women Livelihoods Support Project", description: "Integrated Monitoring and Evaluation System developed as part of a team for Monitoring & Evaluation and Procurement modules." },
-        "pndf-karite": { title: "SISE_PNDF-KARITE – Shea Value Chain Data Management System", description: "Data management system for the shea value chain, supporting production improvement, product quality and value-chain governance." },
-        expenseflow: { title: "ExpenseFlow – Company Financial Management Application", description: "Web application for managing company expenses and revenues, built with Laravel 12. Includes secure REST APIs with Sanctum, roles and permissions, PDF/Excel exports, secure authentication and analytical dashboards." },
-        smartcourier: { title: "SmartCourier System – Administrative Mail Management System", description: "Symfony web application for administrative mail tracking. Includes users, departments, mail categories, roles, permissions, incoming/outgoing mail tracking, statistical dashboards and secure access control." },
+        anagem: { title: "SIG ANaGeM - National Market Management Agency", description: "Team contribution to an administrative ERP integrating procurement, stock management, accounting, planning, monitoring and evaluation, budget tracking, HR and payroll modules for the National Market Management Agency." },
+        unstim: { title: "SIG UNSTIM - National University of Sciences, Technology, Engineering and Mathematics", description: "Contribution to a university ERP system and REST API design for module interoperability: procurement, materials accounting, general accounting, planning, monitoring and evaluation, budget tracking, HR and payroll." },
+        abssa: { title: "SISE ABSSA - Beninese Food Safety Agency", description: "Monitoring & Evaluation and Procurement modules for ABSSA, including annual work-plan management and procurement tracking." },
+        "ms-sante": { title: "MS - Ministry of Health", description: "Team development of procurement and document-archiving modules. Implementation of advanced security features, user action traceability and connected-device recognition." },
+        "ms-cadrevie": { title: "SISE MCVT - Ministry of Living Environment and Transport", description: "Integrated Monitoring and Evaluation System, developed as part of a team for planning, monitoring and evaluation workflows." },
+        "fnda-stock": { title: "SIG FNDA - National Fund for Agricultural Development", description: "Development of the stock management module with movement tracking, critical threshold alerts and analytical dashboards." },
+        "inf-sig": { title: "SIG INF - National Institute for Women", description: "Materials accounting module and development of an employee career management feature." },
+        pavicc: { title: "SIG PAVICC - City Adaptation to Climate Change Program", description: "Contribution to an ERP covering planning, monitoring and evaluation, budget tracking, accounting, HR, stock management and project management." },
+        "benin-tourisme": { title: "SIG ABT - Benin Tourism Agency", description: "Team development of an ERP with procurement, materials accounting, general accounting, budget tracking, planning, monitoring and evaluation modules." },
+        ppbse: { title: "SIG PPBSE - Ministry of Planning, Statistics and Regional Integration", description: "Team development of Planning, Monitoring & Evaluation and Budgeting modules within the computerized PPBSE management chain (Republic of Congo)." },
+        inrab: { title: "SISE INRAB - Monitoring & Evaluation Module", description: "Team development of Monitoring & Evaluation and Procurement modules for the National Institute of Agricultural Research of Benin, including front-end integration." },
+        "pdi-cva": { title: "SIGPDI-CVA - Integrated Agricultural Value Chains Development Project", description: "Contribution to an ERP covering procurement, materials accounting, general accounting, planning, monitoring and evaluation, budget tracking, HR and payroll." },
+        premopef: { title: "SISE_PREMOPEF - Smallholder and Women Livelihoods Support Project", description: "Integrated Monitoring and Evaluation System developed as part of a team for Monitoring & Evaluation and Procurement modules." },
+        "pndf-karite": { title: "SISE_PNDF-KARITE - Shea Value Chain Data Management System", description: "Data management system for the shea value chain, supporting production improvement, product quality and value-chain governance." },
+        locatia: { title: "Locatia - Rental Management Platform (Benin & Diaspora)", description: "Multi-tenant rental management web app (properties, tenants, leases, rent, payments) for owners - including those in the diaspora - and real estate agencies. Laravel Fortify authentication, strict multi-tenant isolation per organization, Spatie roles and permissions (6 roles, 45 permissions) and audit log. Automatic PDF receipts and contracts (DomPDF) with verification QR codes, amounts in words and electronic signature (SHA-256). 5-step lease assistant with automatic schedules, 3-click payments with automatic allocation to the oldest outstanding balance, WhatsApp reminders, KPI dashboard with charts (Recharts), CSV/PDF reports, tenant portal and global Ctrl+K search. Quality: 100 automated tests (Pest), Laravel Pint, ESLint/Prettier." },
+        expenseflow: { title: "ExpenseFlow - Company Financial Management Application", description: "Web application for managing company expenses and revenues, built with Laravel 12. Secure authentication with Laravel Breeze and Sanctum, full CRUD for expenses, revenues, categories and users, token-secured REST APIs, Spatie roles and permissions, PostgreSQL database, DomPDF exports and API testing with Postman." },
+        smartcourier: { title: "SmartCourier System - Administrative Mail Management System", description: "Web system for centralizing and tracking incoming/outgoing mail, designed to optimize administrative workflows in public institutions. Secure authentication, strict access control and fine-grained role management (EasyAdmin / Doctrine ORM), analytical dashboard with real-time charts (Chart.js and AJAX)." },
       },
     },
   };
@@ -576,7 +591,7 @@ document.addEventListener("DOMContentLoaded", function () {
         return `
           <li class="timeline-item">
             <h4 class="h4 timeline-item-title">${item.degree}</h4>
-            <h5 class="h4 univ-comp">${item.institution}, ${item.city}${item.country ? ", " + item.country : ""}</h5>
+            <h5 class="h4 univ-comp">${item.institution}${item.city ? ", " + item.city : ""}${item.country ? ", " + item.country : ""}</h5>
             <span>${durationTo(item.duration.from, item.duration.to, item.ongoing).replace("présent", langPack().meta.present)}</span>
             <div class="timeline-text text-justify">${item.description}</div>
           </li>`;
@@ -589,7 +604,7 @@ document.addEventListener("DOMContentLoaded", function () {
         return `
           <li class="timeline-item">
             <h4 class="h4 timeline-item-title">${item.position}</h4>
-            <h5 class="h4 univ-comp">${item.company} – ${item.city}, ${item.country}</h5>
+            <h5 class="h4 univ-comp">${item.company} - ${item.city}, ${item.country}</h5>
             <span>${durationTo(item.duration.from, item.duration.to, item.ongoing).replace("présent", langPack().meta.present)}</span>
             <p class="timeline-text text-justify">${item.description}</p>
             ${item.achievements ? `<ul style="margin-top:8px;padding-left:16px;">${item.achievements.map((a) =>

@@ -20,9 +20,9 @@ const profileInfo = {
   fullname() { return `${this.firstname} ${this.surname}`; },
 
   email:   "adjihanounkpwinceslas@gmail.com",
-  major:   "Développeur FullStack",
-  title:   { short: "Dev.", long: "Développeur FullStack" },
-  degree:  "FullStack",
+  major:   "Développeur Full Stack PHP",
+  title:   { short: "Dev.", long: "Développeur Full Stack PHP" },
+  degree:  "Full Stack",
   fulldegree() { return `${this.degree} ${this.title.long}`; },
 
   imgSrc:  "assets/images/profil_wince.jpg",
@@ -70,16 +70,40 @@ const resumeInfo = {
 
   education: [
     {
+      id: "gcloud",
+      institution: "Google Cloud",
+      shortname:   "Google Cloud",
+      city: "", country: "",
+      degree: "Certification Cloud Skills - Introduction to Generative AI",
+      grade:  null,
+      duration: { from: 2026, to: 2026 },
+      ongoing: false,
+      description:
+        "<p>Principes fondamentaux de l'IA générative, grands modèles de langage (LLM) et outils Google pour le développement d'applications d'IA.</p>",
+    },
+    {
       id: "irgib",
       institution: "IRGIB Africa University",
       shortname:   "IRGIB",
       city: "Cotonou", country: "Bénin",
-      degree: "Licence Professionnelle d'État – Systèmes Informatiques et Logiciels",
+      degree: "Licence Professionnelle d'État - Systèmes Informatiques et Logiciels (SIL)",
       grade:  null,
-      duration: { from: 2020, to: 2023 },
+      duration: { from: 2022, to: 2023 },
       ongoing: false,
       description:
         "<p>Formation pluridisciplinaire couvrant la conception et le développement de logiciels, l'architecture des systèmes d'information, les bases de données et les méthodes de gestion de projet. Les enseignements pratiques ont permis de maîtriser Laravel, Symfony, PHP, JavaScript, Java, HTML5, CSS3, C++, MySQL, UML et Merise, ainsi que des notions en sécurité informatique et en réseaux.</p>",
+    },
+    {
+      id: "symfony-formation",
+      institution: "Formation Backend PHP/Symfony",
+      shortname:   "PHP / Symfony",
+      city: "", country: "",
+      degree: "Formation Backend PHP/Symfony",
+      grade:  null,
+      duration: { from: 2023, to: 2023 },
+      ongoing: false,
+      description:
+        "<p>Développement web avec PHP / Symfony, requêtes SQL et architecture backend, bonnes pratiques de développement.</p>",
     },
     {
       id: "ceg2",
@@ -98,108 +122,95 @@ const resumeInfo = {
     {
       id: "cosit-dev",
       company:  "COSIT Bénin",
-      position: "Développeur FullStack & Maître de Stage",
-      duration: { from: 2023, to: currentYear },
+      position: "Développeur Full Stack",
+      duration: { from: "12/2023", to: currentYear },
       ongoing:  true,
       city: "Cotonou", country: "Bénin",
       description:
-        "Développement de modules ERP pour plusieurs structures nationales, déploiement sur serveurs Linux (cPanel & Grizzly), génération et documentation d'API REST Symfony, et encadrement des étudiants stagiaires.",
+        "Conception, optimisation et maintenance d'applications web et ERP métiers en PHP/Symfony pour des institutions publiques et privées.",
       achievements: [
-        "Ministère de la Santé – Sécurité avancée, traçage des actions par utilisateur avec reconnaissance des appareils connectés.",
-        "Ministère du Cadre de Vie et des Transports (MCVT) – Module Suivi & Évaluation.",
-        "Ministère du Plan / PPBSE – Modules Suivi & Évaluation, Planification, Programmation.",
-        "FNDA – Module de gestion de stock.",
-        "INF (SIG) – Comptabilité Matières (gestion de stock) + module gestion de carrière des employés.",
-        "INRAB, PAVICC, PDI-CVA, ONAB, SISE_PREMOPEF – Développement et intégration de modules métier variés.",
-        "SIG UNSTIM – Documentation complète des API.",
-        "Déploiement des logiciels sur serveurs Linux (cPanel et Grizzly).",
-        "Maître de stage : encadrement des étudiants de l'école Faucon et accompagnement de leurs projets web de soutenance.",
+        "Développement d'ERP métiers : Comptabilité générale, RH/Paie, Suivi budgétaire, Gestion de stock (PHP/Symfony).",
+        "Déploiement institutionnel : intégration et livraison de solutions critiques et de systèmes de Suivi-Évaluation pour des structures étatiques et ministérielles majeures (Ministère de la Santé, Ministère du Plan - Congo, ABSSA, ABT, ANaGeM, INF, UNSTIM, FNDA, INRAB, MCVT, PAVICC).",
+        "Architecture & API : conception, sécurisation et génération d'API REST robustes avec Symfony.",
+        "DevOps & Infrastructure : déploiement et maintenance applicative sur serveurs Linux distants (SSH, cPanel).",
+        "Formation & accompagnement client : formation des utilisateurs, suivi jusqu'à la prise en main, correction des anomalies et conception de guides d'utilisation par module.",
+        "Mentorat technique : encadrement, suivi de projets de soutenance et stages pour les étudiants de 2e et 3e année (INSPEI, FAUCON).",
       ],
     },
     {
       id: "cosit-pro",
       company:  "COSIT Bénin",
-      position: "Stagiaire – Développeur Web (Stage Professionnel)",
-      duration: { from: 2023, to: 2023 },
+      position: "Stagiaire Développeur Full Stack (Stage Professionnel)",
+      duration: { from: "06/2023", to: "11/2023" },
       ongoing:  false,
       city: "Cotonou", country: "Bénin",
       description:
         "Stage professionnel axé sur le développement de fonctionnalités spécifiques et l'insertion de données sur des plateformes ERP nationales.",
       achievements: [
-        "SIG INF – Développement de la fonctionnalité de gestion de carrière des employés.",
-        "Insertion et vérification des données sur les plateformes ANEPIJ et PAVICC.",
+        "Développement d'un module de gestion de carrière des employés pour le SIG de l'Institut National de la Femme (INF), projet Symfony existant.",
+        "Insertion et traitement des données sur les plateformes ANEPIJ et PAVICC.",
       ],
     },
     {
       id: "cosit-acad",
       company:  "COSIT Bénin",
-      position: "Stagiaire – Développeur Web (Stage Académique)",
-      duration: { from: "09/2022", to: "12/2023" },
+      position: "Stagiaire Développeur Web (Stage Académique)",
+      duration: { from: "09/2022", to: "12/2022" },
       ongoing:  false,
       city: "Cotonou", country: "Bénin",
       description:
-        "Premier stage en entreprise : participation active au développement de plusieurs plateformes ERP nationales.",
+        "Premier stage en entreprise : participation active au développement et à la maintenance d'applications web internes.",
       achievements: [
-        "Contribution aux plateformes : INRAB, UNSTIM, ABSSA, ONAB, FNDA, La Poste, PRESREDI, ANEPIJ, SBEE LPEDER.",
-        "Travaux d'intégration front-end, insertion de données et développement de fonctionnalités sur FNDA, La Poste, INRAB, ABSSA et PRESREDI.",
+        "Contribution au développement et à la maintenance de plusieurs applications web internes.",
       ],
     },
   ],
 
-  // skills: [
-  //   { id: "symfony",    name: "Symfony Framework", level: 85 },
-  //   { id: "laravel",    name: "Laravel (Level)", level: 70 },
-  //   { id: "laravel", name: "Laravel Framework", level: 70 },
-  //   { id: "php",        name: "PHP",            level: 82 },
-  //   { id: "javascript", name: "JavaScript",     level: 75 },
-  //   { id: "html-css",   name: "HTML / CSS",     level: 90 },
-  //   { id: "bootstrap",  name: "Bootstrap",      level: 85 },
-  //   { id: "mysql",      name: "MySQL / SQL",    level: 78 },
-  //   { id: "api-rest",   name: "API REST",       level: 80 },
-  //   { id: "git",        name: "Git / GitHub",   level: 72 },
-  //   { id: "docker",     name: "Docker (bases)", level: 40 },
-  //   { id: "linux",      name: "Linux / cPanel / Grizzly", level: 65 },
-  //   { id: "python",     name: "Python",         level: 40 },
-  // ],
-
   skills: [
-  { id: "symfony",        name: "Symfony Framework", level: 85 },
-  { id: "laravel",        name: "Laravel Framework", level: 70 },
-  { id: "php",            name: "PHP", level: 82 },
-  { id: "javascript",     name: "JavaScript", level: 75 },
-  { id: "html-css",       name: "HTML / CSS", level: 90 },
-  { id: "bootstrap",      name: "Bootstrap", level: 85 },
+    { id: "php",            name: "PHP (8+)", level: 88 },
+    { id: "laravel",        name: "Laravel", level: 85 },
+    { id: "symfony",        name: "Symfony", level: 85 },
+    { id: "api-rest",       name: "API REST (Sanctum / API Platform)", level: 82 },
+    { id: "mvc",            name: "Architecture MVC", level: 82 },
+    { id: "javascript",     name: "JavaScript", level: 78 },
+    { id: "typescript",     name: "TypeScript", level: 70 },
+    { id: "react",          name: "React", level: 72 },
+    { id: "inertia",        name: "Inertia.js", level: 70 },
 
-  { id: "postgresql",     name: "PostgreSQL", level: 72 },
-  { id: "mysql",          name: "MySQL / SQL", level: 78 },
+    { id: "html-css",       name: "HTML5 / CSS3", level: 90 },
+    { id: "tailwind",       name: "Tailwind CSS", level: 82 },
+    { id: "bootstrap",      name: "Bootstrap", level: 85 },
+    { id: "twig",           name: "Twig / Blade", level: 80 },
+    { id: "alpine",         name: "Alpine.js", level: 68 },
+    { id: "vite",           name: "Vite", level: 70 },
 
-  { id: "api-rest",       name: "API REST", level: 80 },
-  { id: "sanctum",        name: "Laravel Sanctum", level: 70 },
-  { id: "breeze",         name: "Laravel Breeze", level: 68 },
-  { id: "spatie",         name: "Spatie Permission", level: 65 },
+    { id: "postgresql",     name: "PostgreSQL", level: 80 },
+    { id: "mysql",          name: "MySQL / SQL", level: 80 },
+    { id: "doctrine",       name: "Doctrine ORM", level: 78 },
+    { id: "sanctum",        name: "Laravel Sanctum", level: 75 },
+    { id: "spatie",         name: "Spatie Permission", level: 72 },
 
-  { id: "git",            name: "Git / GitHub", level: 72 },
-  { id: "postman",        name: "Postman API Testing", level: 70 },
-
-  { id: "docker",         name: "Docker (bases)", level: 40 },
-  { id: "linux",          name: "Linux / cPanel / Grizzly", level: 65 },
-  { id: "python",         name: "Python", level: 40 },
-
-  { id: "tailwind", name: "Tailwind CSS", level: 72 },
-  { id: "twig", name: "Twig", level: 75 },
-  { id: "doctrine", name: "Doctrine ORM", level: 78 },
-],
+    { id: "git",            name: "Git / GitHub", level: 78 },
+    { id: "postman",        name: "Postman", level: 75 },
+    { id: "docker",         name: "Docker (bases)", level: 45 },
+    { id: "uml",            name: "UML", level: 65 },
+    { id: "linux",          name: "Linux / SSH / cPanel", level: 72 },
+    { id: "python",         name: "Python", level: 45 },
+    { id: "java",           name: "Java", level: 45 },
+    { id: "genai",          name: "IA Générative / Google Cloud", level: 55 },
+  ],
 
   languages: [
-    { name: "Français",  flag: "🇫🇷", level: "Courant (C1)" },
+    { name: "Français",  flag: "🇫🇷", level: "Avancé" },
     { name: "Anglais",   flag: "🇬🇧", level: "Intermédiaire (B1)" },
     { name: "Fon",       flag: "🇧🇯", level: "Langue maternelle" },
-    //{ name: "Yoruba",    flag: "🇧🇯", level: "Notions" },
   ],
 
   softSkills: [
-    "Esprit d'équipe", "Rigueur", "Autonomie", "Curiosité",
-    "Organisation", "Pédagogie (Mentorat)", "Dynamisme", "Adaptabilité",
+    "Leadership", "Gestion d'équipe", "Disponibilité", "Rigueur",
+    "Attention aux détails", "Sens des responsabilités", "Autonomie",
+    "Esprit d'équipe", "Environnement international & multiculturel",
+    "Éthique professionnelle", "Capacité d'adaptation",
   ],
 };
 
@@ -208,7 +219,7 @@ const projects = [
   // ── Entreprise ─────────────────────────────────────────────
     {
     id: "anagem",
-    title: "SIG ANaGeM – Agence Nationale de Gestion des Marchés",
+    title: "SIG ANaGeM - Agence Nationale de Gestion des Marchés",
     category: "Entreprise",
     type: "enterprise",
     imgSrc: "assets/images/anagemlogin.png",
@@ -219,7 +230,7 @@ const projects = [
   },
    {
     id: "unstim",
-    title: "SIG UNSTIM – Université Nationale des Sciences, Technologies, Ingénierie et Mathématiques (UNSTIM)",
+    title: "SIG UNSTIM - Université Nationale des Sciences, Technologies, Ingénierie et Mathématiques (UNSTIM)",
     category: "Entreprise",
     type: "enterprise",
     imgSrc: "assets/images/unstim cast login.png",
@@ -230,7 +241,7 @@ const projects = [
   },
   {
     id: "abssa",
-    title: "SISE ABSSA – Agence Béninoise de Sécurité Sanitaire des Aliments",
+    title: "SISE ABSSA - Agence Béninoise de Sécurité Sanitaire des Aliments",
     category: "Entreprise",
     type: "enterprise",
     imgSrc: "assets/images/abssa.png",
@@ -241,7 +252,7 @@ const projects = [
   },
   {
     id: "ms-sante",
-    title: "MS – Ministère de la Santé",
+    title: "MS - Ministère de la Santé",
     category: "Entreprise",
     type: "enterprise",
     imgSrc: "assets/images/ms.png",
@@ -252,7 +263,7 @@ const projects = [
   },
   {
     id: "ms-cadrevie",
-    title: "SISE MCVT – Ministère du Cadre de Vie et des Transports",
+    title: "SISE MCVT - Ministère du Cadre de Vie et des Transports",
     category: "Entreprise",
     type: "enterprise",
     imgSrc: "assets/images/mcvt.png",
@@ -275,7 +286,7 @@ const projects = [
   },
   {
     id: "inf-sig",
-    title: "SIG INF – Institut National de la Femme",
+    title: "SIG INF - Institut National de la Femme",
     category: "Entreprise",
     type: "enterprise",
     imgSrc: "assets/images/inflogin.png",
@@ -286,7 +297,7 @@ const projects = [
   },
    {
     id: "pavicc",
-    title: "SIG PAVICC – Programme d'Adaptation des Villes au Changement Climatique(PAVICC)",
+    title: "SIG PAVICC - Programme d'Adaptation des Villes au Changement Climatique(PAVICC)",
     category: "Entreprise",
     type: "enterprise",
     imgSrc: "assets/images/pavicc login.png",
@@ -297,7 +308,7 @@ const projects = [
   },
   {
     id: "benin-tourisme",
-    title: "SIG ABT – Agence Bénin Tourisme",
+    title: "SIG ABT - Agence Bénin Tourisme",
     category: "Entreprise",
     type: "enterprise",
     imgSrc: "assets/images/abt.png",
@@ -308,18 +319,18 @@ const projects = [
   },
   {
     id: "ppbse",
-    title: "SIG PPBSE – Ministère du Plan, de la Statistique et de l'Intégration Régionale (MPSIR)",
+    title: "SIG PPBSE - Ministère du Plan, de la Statistique et de l'Intégration Régionale (MPSIR)",
     category: "Entreprise",
     type: "enterprise",
     imgSrc: "assets/images/PPBSE_MPSIR LOGIN.png",
     previewImages: ["assets/images/PPBSE_MPSIR LOGIN.png", "assets/images/PPBSE_MPSIR accueil.png"],
     tags: ["Symfony", "PHP","JavaScript", "API REST", "MySQL"],
     description:
-      " Développement en équipe des modules Planification Suivi & Évaluation et Budgétisation dans le cadre du Système Informatisé de Gestion de la Chaîne PPBSE.",
+      "Développement en équipe des modules Planification Suivi & Évaluation et Budgétisation dans le cadre du Système Informatisé de Gestion de la Chaîne PPBSE (République du Congo).",
   },
   {
     id: "inrab",
-    title: "SISE INRAB – Module Suivi & Évaluation",
+    title: "SISE INRAB - Module Suivi & Évaluation",
     category: "Entreprise",
     type: "enterprise",
     imgSrc: "assets/images/inrabolgin.png",
@@ -330,7 +341,7 @@ const projects = [
   },
   {
     id: "pdi-cva",
-    title: "SIGPDI-CVA – Projet de Développement Intégré des Chaînes de Valeurs Agricoles au Bénin (PDI-CVA)",
+    title: "SIGPDI-CVA - Projet de Développement Intégré des Chaînes de Valeurs Agricoles au Bénin (PDI-CVA)",
     category: "Entreprise",
     type: "enterprise",
     imgSrc: "assets/images/PDICVA.png",
@@ -342,7 +353,7 @@ const projects = [
 
   {
     id: "premopef",
-    title: "SISE_PREMOPEF – Projet de Renforcement des Moyens de subsistance des Petits Exploitants et des Femmes (PREMOPEF)",
+    title: "SISE_PREMOPEF - Projet de Renforcement des Moyens de subsistance des Petits Exploitants et des Femmes (PREMOPEF)",
     category: "Entreprise",
     type: "enterprise",
     imgSrc: "assets/images/premopef login.png",
@@ -356,7 +367,7 @@ const projects = [
 
   {
     id: "pndf-karite",
-    title: "SISE_PNDF-KARITE – Système de Gestion des données de la filière karité",
+    title: "SISE_PNDF-KARITE - Système de Gestion des données de la filière karité",
     category: "Entreprise",
     type: "enterprise",
     imgSrc: "assets/images/pndf_karite.png",
@@ -368,8 +379,33 @@ const projects = [
   },
   // ── Personnels ─────────────────────────────────────────────
   {
+    id: "locatia",
+    title: "Locatia - Plateforme de Gestion Locative (Bénin & Diaspora)",
+    category: "Personnel",
+    type: "personal",
+    imgSrc: "assets/images/locatia_landing.png",
+    previewImages: [
+      "assets/images/locatia_landing.png",
+      "assets/images/locatia_register.png",
+      "assets/images/locatia_login.png",
+      "assets/images/locatia_dashboard.png",
+    ],
+    tags: [
+      "Laravel 12",
+      "React 19",
+      "TypeScript",
+      "Inertia.js",
+      "Tailwind CSS 4",
+      "PostgreSQL 16",
+      "shadcn/ui"
+    ],
+    description:
+      "Application web multi-tenant de gestion locative (biens, locataires, baux, loyers, paiements) destinée aux propriétaires - dont ceux de la diaspora - et aux agences immobilières. Authentification Laravel Fortify, isolation stricte multi-tenant par organisation, rôles et permissions Spatie (6 rôles, 45 permissions) et journal d'audit. Génération automatique de reçus et contrats en PDF (DomPDF) avec QR code de vérification, montant en lettres et signature électronique (SHA-256). Assistant de baux en 5 étapes avec échéancier automatique, paiements en 3 clics avec affectation automatique sur l'impayé le plus ancien, relances WhatsApp, tableau de bord avec KPI et graphiques (Recharts), rapports CSV/PDF, portail locataire et recherche globale Ctrl+K. Qualité : 100 tests automatisés (Pest), Laravel Pint, ESLint/Prettier.",
+  },
+
+  {
     id: "expenseflow",
-    title: "ExpenseFlow – Application de Gestion Financière au sein d’une entreprise",
+    title: "ExpenseFlow - Application de Gestion Financière au sein d’une entreprise",
     category: "Personnel",
     type: "personal",
     imgSrc: "assets/images/expenseflow_login.png",
@@ -392,12 +428,12 @@ const projects = [
       "JavaScript"
     ],
     description:
-      "Application web de gestion des dépenses et revenus au sein d’une entreprise développée avec Laravel 12. Intégration d’API REST sécurisées avec Sanctum, gestion des rôles et permissions, export PDF et Excel, authentification sécurisée et tableau de bord analytique.",
+      "Application web de gestion des dépenses et revenus au sein d'une entreprise développée avec Laravel 12. Authentification sécurisée avec Laravel Breeze et Sanctum, CRUD complet des dépenses, revenus, catégories et utilisateurs, API REST sécurisées par token, rôles et permissions Spatie, base de données PostgreSQL, export PDF avec DomPDF et tests API avec Postman.",
   },
 
   {
     id: "smartcourier",
-    title: "SmartCourier System – Système de Gestion Administrative du Courrier",
+    title: "SmartCourier System - Système de Gestion Administrative du Courrier",
     category: "Personnel",
     type: "personal",
     imgSrc: "assets/images/courier_login.png",
@@ -420,7 +456,7 @@ const projects = [
       "JavaScript"
     ],
     description:
-      "Application web de gestion et suivi du courrier administratif développée avec Symfony. Gestion des utilisateurs, services, catégories de courriers, rôles et permissions, suivi des courriers entrants/sortants, tableau de bord statistique et sécurisation des accès.",
+      "Système web de centralisation et de suivi des courriers entrants/sortants destiné à optimiser les flux administratifs des institutions publiques. Authentification sécurisée, contrôle d'accès strict et gestion fine des rôles (EasyAdmin / Doctrine ORM), tableau de bord analytique avec graphiques en temps réel (Chart.js et requêtes AJAX).",
   },
 
   // {

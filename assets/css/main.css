@@ -1,15 +1,15 @@
 /* =========================================
-   main.css — Winceslas Portfolio Custom Styles
+   main.css - Winceslas Portfolio Custom Styles
    ========================================= */
 
-/* ── Fix: Nom/Prénom sidebar – texte sur plusieurs lignes ─────────────── */
+/* ── Fix: Nom/Prénom sidebar - texte sur plusieurs lignes ─────────────── */
 .info-content :is(.name, .my-name) {
   overflow: visible !important;
   white-space: normal !important;
   word-break: break-word !important;
 }
 
-/* ── Fix: "Licence Pro." badge – texte blanc comme les autres ─────────── */
+/* ── Fix: "Licence Pro." badge - texte blanc comme les autres ─────────── */
 .contact-info span {
   color: var(--white-2) !important;
   font-size: var(--fs-7);
@@ -282,7 +282,7 @@ article.active .page-footer { animation-delay: 330ms; }
 }
 
 /* ═══════════════════════════════════════════════════
-   CARTES PROJETS — Layout horizontal : image gauche,
+   CARTES PROJETS - Layout horizontal : image gauche,
    contenu droite. Toutes les cartes ont la même
    hauteur de zone image. Totalement responsive.
    ═══════════════════════════════════════════════════ */
@@ -782,7 +782,7 @@ article.active .page-footer { animation-delay: 330ms; }
 }
 
 /* ═══════════════════════════════════════════════════
-   PAGE CONTACT — Cartes contact rapide
+   PAGE CONTACT - Cartes contact rapide
    ═══════════════════════════════════════════════════ */
 .contact-section-title {
   margin-bottom: 20px;
@@ -863,7 +863,7 @@ article.active .page-footer { animation-delay: 330ms; }
 }
 
 /* ═══════════════════════════════════════════════════
-   PAGE CONTACT — Formulaire
+   PAGE CONTACT - Formulaire
    ═══════════════════════════════════════════════════ */
 .contact-form-intro {
   font-size: var(--fs-7);
@@ -915,4 +915,150 @@ article.active .page-footer { animation-delay: 330ms; }
 }
 .projects-info-note strong {
   color: var(--orange-yellow-crayola);
+}
+
+/* ═══════════════════════════════════════════════════
+   THÈME CLAIR / SOMBRE - bouton + bascule
+   ═══════════════════════════════════════════════════ */
+.nav-controls {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.theme-toggle {
+  position: relative;
+  width: 38px;
+  height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--jet);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--orange-yellow-crayola);
+  font-size: 18px;
+  transition: transform 220ms ease, border-color 220ms ease, background 220ms ease, color 220ms ease;
+}
+
+.theme-toggle:hover {
+  transform: translateY(-1px);
+  border-color: var(--orange-yellow-crayola);
+  background: rgba(255, 188, 94, 0.1);
+}
+
+.theme-toggle ion-icon {
+  position: absolute;
+  transition: opacity 220ms ease, transform 280ms ease;
+}
+
+.theme-icon-sun {
+  opacity: 0;
+  transform: rotate(-90deg) scale(0.5);
+}
+
+.theme-icon-moon {
+  opacity: 1;
+  transform: rotate(0deg) scale(1);
+}
+
+[data-theme="light"] .theme-icon-sun {
+  opacity: 1;
+  transform: rotate(0deg) scale(1);
+}
+
+[data-theme="light"] .theme-icon-moon {
+  opacity: 0;
+  transform: rotate(90deg) scale(0.5);
+}
+
+/* ── Light theme variable overrides ── */
+[data-theme="light"] {
+  --bg-gradient-onyx: linear-gradient(to bottom right, hsl(40, 20%, 96%) 3%, hsl(30, 15%, 92%) 97%);
+  --bg-gradient-jet: linear-gradient(to bottom right, hsla(30, 20%, 50%, 0.06) 0%, hsla(30, 20%, 50%, 0.01) 100%), hsl(0, 0%, 100%);
+  --border-gradient-onyx: linear-gradient(to bottom right, hsl(30, 8%, 82%) 0%, hsla(30, 8%, 82%, 0) 50%);
+
+  --jet: hsl(30, 10%, 88%);
+  --onyx: hsl(30, 12%, 92%);
+  --eerie-black-1: hsl(40, 20%, 97%);
+  --eerie-black-2: hsl(40, 25%, 95%);
+  --smoky-black: hsl(30, 10%, 20%);
+
+  --white-1: hsl(240, 15%, 12%);
+  --white-2: hsl(240, 12%, 16%);
+  --orange-yellow-crayola: hsl(28, 85%, 45%);
+  --vegas-gold: hsl(28, 50%, 40%);
+  --light-gray: hsl(240, 6%, 32%);
+  --light-gray-70: hsla(240, 6%, 32%, 0.72);
+  --bittersweet-shimmer: hsl(0, 55%, 48%);
+
+  --shadow-1: -4px 8px 24px hsla(30, 20%, 40%, 0.12);
+  --shadow-2: 0 16px 30px hsla(30, 20%, 40%, 0.12);
+  --shadow-3: 0 16px 40px hsla(30, 20%, 40%, 0.12);
+  --shadow-4: 0 25px 50px hsla(30, 20%, 40%, 0.08);
+  --shadow-5: 0 24px 80px hsla(30, 20%, 40%, 0.12);
+}
+
+[data-theme="light"] body,
+[data-theme="light"] .main-content article {
+  background: var(--eerie-black-1);
+}
+
+[data-theme="light"] .sidebar-info .title,
+[data-theme="light"] .info-content .title {
+  background: var(--onyx);
+  color: var(--white-2);
+}
+
+[data-theme="light"] .navbar .language-switch,
+[data-theme="light"] .theme-toggle {
+  background: rgba(0, 0, 0, 0.03);
+}
+
+[data-theme="light"] .project-item:hover {
+  box-shadow: 0 12px 32px rgba(60, 40, 10, 0.14) !important;
+}
+
+[data-theme="light"] .contact-quick-card:hover {
+  box-shadow: 0 8px 24px rgba(60, 40, 10, 0.12);
+}
+
+[data-theme="light"] .skill-card {
+  box-shadow: 0 12px 26px rgba(60, 40, 10, 0.08);
+}
+
+[data-theme="light"] .skill-card:hover {
+  box-shadow: 0 16px 34px rgba(60, 40, 10, 0.12);
+}
+
+[data-theme="light"] .project-item-extra {
+  border-top-color: rgba(0, 0, 0, 0.06) !important;
+}
+
+[data-theme="light"] .project-item-extra {
+  border-left-color: rgba(0, 0, 0, 0.06) !important;
+}
+
+[data-theme="light"] .lang-badge {
+  background: var(--jet);
+  color: var(--light-gray);
+  border-color: var(--onyx);
+}
+
+[data-theme="light"] .project-img-wrap {
+  background: var(--jet) !important;
+}
+
+[data-theme="light"] .form-btn {
+  box-shadow: 0 12px 30px rgba(255, 188, 94, 0.25);
+}
+
+/* Smooth theme transition */
+body,
+.main-content article,
+.sidebar,
+.navbar,
+.article,
+.content-card {
+  transition: background-color 0.35s ease, border-color 0.35s ease, color 0.35s ease;
 }

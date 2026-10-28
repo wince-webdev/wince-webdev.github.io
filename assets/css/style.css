@@ -1844,13 +1844,13 @@ textarea.form-input::-webkit-resizer {
     right: 0;
     width: max-content;
     border-radius: 0 20px;
-    padding: 0 20px;
+    padding: 0 8px 0 0;
     box-shadow: none;
   }
 
   .navbar-list {
-    gap: 30px;
-    padding: 0 20px;
+    gap: 22px;
+    padding: 0 14px;
   }
 
   .navbar-link {

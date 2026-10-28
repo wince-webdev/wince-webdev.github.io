@@ -4,14 +4,14 @@
    <!--  <meta charset="UTF-8" />  -->
    <!--  <meta http-equiv="X-UA-Compatible" content="IE=edge" />  -->
    <!--  <meta name="viewport" content="width=device-width, initial-scale=1.0" />  -->
-   <!--  <meta name="description" content="Portfolio de Noukpo Winceslas ADJIHANOU – Développeur FullStack Symfony PHP JavaScript, Cotonou Bénin." />   -->
-   <!--  <title>Winceslas ADJIHANOU – Portfolio</title>  -->
+   <!--  <meta name="description" content="Portfolio de Noukpo Winceslas ADJIHANOU - Développeur FullStack Symfony PHP JavaScript, Cotonou Bénin." />   -->
+   <!--  <title>Winceslas ADJIHANOU - Portfolio</title>  -->
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Winceslas ADJIHANOU — Développeur PHP Laravel Symfony | Cotonou Bénin</title>
+    <title>Winceslas ADJIHANOU - Développeur PHP Laravel Symfony | Cotonou Bénin</title>
 
     <meta name="description" content="Winceslas ADJIHANOU, développeur Full Stack PHP spécialisé Laravel et Symfony à Cotonou, Bénin. +3 ans d'expérience ERP, API REST, PostgreSQL. Disponible pour CDI ou mission." />
     <meta name="keywords" content="Winceslas ADJIHANOU, Adjihanou Winceslas, Noukpo Winceslas, Winseslas, Adjianou, Adjihano, développeur PHP Bénin, développeur Laravel Cotonou, développeur Symfony Bénin, développeur web Cotonou, full stack PHP Bénin, API REST Bénin, COSIT Bénin développeur, wince webdev, wince-webdev" />
@@ -23,14 +23,14 @@
 
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://wince-webdev.github.io" />
-    <meta property="og:title" content="Winceslas ADJIHANOU — Développeur PHP Laravel Symfony | Cotonou Bénin" />
+    <meta property="og:title" content="Winceslas ADJIHANOU - Développeur PHP Laravel Symfony | Cotonou Bénin" />
     <meta property="og:description" content="Développeur Full Stack PHP, Laravel 12, Symfony, API REST, PostgreSQL. +3 ans d'expérience ERP pour institutions nationales béninoises." />
     <meta property="og:image" content="https://wince-webdev.github.io/assets/images/profil_wince.jpg" />
     <meta property="og:locale" content="fr_FR" />
     <meta property="og:site_name" content="Portfolio Winceslas ADJIHANOU" />
 
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Winceslas ADJIHANOU — Développeur PHP Laravel Symfony" />
+    <meta name="twitter:title" content="Winceslas ADJIHANOU - Développeur PHP Laravel Symfony" />
     <meta name="twitter:description" content="Développeur Full Stack PHP à Cotonou, Bénin. Laravel, Symfony, API REST, ERP." />
     <meta name="twitter:image" content="https://wince-webdev.github.io/assets/images/profil_wince.jpg" />
 
@@ -86,6 +86,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
 
     <meta name="google-site-verification" content="NETXPS0dzhFMpqg8Rdpf7ewBt_V8ga2HHV5IkPrUz7M" />
+
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem("portfolioTheme");
+          if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t);
+        } catch (e) {}
+      })();
+    </script>
   </head>
 
   <body>
@@ -100,7 +109,7 @@
 
           <div class="info-content">
             <h1 class="my-name">Winceslas ADJIHANOU</h1>
-            <p class="title my-degree">Développeur FullStack</p>
+            <p class="title my-degree">Développeur Full Stack PHP</p>
           </div>
 
           <button class="info_more-btn" data-sidebar-btn>
@@ -127,12 +136,6 @@
         <!-- NAV -->
         <nav class="navbar">
           <ul class="navbar-list">
-            <li class="navbar-item navbar-lang-item">
-              <div class="language-switch" aria-label="Choisir la langue">
-                <button type="button" class="lang-toggle active" data-lang-switch="fr">FR</button>
-                <button type="button" class="lang-toggle" data-lang-switch="en">EN</button>
-              </div>
-            </li>
             <li class="navbar-item">
               <button class="navbar-link active" data-nav-link data-nav-key="about" data-i18n="nav.about">À propos</button>
             </li>
@@ -145,6 +148,18 @@
             <li class="navbar-item">
               <button class="navbar-link" data-nav-link data-nav-key="contact" data-i18n="nav.contact">Contact</button>
             </li>
+            <li class="navbar-item navbar-lang-item">
+              <div class="nav-controls">
+                <div class="language-switch" aria-label="Choisir la langue">
+                  <button type="button" class="lang-toggle active" data-lang-switch="fr">FR</button>
+                  <button type="button" class="lang-toggle" data-lang-switch="en">EN</button>
+                </div>
+                <button type="button" class="theme-toggle" data-theme-toggle aria-label="Basculer le thème clair / sombre" title="Mode clair / sombre">
+                  <ion-icon name="moon" class="theme-icon-moon"></ion-icon>
+                  <ion-icon name="sunny" class="theme-icon-sun"></ion-icon>
+                </button>
+              </div>
+            </li>
           </ul>
         </nav>
 
@@ -155,21 +170,22 @@
           </header>
           <section class="about-text">
             <p>
-              Bonjour ! Je suis <strong>Noukpo Winceslas ADJIHANOU</strong>, développeur Full Stack PHP basé à Abomey-Calavi, Cotonou (Bénin).
-              Fort de plus de 3 ans d'expérience professionnelle, je conçois et maintiens des applications web robustes pour des institutions publiques et privées béninoises.
+              Bonjour ! Je suis <strong>Noukpo Winceslas ADJIHANOU</strong>, développeur Full Stack PHP spécialisé en Symfony et Laravel, basé à Abomey-Calavi, Cotonou (Bénin).
+              Fort de plus de 3 ans d'expérience professionnelle, je conçois, développe et maintiens des applications web et ERP métiers robustes pour des institutions publiques et privées.
             </p>
             <p>
               Titulaire d'une Licence Professionnelle en Systèmes Informatiques et Logiciels (IRGIB Africa University), je me suis spécialisé dans l'écosystème <strong>Symfony / Laravel / PHP</strong>.
-              Chez <strong>COSIT Bénin</strong>, je contribue activement à la digitalisation de plusieurs ministères et organismes nationaux via des modules ERP variés : suivi-évaluation, passation des marchés, ressources humaines, comptabilité générale et gestion de stock.
+              Chez <strong>COSIT Bénin</strong>, je contribue activement à la digitalisation de plusieurs ministères et organismes nationaux via des modules ERP variés : suivi-évaluation, passation des marchés, ressources humaines, comptabilité générale et gestion de stock - avec des API REST sécurisées et un déploiement Linux.
             </p>
             <p>
-              En parallèle, je développe mes compétences <strong>Laravel 12</strong> à travers des projets personnels concrets, notamment <strong>ExpenseFlow</strong> : application de gestion financière avec API REST Sanctum, rôles et permissions Spatie, dashboard Chart.js et export PDF. Disponible sur GitHub.
+              En parallèle, je développe des projets personnels concrets en <strong>Laravel 12</strong>, notamment <strong>Locatia</strong> : plateforme multi-tenant de gestion locative (React 19, PostgreSQL, reçus PDF vérifiables par QR, signature électronique) destinée aux propriétaires de la diaspora et aux agences immobilières, et <strong>ExpenseFlow</strong> : application de gestion financière avec API REST Sanctum et permissions Spatie.
             </p>
             <p>
-              Au-delà du code, je suis <strong>maître de stage</strong> et mentor pour les étudiants des écoles Faucon et INSPEI que j'accompagne dans leurs projets de soutenance et de stage académique. Transmettre, expliquer et faire grandir les autres est pour moi aussi important que la technique.
+              Au-delà du code, je suis <strong>maître de stage et mentor</strong> pour les étudiants des écoles Faucon et INSPEI que j'accompagne dans leurs projets de soutenance et de stage académique.
+              Disponible <strong>full-remote à l'international (GMT+1)</strong>, ouvert aux missions freelance et aux opportunités de relocalisation.
             </p>
             <p>
-              Je maîtrise le déploiement sur serveurs Linux (cPanel, Grizzly), la conception d'API REST sécurisées, et continue d'élargir mes compétences (Docker, cloud) pour rester un développeur moderne et efficace.
+              Je maîtrise le déploiement sur serveurs Linux (SSH, cPanel), la conception d'API REST sécurisées, et continue d'élargir mes compétences (Docker, IA générative, Google Cloud) pour rester un développeur moderne et efficace.
             </p>
           </section>
           <div class="about-cv-action">

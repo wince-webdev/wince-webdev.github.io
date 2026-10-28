@@ -8,7 +8,7 @@ const sidebar    = document.querySelector("[data-sidebar]");
 const sidebarBtn = document.querySelector("[data-sidebar-btn]");
 sidebarBtn.addEventListener("click", () => elementToggleFunc(sidebar));
 
-// ── Formulaire contact – validation bouton ─────────────────────────────
+// ── Formulaire contact - validation bouton ─────────────────────────────
 const form       = document.querySelector("[data-form]");
 const formInputs = document.querySelectorAll("[data-form-input]");
 const formBtn    = document.querySelector("[data-form-btn]");
@@ -70,3 +70,18 @@ if (window.location.search.includes("sent=1")) {
     });
   }
 }
+
+// ── Bascule thème clair / sombre ──────────────────────────────────────
+(function () {
+  const root = document.documentElement;
+  const saved = localStorage.getItem("portfolioTheme");
+  if (saved === "light" || saved === "dark") root.setAttribute("data-theme", saved);
+
+  document.querySelectorAll("[data-theme-toggle]").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const next = root.getAttribute("data-theme") === "light" ? "dark" : "light";
+      root.setAttribute("data-theme", next);
+      localStorage.setItem("portfolioTheme", next);
+    });
+  });
+})();
